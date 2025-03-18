@@ -1,4 +1,4 @@
-# Purr Pixel
+# Purr Pixel ฅ(^•ܫ•^)ฅ
 
 El proyecto consistirá en una aplicación web para entretenimiento y ocio ,y se llamará Purr Pixel.
 
