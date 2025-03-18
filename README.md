@@ -1,2 +1,0 @@
-# PurrPixel
-Aplicación TFG.
