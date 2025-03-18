@@ -1,6 +1,6 @@
 # Purr Pixel
 
-El proyecto consistirá en una aplicación web para entretenimiento y ocio,y se llamará Purr Pixel.
+El proyecto consistirá en una aplicación web para entretenimiento y ocio ,y se llamará Purr Pixel.
 
 El usuario deberá de registrarse utilizando principalmente un nombre de usuario y contraseña.
 
