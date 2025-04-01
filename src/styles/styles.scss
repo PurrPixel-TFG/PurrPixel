@@ -1,0 +1,706 @@
+:root {
+    --primary-color: #be43d6;
+    --background-color: #fff1b3;
+    --text-color: #ffffff;
+    
+    --color-principal: #be43d5;
+    --color-hover: #9828ac;
+    --color-sombra: rgb(209, 123, 183);
+    --color-texto: #ce6fdf;
+}
+
+* {
+    margin: 0;
+    box-sizing: border-box;
+}
+
+html,
+body {
+    margin-top: auto;
+    align-items: center;
+    width: 100vw;
+    height: 100vw;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+
+body {
+    background-color: var(--background-color);
+
+    .container_cabecera,
+    .container_pie {
+        background-color: var(--primary-color);
+        color: var(--text-color);
+        text-align: center;
+    }
+
+    .container_cabecera {
+        padding-top: 30px;
+        padding-bottom: 30px;
+        border: 3px solid var(--primary-color);
+        font-size: 30px;
+        font-weight: bold;
+        width: 100vw;
+        position: fixed;
+        z-index: 1000;
+
+    }
+
+    .container_pie {
+        border: 3px solid var(--primary-color);
+        position: relative;
+        bottom: 0;
+        width: 100vw;
+        text-align: center;
+        padding: 1rem;
+        position: fixed;
+    }
+
+}
+
+// Inicio
+
+.index_h1 {
+    font-size: 30px;
+}
+
+// Botones de inicio
+
+nav {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    display: flex;
+    gap: 15px;
+    padding-right: 75px;
+}
+
+// Botón de música ON / OFF
+
+.button_music {
+    position: fixed;
+    top: 1rem;
+    right: 1rem;
+    background: #fff;
+    border-radius: 8px;
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+    z-index: 1100;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+// Botones de inicio > Instrucciones 
+
+.index_button_top {
+    font-size: 15px;
+    font-weight: bold;
+    color: var(--text-color);
+    text-decoration: none;
+}
+
+// Botones de inicio > Entrar
+
+//CONTENEDOR PARA INTENTAR SEPARAR LOS BOTONES
+.botones_container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 30px;
+}
+
+
+.index_button_entrar {
+    text-decoration: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 40px;
+    font-weight: bold;
+    z-index: 2;
+    cursor: pointer;
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px 35px;
+    border: 0;
+    border-radius: 15rem;
+    transition: all 0.02s;
+    color: rgb(37, 37, 37);
+    background: white;
+    overflow: hidden;
+    box-shadow: 0 15px 7px -5px #525097;
+}
+
+//Instrucciones
+.index_button_instrucciones{
+    position: fixed;
+    top: 65%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 40px;
+    font-weight: bold;
+    z-index: 2;
+    text-decoration: none;
+    cursor: pointer;
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px 35px;
+    border: 0;
+    border-radius: 15rem;
+    transition: all 0.02s;
+    color: rgb(37, 37, 37);
+    background: white;
+    overflow: hidden;
+    box-shadow: 0 15px 7px -5px #525097;
+}
+
+
+
+
+.index_button_entrar:hover, .index_button_instrucciones:hover {
+    background: rgb(193, 228, 248);
+    color: rgb(33, 0, 85);
+}
+
+.index_button_entrar:active, .index_button_instrucciones:active {
+    transform: translate(-50%, -50%) scale(0.97);
+}
+
+.index_button_entrar .hoverEffect, .index_button_instrucciones .hoverEffect {
+    position: absolute;
+    bottom: 0;
+    top: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1;
+}
+
+.index_button_entrar .hoverEffect div, .index_button_instrucciones .hoverEffect div {
+    background: linear-gradient(90deg,
+            rgba(222, 0, 75, 1) 0%,
+            rgba(191, 70, 255, 1) 49%,
+            rgba(0, 212, 255, 1) 100%);
+    border-radius: 40rem;
+    width: 20rem;
+    height: 20rem;
+    transition: 0.4s;
+    filter: blur(20px);
+    animation: effect infinite 3s linear;
+    opacity: 0.45;
+}
+
+.index_button_entrar:hover .hoverEffect div, .index_button_instrucciones:hover .hoverEffect div {
+    width: 8rem;
+    height: 8rem;
+}
+
+@keyframes effect {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+// Login y Registro
+
+.h2_login,
+.h2_register {
+    text-align: center;
+    margin: 0 auto;
+    display: block;
+    color: #6b15b8;
+    background: #fff;
+    border-radius: 8px;
+    padding: 3px;
+    width: 200px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 5);
+}
+
+.form-box {
+    margin-top: 2.5vh;
+    color: #6b15b8;
+    font-size: 15px;
+
+    width: 400px;
+    padding: 10px;
+    background-color: transparent;
+    border-radius: 12px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 5);
+    position: absolute;
+
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 10;
+}
+
+.form-group {
+    margin: 20px;
+
+    label {
+        margin-bottom: 8px;
+        font-weight: bold;
+        background: #fff;
+        border-radius: 4px;
+        border: 2px solid var(--primary-color);
+    }
+
+    .form-input {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 8px;
+        font-size: 16px;
+        box-shadow: 0 0 15px rgba(0, 0, 0, 5);
+    }
+}
+
+.form-button-container {
+    display: flex;
+    justify-content: center; // Centra horizontalmente
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.button_iniciar-sesion {
+    padding: 0.5rem 1rem;
+    text-align: center;
+    text-decoration: none;
+    font-weight: bold;
+    background-color: #d878b0;
+    color: white;
+    border-radius: 5px;
+    display: inline-block;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 5);
+}
+
+.cbox_login:checked {
+    accent-color: #d878b0;
+    font-weight: bold;
+}
+
+// Página principal del usuario, main-page
+
+.main-page-buttons-fixed {
+    position: fixed;
+    top: 10vh;
+    left: 0;
+    width: 100%;
+    background: var(--primary-color);
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    padding: 0.75rem 1rem;
+    z-index: 999;
+}
+
+.main-page-button {
+    background-color: #fff;
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+    text-decoration: none;
+    color: #333;
+    font-weight: bold;
+    transition: background 0.3s;
+}
+
+.main-page-button:hover {
+    background-color: #f0f0f0;
+}
+
+.container_gatos {
+    position: fixed;
+    top: calc(10vh + 80px); // espacio para cabecera + botones
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    padding: 10px;
+    max-width: 100%;
+    box-sizing: border-box;
+    z-index: 1;
+    margin-top: 100px;
+    overflow: hidden;
+}
+
+
+
+.container_gatos>div {
+    min-width: 150px;
+    flex: 0 0 auto;
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 12px;
+    padding: 2rem;
+    text-align: center;
+    font-weight: bold;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+    transition: transform 0.3s ease;
+    padding-top: 120px;
+    padding-bottom: 120px;
+}
+
+.container_gatos>div:hover {
+    transform: translateY(-5px);
+}
+
+.container_estado_gatos {
+    position: fixed;
+    top: calc(50vh + 80px); // espacio para cabecera + botones
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    padding: 2rem 1rem;
+    max-width: 100%;
+    box-sizing: border-box;
+    z-index: 1;
+    overflow: hidden;
+}
+
+.container_estado_gatos>div {
+    min-width: 150px;
+    flex: 0 0 auto;
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 12px;
+    padding: 2rem;
+    text-align: center;
+    font-weight: bold;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+    transition: transform 0.3s ease;
+}
+
+// Ajustes
+
+.container_ajustes,
+.colorblind {
+    position: fixed;
+    top: calc(10vh + 80px);
+    /* espacio para cabecera + botones */
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 2rem;
+    overflow-y: auto;
+    padding: 10px;
+    max-height: 80vh;
+    max-width: 100%;
+    box-sizing: border-box;
+    z-index: 1;
+    margin-top: 100px;
+}
+
+.container_ajustes>div {
+    min-width: 150px;
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 12px;
+    padding: 2rem;
+    text-align: center;
+    font-weight: bold;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+    transition: transform 0.3s ease;
+}
+
+//Colorblind
+
+.colorblind-mode {
+    --primary-color: #3366cc;
+    --background-color: #f0f0f0;
+    --text-color: #000000;
+}
+
+//Perfil de usuario
+
+.perfil-container {
+    text-align: center;
+    color: #6b15b8;
+    background: #fff;
+    border-radius: 8px;
+    width: 320px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.15);
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    position: fixed;
+    margin-top: 15vh;
+    margin-left: 15vh;
+
+    .perfil-header {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+
+        img {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid #ddd;
+        }
+
+        .perfil-info {
+            text-align: left;
+
+            h2 {
+                font-size: 1.5rem;
+                font-weight: bold;
+                margin: 0;
+            }
+
+            p {
+                color: #777;
+                margin: 0.2rem 0 0;
+            }
+        }
+    }
+
+    .perfil-bio {
+        color: #444;
+        font-size: 1rem;
+    }
+
+    .perfil-email {
+        font-size: 0.9rem;
+        color: #666;
+    }
+
+    .edit-button {
+        align-self: center;
+        padding: 0.5rem 1rem;
+        background-color: #2563eb;
+        color: white;
+        border: none;
+        border-radius: 0.5rem;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+
+        &:hover {
+            background-color: #1e40af;
+        }
+    }
+}
+
+// Tienda
+
+.tienda {
+    max-width: 1200px;
+    margin: 0 auto;
+  
+    .titulo_tienda {
+      text-align: center;
+      font-size: 3rem;
+      margin-bottom: 40px;
+      color: var(--color-principal);
+    }
+  
+    .categoria_tienda {
+      background-color: #fff;
+      border-radius: 10px;
+      margin-bottom: 20px;
+      box-shadow: 0 4px 6px var(--color-sombra);
+      overflow: hidden;
+  
+      &-titulo {
+        background-color: var(--color-principal);
+        color: white;
+        padding: 15px;
+        font-size: 1.5rem;
+        width: 100%;
+        border: none;
+        text-align: left;
+        cursor: pointer;
+  
+        &:hover {
+          background-color: var(--color-hover);
+        }
+      }
+
+  
+      .productos_tienda {
+        display: flex;
+        gap: 20px;
+        padding: 20px;
+        overflow-x: auto;
+        padding-bottom: 10px;
+  
+        .producto_tienda {
+          background-color: #fff;
+          border-radius: 10px;
+          padding: 15px;
+          box-shadow: 0 2px 5px var(--color-sombra);
+          text-align: center;
+          min-width: 200px;
+          flex-shrink: 0;
+  
+          .img_tienda{
+            width: 100%;
+            max-width: 150px;
+            height: auto;
+            border-radius: 10px;
+            margin-bottom: 10px;
+          }
+
+          .h2_tienda {
+            font-size: 1.2rem;
+            font-size: 1.2rem;
+            margin-bottom: 5px;
+            color: var(--color-principal);
+          }
+  
+          .p_tienda {
+            font-size: 1rem;
+            color: var(--color-text);
+          }
+  
+          .comprar-btn {
+            background-color: var(--color-principal);
+            color: var(--color-principal);
+            border: none;
+            padding: 10px 20px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 1rem;
+            margin-top: 10px;
+            transition: background-color 0.3s;
+  
+            &:hover {
+              background-color: var(--color-hover);
+            }
+          }
+        }
+      }
+    }
+  }
+
+  
+//Botón de retroceder
+
+  .boton-retroceder {
+    position: fixed;
+    top: 1rem;
+    left: 1rem;
+    background: #fff;
+    border-radius: 8px;
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+    z-index: 1000;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  }
+
+// Botón de cerrar sesión
+
+  .boton_cerrar-sesion {
+        position: fixed;
+        bottom: 5rem;
+        right: 5rem;
+        background: #fff;
+        border-radius: 8px;
+        padding: 0.5rem 1rem;
+        cursor: pointer;
+        z-index: 1000;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  }
+
+
+  /* Página de instrucciones */
+
+.container_instrucciones {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    padding: 65px;
+    background-color: var(--background-color);
+    border-radius: 30px;
+    max-width: 50%;
+    margin: 0 auto; 
+    position: absolute;
+    top: 50%; 
+    left: 50%; 
+    transform: translate(-50%, -50%); 
+    overflow: hidden;
+}
+  
+.consejo {
+    font-size: 1rem;
+    color: var(--primary-color);
+    margin-top: 20px;
+    margin-bottom: 5px;
+    text-align: center;
+    transition: transform 0.3s ease-in-out;
+}
+  
+.consejo_animado {
+    transform: scale(1.1);
+}
+  
+.game_buttons {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+}
+  
+.game_button {
+    width: 150px;
+    height: 150px;
+    background-color: var(--primary-color);
+    border: 2px solid #ccc;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: bold;
+    color: #333;
+    cursor: pointer;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: background-color 0.3s, transform 0.2s;
+}
+  
+.game_button:hover {
+    background-color: var(--secondary-color);
+    transform: scale(1.05);
+}
+  
+.instructions_display {
+    display: none;
+    width: 80%;
+    padding: 20px;
+    background-color: var(--secondary-color);
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    text-align: left;
+    font-size: 1rem;
+    color: #555;
+}
+
+.container_instrucciones .instructions_display {
+    display: block; 
+}
+  
+body.instructions-active {
+    overflow: hidden;
+}
+
