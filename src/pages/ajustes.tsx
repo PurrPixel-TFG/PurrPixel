@@ -6,8 +6,9 @@ const Ajustes: React.FC = () => {
     <main>
       <div className="container_ajustes">
         <ColorblindToggle />
+        <ThemeMode />
         <div className="ticket">Enviar ticket</div>
-      </div>
+        </div>
     </main>
   );
 };

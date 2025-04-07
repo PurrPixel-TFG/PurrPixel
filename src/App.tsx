@@ -93,6 +93,15 @@ const LayoutAllPages = () => {
     }
   }, []);
 
+  useEffect(() => {
+    const isThemeMode = localStorage.getItem('colorblindMode') === 'true';
+    if (isColorblind) {
+      document.body.classList.add('colorblind-mode');
+    } else {
+      document.body.classList.remove('colorblind-mode');
+    }
+  }, []);
+
 
 // BLOQUEO DE SCROLL EN TODAS LAS PÁGINAS EXCEPTO SCROLL
 useEffect(() => {
