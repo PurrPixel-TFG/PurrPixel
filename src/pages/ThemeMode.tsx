@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from 'react';
 
-import videoSrc from '../assets/video/modoDia.mp4'; // Reemplaza con tu vídeo
+/** 
+import videoSrc from '../assets/video/modoDia.mp4';
 import videoSrc from '../assets/video/fondoDALTONICO.mp4';
 import videoSrc from '../assets/video/fondoDALTONICO.mp4';
-
+*/
 const ColorblindToggle: React.FC = () => {
   const [isColorblind, setIsColorblind] = useState(
     localStorage.getItem('colorblindMode') === 'true'
@@ -40,8 +41,8 @@ const ColorblindToggle: React.FC = () => {
           zIndex: -1,
         }}
       >
-        <source src={videoSrc} type="video/mp4" />
-        Tu navegador no soporta vídeos.
+        {/* <source src={videoSrc} type="video/mp4" />
+        Tu navegador no soporta vídeos. */}
       </video>
 
       {/* Botón */}
