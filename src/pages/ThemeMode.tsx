@@ -1,56 +1,32 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 
-/** 
-import videoSrc from '../assets/video/modoDia.mp4';
-import videoSrc from '../assets/video/fondoDALTONICO.mp4';
-import videoSrc from '../assets/video/fondoDALTONICO.mp4';
-*/
-const ColorblindToggle: React.FC = () => {
-  const [isColorblind, setIsColorblind] = useState(
-    localStorage.getItem('colorblindMode') === 'true'
-  );
+interface ThemeModeProps {
+  theme: string;
+  setTheme: (val: string) => void;
+}
 
+const ThemeMode: React.FC<ThemeModeProps> = ({ theme, setTheme }) => {
   useEffect(() => {
-    if (isColorblind) {
-      document.body.classList.add('colorblind-mode');
-    } else {
-      document.body.classList.remove('colorblind-mode');
-    }
-  }, [isColorblind]);
-
-  const toggleColorblindMode = () => {
-    const newMode = !isColorblind;
-    setIsColorblind(newMode);
-    localStorage.setItem('colorblindMode', newMode.toString());
+    localStorage.setItem('themeMode', theme);
+    document.body.setAttribute('data-theme', theme);
+  }, [theme]);
+  
+  const handleChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    setTheme(e.target.value);
+    localStorage.setItem('themeModeManual', 'true');
   };
+  
 
   return (
-    <div style={{ position: 'relative', textAlign: 'center' }}>
-      {/* Video DALTONICO PERO NO VA >:d */}
-      <video
-        autoPlay
-        loop
-        muted
-        style={{
-          position: 'absolute',
-          top: 0,
-          left: 0,
-          width: '100%',
-          height: '100%',
-          objectFit: 'cover',
-          zIndex: -1,
-        }}
-      >
-        {/* <source src={videoSrc} type="video/mp4" />
-        Tu navegador no soporta vídeos. */}
-      </video>
-
-      {/* Botón */}
-      <button type="button" onClick={toggleColorblindMode} style={{ position: 'relative', zIndex: 1 }}>
-        {isColorblind ? 'Desactivar modo daltónico' : 'Modo daltónico'}
-      </button>
+    <div className="theme-mode-selector">
+      <label>Modo de fondo:</label>
+      <select value={theme} onChange={(e) => setTheme(e.target.value)}>
+        <option value="dia">🌞 Día</option>
+        <option value="tarde">🌇 Tarde</option>
+        <option value="noche">🌙 Noche</option>
+      </select>
     </div>
   );
 };
 
-export default ColorblindToggle;
+export default ThemeMode;

@@ -421,13 +421,18 @@ nav {
     transition: transform 0.3s ease;
 }
 
-//Colorblind
+//Theme Mode
 
-.colorblind-mode {
-    --primary-color: #3366cc;
-    --background-color: #f0f0f0;
-    --text-color: #000000;
-}
+.theme-mode-selector {
+    margin-top: 10px;
+    font-size: 1rem;
+  }
+  
+  .theme-mode-selector select {
+    margin-left: 10px;
+    padding: 5px;
+  }
+  
 
 //Perfil de usuario
 

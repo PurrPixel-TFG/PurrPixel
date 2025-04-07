@@ -1,5 +1,4 @@
 import { useRef, useState, useEffect } from 'react'
-
 import {
   BrowserRouter as Router,
   Routes,
@@ -10,7 +9,10 @@ import {
 } from "react-router-dom";
 
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
-import videoSrc from './assets/video/inicioJuego.mp4';
+import modoDia from './assets/video/modoDia.mp4';
+import modoTarde from './assets/video/modoTarde.mp4';
+import modoNoche from './assets/video/modoNoche.mp4';
+
 import musicFile from './assets/audio/musicaFondo.mp3';
 import './styles/styles.css'
 import Inicio from './pages/inicio';
@@ -27,10 +29,7 @@ import PurrPoints from './pages/purrpoints';
 
 const queryClient = new QueryClient();
 
-//Aplica en todas las páginas
-
 const BotonRetroceder_MainPage = () => {
-
   const location = useLocation();
   const navigate = useNavigate();
 
@@ -46,7 +45,6 @@ const BotonRetroceder_MainPage = () => {
 };
 
 const BotonCerrarSesion = () => {
-
   const location = useLocation();
   const navigate = useNavigate();
 
@@ -61,13 +59,11 @@ const BotonCerrarSesion = () => {
   );
 }
 
-
-const LayoutAllPages = () => {
+const LayoutAllPages = ({ theme }: { theme: string }) => {
   const location = useLocation();
 
   const isMainPage = location.pathname === '/main-page';
-  const isGamePage = location.pathname === '/juegos';
-  const isTienda = location.pathname === "/tienda"; // CONSTANTE TIENDA
+  const isTienda = location.pathname === "/tienda";
 
   const audioRef = useRef<HTMLAudioElement | null>(null);
   const [isPlaying, setIsPlaying] = useState(false);
@@ -85,38 +81,16 @@ const LayoutAllPages = () => {
   };
 
   useEffect(() => {
-    const isColorblind = localStorage.getItem('colorblindMode') === 'true';
-    if (isColorblind) {
-      document.body.classList.add('colorblind-mode');
+    if (isTienda) {
+      document.body.style.overflow = "auto";
     } else {
-      document.body.classList.remove('colorblind-mode');
+      document.body.style.overflow = "hidden";
     }
-  }, []);
 
-  // useEffect(() => {
-  //   const isThemeMode = localStorage.getItem('colorblindMode') === 'true';
-  //   if (isColorblind) {
-  //     document.body.classList.add('colorblind-mode');
-  //   } else {
-  //     document.body.classList.remove('colorblind-mode');
-  //   }
-  // }, []);
-
-
-// BLOQUEO DE SCROLL EN TODAS LAS PÁGINAS EXCEPTO SCROLL
-useEffect(() => {
-  if (isTienda) {
-    document.body.style.overflow = "auto"; // Permitir scroll en tienda
-  } else {
-    document.body.style.overflow = "hidden"; // Bloquear scroll en el resto
-  }
-
-  return () => {
-    document.body.style.overflow = "auto"; // Reset al desmontar
-  };
-}, [isTienda]);
-
-
+    return () => {
+      document.body.style.overflow = "auto";
+    };
+  }, [isTienda]);
 
   return (
     <QueryClientProvider client={queryClient}>
@@ -138,32 +112,33 @@ useEffect(() => {
               zIndex: -1,
             }}
           >
-            <source src={videoSrc} type="video/mp4" />
+            <source
+              src={
+                theme === 'tarde'
+                  ? modoTarde
+                  : theme === 'noche'
+                    ? modoNoche
+                    : modoDia
+              }
+              type="video/mp4"
+            />
             Tu navegador no soporta vídeos.
           </video>
         )}
 
-        {/* Cabecera */}
         <div className="container_cabecera">PURR PIXEL</div>
 
-        {/* Botón de retroceso */}
         <BotonRetroceder_MainPage />
-
-        {/* Botón de cerrar sesión */}
         <BotonCerrarSesion />
 
-        {/* Botón de música */}
         <div className="button_music" onClick={toggleMusic}>
           {isPlaying ? '🔊 Música ON' : '🔇 Música OFF'}
         </div>
 
-        {/* Audio oculto */}
         <audio ref={audioRef} src={musicFile} loop />
 
-        {/* Página actual */}
         <Outlet />
 
-        {/* Pie de página */}
         <div className="container_pie">
           <p>&copy; 2025 PURRPIXEL. Todos los derechos reservados.</p>
         </div>
@@ -172,13 +147,13 @@ useEffect(() => {
   );
 };
 
-
 const App: React.FC = () => {
+  const [theme, setTheme] = useState(() => localStorage.getItem('themeMode') || 'dia');
+
   return (
     <Router>
       <Routes>
-        <Route path="/" element={<LayoutAllPages />}>
-          {/* Todas las páginas ahora estarán dentro del Layout */}
+        <Route path="/" element={<LayoutAllPages theme={theme} />}>
           <Route index element={<Inicio />} />
           <Route path="inicio" element={<Inicio />} />
           <Route path="instrucciones" element={<Instrucciones />} />
@@ -186,7 +161,7 @@ const App: React.FC = () => {
           <Route path="register" element={<Registrar />} />
           <Route path="terminos-condiciones" element={<Terminos />} />
           <Route path="main-page" element={<MainPage />} />
-          <Route path="ajustes" element={<Ajustes />} />
+          <Route path="ajustes" element={<Ajustes theme={theme} setTheme={setTheme} />} />
           <Route path="perfil" element={<Perfil />} />
           <Route path="tienda" element={<Tienda />} />
           <Route path="juegos" element={<Juegos />} />

@@ -1,14 +1,18 @@
 import React from "react";
-import ColorblindToggle from "./ColorblindToggle";
+import ThemeMode from "./ThemeMode";
 
-const Ajustes: React.FC = () => {
+interface AjustesProps {
+  theme: string;
+  setTheme: (val: string) => void;
+}
+
+const Ajustes: React.FC<AjustesProps> = ({ theme, setTheme }) => {
   return (
     <main>
       <div className="container_ajustes">
-        <ColorblindToggle />
-        <ThemeMode />
+        <ThemeMode theme={theme} setTheme={setTheme} />
         <div className="ticket">Enviar ticket</div>
-        </div>
+      </div>
     </main>
   );
 };

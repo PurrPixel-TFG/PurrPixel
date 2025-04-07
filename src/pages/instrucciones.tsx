@@ -3,16 +3,15 @@ import { Link } from "react-router-dom"; // Asegúrate de importar Link
 
 const Instrucciones = () => {
   const [selectedGame, setSelectedGame] = useState<string | null>(null);
-  //const [animateConsejo, setAnimateConsejo] = useState(false);
+  const [animateConsejo, setAnimateConsejo] = useState(false);
 
-  /*
   useEffect(() => {
     const interval = setInterval(() => {
       setAnimateConsejo((prev) => !prev);
     }, 1000); // Cambia cada segundo
     return () => clearInterval(interval);
   }, []);
-*/
+
   const renderInstructions = () => {
     switch (selectedGame) {
       case "saltar":
