@@ -26,6 +26,8 @@ import Perfil from './pages/perfil';
 import Tienda from './pages/tienda';
 import Juegos from './pages/juegos';
 import PurrPoints from './pages/purrpoints';
+import { ThemeProvider } from './context/ThemeContext';
+import { useTheme } from './context/ThemeContext';
 
 const queryClient = new QueryClient();
 
@@ -59,11 +61,14 @@ const BotonCerrarSesion = () => {
   );
 }
 
-const LayoutAllPages = ({ theme }: { theme: string }) => {
+const LayoutAllPages = () => {
+
   const location = useLocation();
 
   const isMainPage = location.pathname === '/main-page';
   const isTienda = location.pathname === "/tienda";
+
+  const { theme } = useTheme();
 
   const audioRef = useRef<HTMLAudioElement | null>(null);
   const [isPlaying, setIsPlaying] = useState(false);
@@ -92,38 +97,49 @@ const LayoutAllPages = ({ theme }: { theme: string }) => {
     };
   }, [isTienda]);
 
+  useEffect(() => {
+    const updateTheme = () => {
+      const stored = localStorage.getItem("themeMode");
+      document.body.setAttribute("data-theme", stored || "auto");
+    };
+    window.addEventListener("theme-changed", updateTheme);
+    updateTheme();
+    return () => window.removeEventListener("theme-changed", updateTheme);
+  }, []);
+
+
   return (
     <QueryClientProvider client={queryClient}>
       <div>
         {/* Fondo: video (se oculta en main-page) */}
         {!isMainPage && (
           <video
-            autoPlay
-            loop
-            muted
-            style={{
-              position: 'fixed',
-              top: '10vh',
-              left: 0,
-              width: '100%',
-              height: '90vh',
-              objectFit: 'cover',
-              overflow: 'hidden',
-              zIndex: -1,
-            }}
-          >
-            <source
-              src={
-                theme === 'tarde'
-                  ? modoTarde
-                  : theme === 'noche'
-                    ? modoNoche
-                    : modoDia
-              }
-              type="video/mp4"
-            />
-            Tu navegador no soporta vídeos.
-          </video>
+          key={theme} // ← esto es la clave
+          autoPlay
+          loop
+          muted
+          style={{
+            position: 'fixed',
+            top: '10vh',
+            left: 0,
+            width: '100%',
+            height: '90vh',
+            objectFit: 'cover',
+            overflow: 'hidden',
+            zIndex: -1,
+          }}
+        >
+          <source
+            src={
+              theme === 'tarde'
+                ? modoTarde
+                : theme === 'noche'
+                  ? modoNoche
+                  : modoDia
+            }
+            type="video/mp4"
+          />
+        </video>
         )}
 
         <div className="container_cabecera">PURR PIXEL</div>
@@ -148,27 +164,28 @@ const LayoutAllPages = ({ theme }: { theme: string }) => {
 };
 
 const App: React.FC = () => {
-  const [theme, setTheme] = useState(() => localStorage.getItem('themeMode') || 'dia');
-
   return (
-    <Router>
-      <Routes>
-        <Route path="/" element={<LayoutAllPages theme={theme} />}>
-          <Route index element={<Inicio />} />
-          <Route path="inicio" element={<Inicio />} />
-          <Route path="instrucciones" element={<Instrucciones />} />
-          <Route path="login" element={<Login />} />
-          <Route path="register" element={<Registrar />} />
-          <Route path="terminos-condiciones" element={<Terminos />} />
-          <Route path="main-page" element={<MainPage />} />
-          <Route path="ajustes" element={<Ajustes theme={theme} setTheme={setTheme} />} />
-          <Route path="perfil" element={<Perfil />} />
-          <Route path="tienda" element={<Tienda />} />
-          <Route path="juegos" element={<Juegos />} />
-          <Route path="purrpoints" element={<PurrPoints />} />
-        </Route>
-      </Routes>
-    </Router>
+    <ThemeProvider>
+      <Router>
+        <Routes>
+          <Route path="/" element={<LayoutAllPages />}>
+            <Route index element={<Inicio />} />
+            <Route path="inicio" element={<Inicio />} />
+            <Route path="instrucciones" element={<Instrucciones />} />
+            <Route path="login" element={<Login />} />
+            <Route path="register" element={<Registrar />} />
+            <Route path="terminos-condiciones" element={<Terminos />} />
+            <Route path="main-page" element={<MainPage />} />
+            <Route path="ajustes" element={<Ajustes />} />
+
+            <Route path="perfil" element={<Perfil />} />
+            <Route path="tienda" element={<Tienda />} />
+            <Route path="juegos" element={<Juegos />} />
+            <Route path="purrpoints" element={<PurrPoints />} />
+          </Route>
+        </Routes>
+      </Router>
+    </ThemeProvider>
   );
 };
 

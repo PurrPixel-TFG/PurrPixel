@@ -2,7 +2,7 @@
     --primary-color: #be43d6;
     --background-color: #fff1b3;
     --text-color: #ffffff;
-    
+
     --color-principal: #be43d5;
     --color-hover: #9828ac;
     --color-sombra: rgb(209, 123, 183);
@@ -57,6 +57,24 @@ body {
     }
 
 }
+
+// Video
+video {
+    opacity: 0;
+    background-color: black;
+    animation: fadeInSlow 1.5s ease forwards;
+}
+
+@keyframes fadeInSlow {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
 
 // Inicio
 
@@ -134,7 +152,7 @@ nav {
 }
 
 //Instrucciones
-.index_button_instrucciones{
+.index_button_instrucciones {
     position: fixed;
     top: 65%;
     left: 50%;
@@ -161,16 +179,19 @@ nav {
 
 
 
-.index_button_entrar:hover, .index_button_instrucciones:hover {
+.index_button_entrar:hover,
+.index_button_instrucciones:hover {
     background: rgb(193, 228, 248);
     color: rgb(33, 0, 85);
 }
 
-.index_button_entrar:active, .index_button_instrucciones:active {
+.index_button_entrar:active,
+.index_button_instrucciones:active {
     transform: translate(-50%, -50%) scale(0.97);
 }
 
-.index_button_entrar .hoverEffect, .index_button_instrucciones .hoverEffect {
+.index_button_entrar .hoverEffect,
+.index_button_instrucciones .hoverEffect {
     position: absolute;
     bottom: 0;
     top: 0;
@@ -182,7 +203,8 @@ nav {
     z-index: 1;
 }
 
-.index_button_entrar .hoverEffect div, .index_button_instrucciones .hoverEffect div {
+.index_button_entrar .hoverEffect div,
+.index_button_instrucciones .hoverEffect div {
     background: linear-gradient(90deg,
             rgba(222, 0, 75, 1) 0%,
             rgba(191, 70, 255, 1) 49%,
@@ -196,7 +218,8 @@ nav {
     opacity: 0.45;
 }
 
-.index_button_entrar:hover .hoverEffect div, .index_button_instrucciones:hover .hoverEffect div {
+.index_button_entrar:hover .hoverEffect div,
+.index_button_instrucciones:hover .hoverEffect div {
     width: 8rem;
     height: 8rem;
 }
@@ -426,13 +449,13 @@ nav {
 .theme-mode-selector {
     margin-top: 10px;
     font-size: 1rem;
-  }
-  
-  .theme-mode-selector select {
+}
+
+.theme-mode-selector select {
     margin-left: 10px;
     padding: 5px;
-  }
-  
+}
+
 
 //Perfil de usuario
 
@@ -511,97 +534,97 @@ nav {
 .tienda {
     max-width: 1200px;
     margin: 0 auto;
-  
+
     .titulo_tienda {
-      text-align: center;
-      font-size: 3rem;
-      margin-bottom: 40px;
-      color: var(--color-principal);
+        text-align: center;
+        font-size: 3rem;
+        margin-bottom: 40px;
+        color: var(--color-principal);
     }
-  
+
     .categoria_tienda {
-      background-color: #fff;
-      border-radius: 10px;
-      margin-bottom: 20px;
-      box-shadow: 0 4px 6px var(--color-sombra);
-      overflow: hidden;
-  
-      &-titulo {
-        background-color: var(--color-principal);
-        color: white;
-        padding: 15px;
-        font-size: 1.5rem;
-        width: 100%;
-        border: none;
-        text-align: left;
-        cursor: pointer;
-  
-        &:hover {
-          background-color: var(--color-hover);
-        }
-      }
+        background-color: #fff;
+        border-radius: 10px;
+        margin-bottom: 20px;
+        box-shadow: 0 4px 6px var(--color-sombra);
+        overflow: hidden;
 
-  
-      .productos_tienda {
-        display: flex;
-        gap: 20px;
-        padding: 20px;
-        overflow-x: auto;
-        padding-bottom: 10px;
-  
-        .producto_tienda {
-          background-color: #fff;
-          border-radius: 10px;
-          padding: 15px;
-          box-shadow: 0 2px 5px var(--color-sombra);
-          text-align: center;
-          min-width: 200px;
-          flex-shrink: 0;
-  
-          .img_tienda{
-            width: 100%;
-            max-width: 150px;
-            height: auto;
-            border-radius: 10px;
-            margin-bottom: 10px;
-          }
-
-          .h2_tienda {
-            font-size: 1.2rem;
-            font-size: 1.2rem;
-            margin-bottom: 5px;
-            color: var(--color-principal);
-          }
-  
-          .p_tienda {
-            font-size: 1rem;
-            color: var(--color-text);
-          }
-  
-          .comprar-btn {
+        &-titulo {
             background-color: var(--color-principal);
-            color: var(--color-principal);
+            color: white;
+            padding: 15px;
+            font-size: 1.5rem;
+            width: 100%;
             border: none;
-            padding: 10px 20px;
-            border-radius: 25px;
+            text-align: left;
             cursor: pointer;
-            font-size: 1rem;
-            margin-top: 10px;
-            transition: background-color 0.3s;
-  
-            &:hover {
-              background-color: var(--color-hover);
-            }
-          }
-        }
-      }
-    }
-  }
 
-  
+            &:hover {
+                background-color: var(--color-hover);
+            }
+        }
+
+
+        .productos_tienda {
+            display: flex;
+            gap: 20px;
+            padding: 20px;
+            overflow-x: auto;
+            padding-bottom: 10px;
+
+            .producto_tienda {
+                background-color: #fff;
+                border-radius: 10px;
+                padding: 15px;
+                box-shadow: 0 2px 5px var(--color-sombra);
+                text-align: center;
+                min-width: 200px;
+                flex-shrink: 0;
+
+                .img_tienda {
+                    width: 100%;
+                    max-width: 150px;
+                    height: auto;
+                    border-radius: 10px;
+                    margin-bottom: 10px;
+                }
+
+                .h2_tienda {
+                    font-size: 1.2rem;
+                    font-size: 1.2rem;
+                    margin-bottom: 5px;
+                    color: var(--color-principal);
+                }
+
+                .p_tienda {
+                    font-size: 1rem;
+                    color: var(--color-text);
+                }
+
+                .comprar-btn {
+                    background-color: var(--color-principal);
+                    color: var(--color-principal);
+                    border: none;
+                    padding: 10px 20px;
+                    border-radius: 25px;
+                    cursor: pointer;
+                    font-size: 1rem;
+                    margin-top: 10px;
+                    transition: background-color 0.3s;
+
+                    &:hover {
+                        background-color: var(--color-hover);
+                    }
+                }
+            }
+        }
+    }
+}
+
+
 //Botón de retroceder
 
-  .boton-retroceder {
+.boton-retroceder {
     position: fixed;
     top: 1rem;
     left: 1rem;
@@ -611,24 +634,24 @@ nav {
     cursor: pointer;
     z-index: 1000;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-  }
+}
 
 // Botón de cerrar sesión
 
-  .boton_cerrar-sesion {
-        position: fixed;
-        bottom: 5rem;
-        right: 5rem;
-        background: #fff;
-        border-radius: 8px;
-        padding: 0.5rem 1rem;
-        cursor: pointer;
-        z-index: 1000;
-        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-  }
+.boton_cerrar-sesion {
+    position: fixed;
+    bottom: 5rem;
+    right: 5rem;
+    background: #fff;
+    border-radius: 8px;
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+    z-index: 1000;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
 
 
-  /* Página de instrucciones */
+/* Página de instrucciones */
 
 .container_instrucciones {
     display: flex;
@@ -639,14 +662,14 @@ nav {
     background-color: var(--background-color);
     border-radius: 30px;
     max-width: 50%;
-    margin: 0 auto; 
+    margin: 0 auto;
     position: absolute;
-    top: 50%; 
-    left: 50%; 
-    transform: translate(-50%, -50%); 
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     overflow: hidden;
 }
-  
+
 .consejo {
     font-size: 1rem;
     color: var(--primary-color);
@@ -655,17 +678,17 @@ nav {
     text-align: center;
     transition: transform 0.3s ease-in-out;
 }
-  
+
 .consejo_animado {
     transform: scale(1.1);
 }
-  
+
 .game_buttons {
     display: flex;
     gap: 15px;
     justify-content: center;
 }
-  
+
 .game_button {
     width: 150px;
     height: 150px;
@@ -682,12 +705,12 @@ nav {
     align-items: center;
     transition: background-color 0.3s, transform 0.2s;
 }
-  
+
 .game_button:hover {
     background-color: var(--secondary-color);
     transform: scale(1.05);
 }
-  
+
 .instructions_display {
     display: none;
     width: 80%;
@@ -702,10 +725,9 @@ nav {
 }
 
 .container_instrucciones .instructions_display {
-    display: block; 
+    display: block;
 }
-  
+
 body.instructions-active {
     overflow: hidden;
 }
-

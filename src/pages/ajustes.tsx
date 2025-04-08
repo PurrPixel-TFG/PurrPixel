@@ -2,12 +2,7 @@ import React from "react";
 import ThemeMode from "./ThemeMode";
 import { Link } from "react-router-dom";
 
-interface AjustesProps {
-  theme: string;
-  setTheme: (val: string) => void;
-}
-
-const Ajustes: React.FC<AjustesProps> = ({ theme, setTheme }) => {
+const Ajustes: React.FC = () => {
   return (
     <main>
       <div className="main-page-buttons-fixed">
@@ -17,7 +12,7 @@ const Ajustes: React.FC<AjustesProps> = ({ theme, setTheme }) => {
       </div>
 
       <div className="container_ajustes">
-        <ThemeMode theme={theme} setTheme={setTheme} />
+        <ThemeMode /> {/* Ya no necesita props */}
         <div className="ticket">Enviar ticket</div>
       </div>
     </main>
