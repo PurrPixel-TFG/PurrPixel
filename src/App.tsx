@@ -177,7 +177,6 @@ const App: React.FC = () => {
             <Route path="terminos-condiciones" element={<Terminos />} />
             <Route path="main-page" element={<MainPage />} />
             <Route path="ajustes" element={<Ajustes />} />
-
             <Route path="perfil" element={<Perfil />} />
             <Route path="tienda" element={<Tienda />} />
             <Route path="juegos" element={<Juegos />} />

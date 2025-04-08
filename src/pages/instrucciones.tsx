@@ -1,14 +1,15 @@
-import React, { useState} from "react";
+import React, { useState, useEffect } from "react";
+
 import { Link } from "react-router-dom"; // Asegúrate de importar Link
 
 const Instrucciones = () => {
   const [selectedGame, setSelectedGame] = useState<string | null>(null);
   const [animateConsejo, setAnimateConsejo] = useState(false);
 
-  useEffect(() => {
+  useEffect(() => { 
     const interval = setInterval(() => {
       setAnimateConsejo((prev) => !prev);
-    }, 1000); // Cambia cada segundo
+    }, 1000); 
     return () => clearInterval(interval);
   }, []);
 
