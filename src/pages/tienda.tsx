@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 
 import pescaito from "../assets/images/pescaito.png";
 import burger from "../assets/images/burger.png";
@@ -16,7 +17,7 @@ import pink from "../assets/images/pink.png";
 import blue from "../assets/images/blue.png";
 import purple from "../assets/images/purple.png";
 
-
+// ======================= COMPONENTE PRINCIPAL ===========================
 const Tienda: React.FC = () => {
   const [categoriasVisibles, setCategoriasVisibles] = useState<Record<string, boolean>>({
     comida: true,
@@ -33,39 +34,49 @@ const Tienda: React.FC = () => {
   };
 
   return (
-    <main className="tienda">
-      <h1 className="titulo_tienda">PurrShop!</h1>
+    <>
+      <div className="main-page-buttons-fixed">
+        <Link to="/ajustes" className="main-page-button">Ajustes</Link>
+        <Link to="/perfil" className="main-page-button">Perfil</Link>
+        <Link to="/juegos" className="main-page-button">Juegos</Link>
+      </div>
 
-      {/* Comida */}
-      <Categoria nombre="Comida" visible={categoriasVisibles.comida} toggle={() => toggleCategory("comida")}>
-        <Producto img={pescaito} titulo="Pescaito" puntos={12} />
-        <Producto img={burger} titulo="Hamburguesa" puntos={15} />
-        <Producto img={cake} titulo="Cake" puntos={10} />
-        <Producto img={pollo} titulo="Pollito" puntos={5} />
-      </Categoria>
+      <main className="tienda">
+        <h1 className="titulo_tienda">PurrShop!</h1>
 
-      {/* Bebida */}
-      <Categoria nombre="Bebida" visible={categoriasVisibles.bebida} toggle={() => toggleCategory("bebida")}>
-        <Producto img={coffe} titulo="Cafesito" puntos={2} />
-        <Producto img={boba} titulo="Bubble Tea" puntos={10} />
-        <Producto img={milk} titulo="Milkie" puntos={5} />
-      </Categoria>
+        {/* Comida */}
+        <Categoria nombre="Comida" visible={categoriasVisibles.comida} toggle={() => toggleCategory("comida")}>
+          <Producto img={pescaito} titulo="Pescaito" puntos={12} />
+          <Producto img={burger} titulo="Hamburguesa" puntos={15} />
+          <Producto img={cake} titulo="Cake" puntos={10} />
+          <Producto img={pollo} titulo="Pollito" puntos={5} />
+        </Categoria>
 
-      {/* Booster */}
-      <Categoria nombre="Booster" visible={categoriasVisibles.booster} toggle={() => toggleCategory("booster")}>
-        <Producto img={pocion} titulo="Magic" puntos={50} />
-        <Producto img={sprinkles} titulo="Sprinkles" puntos={30} />
-      </Categoria>
+        {/* Bebida */}
+        <Categoria nombre="Bebida" visible={categoriasVisibles.bebida} toggle={() => toggleCategory("bebida")}>
+          <Producto img={coffe} titulo="Cafesito" puntos={2} />
+          <Producto img={boba} titulo="Bubble Tea" puntos={10} />
+          <Producto img={milk} titulo="Milkie" puntos={5} />
+        </Categoria>
 
-      {/* Felicidad */}
-      <Categoria nombre="Felicidad" visible={categoriasVisibles.felicidad} toggle={() => toggleCategory("felicidad")}>
-        <Producto img={pink} titulo="Lazo Rosa" puntos={20} />
-        <Producto img={blue} titulo="Azulito" puntos={40} />
-        <Producto img={purple} titulo="Morado" puntos={10} />
-      </Categoria>
-    </main>
+        {/* Booster */}
+        <Categoria nombre="Booster" visible={categoriasVisibles.booster} toggle={() => toggleCategory("booster")}>
+          <Producto img={pocion} titulo="Magic" puntos={50} />
+          <Producto img={sprinkles} titulo="Sprinkles" puntos={30} />
+        </Categoria>
+
+        {/* Felicidad */}
+        <Categoria nombre="Felicidad" visible={categoriasVisibles.felicidad} toggle={() => toggleCategory("felicidad")}>
+          <Producto img={pink} titulo="Lazo Rosa" puntos={20} />
+          <Producto img={blue} titulo="Azulito" puntos={40} />
+          <Producto img={purple} titulo="Morado" puntos={10} />
+        </Categoria>
+      </main>
+    </>
   );
 };
+
+// ======================= COMPONENTES SECUNDARIOS ===========================
 
 interface CategoriaProps {
   nombre: string;

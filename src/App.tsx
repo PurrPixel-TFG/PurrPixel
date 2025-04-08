@@ -39,7 +39,7 @@ const BotonRetroceder_MainPage = () => {
 
   return (
     <button className="boton-retroceder" onClick={() => navigate('/main-page')}>
-      ⬅ Volver
+      ⬅ Página Principal
     </button>
   );
 };
