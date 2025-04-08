@@ -45,13 +45,6 @@ const Instrucciones = () => {
       <Link to="/inicio" className="index_h1">
          <h1>PURR PIXEL</h1>
        </Link>
-        <div className="main-page-buttons-fixed">
-          <Link to="/ajustes" className="main-page-button">Ajustes</Link>
-          <Link to="/perfil" className="main-page-button">Perfil</Link>
-          <Link to="/tienda" className="main-page-button">Tienda</Link>
-          <Link to="/juegos" className="main-page-button">Juegos</Link>
-          <Link to="/purrpoints" className="main-page-button">Purr Points</Link>
-        </div>
 
         <div className="container_instrucciones">
           <h3 className={`consejo`}>

@@ -35,7 +35,7 @@ const BotonRetroceder_MainPage = () => {
   const location = useLocation();
   const navigate = useNavigate();
 
-  const isBackButtonVisible = ["/ajustes", "/perfil", "/tienda", "/juegos"].includes(location.pathname);
+  const isBackButtonVisible = ["/ajustes", "/perfil", "/tienda", "/juegos", "/instrucciones"].includes(location.pathname);
 
   if (!isBackButtonVisible) return null;
 

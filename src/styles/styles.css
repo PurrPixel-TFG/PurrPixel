@@ -66,10 +66,6 @@ video {
     opacity: 1;
   }
 }
-.index_h1 {
-  font-size: 30px;
-}
-
 nav {
   position: absolute;
   bottom: 0;
