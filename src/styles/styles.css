@@ -417,7 +417,7 @@ nav {
   flex-direction: column;
   gap: 1rem;
   position: fixed;
-  margin-top: 30vh;
+  margin-top: 25vh;
   margin-left: 15vh;
 }
 .perfil-container .perfil-header {
@@ -529,9 +529,9 @@ nav {
   font-size: 1rem;
   color: var(--color-text);
 }
-.tienda .categoria_tienda .productos_tienda .producto_tienda .comprar-btn {
+.tienda .categoria_tienda .productos_tienda .producto_tienda .comprar-btn_tienda {
   background-color: var(--color-principal);
-  color: var(--color-principal);
+  color: var(--text-color);
   border: none;
   padding: 10px 20px;
   border-radius: 25px;
@@ -540,7 +540,7 @@ nav {
   margin-top: 10px;
   transition: background-color 0.3s;
 }
-.tienda .categoria_tienda .productos_tienda .producto_tienda .comprar-btn:hover {
+.tienda .categoria_tienda .productos_tienda .producto_tienda .comprar-btn_tienda:hover {
   background-color: var(--color-hover);
 }
 
