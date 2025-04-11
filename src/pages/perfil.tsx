@@ -21,7 +21,6 @@ const Perfil: React.FC = () => {
         <Link to="/ajustes" className="main-page-button">Ajustes</Link>
         <Link to="/tienda" className="main-page-button">Tienda</Link>
         <Link to="/juegos" className="main-page-button">Juegos</Link>
-        <Link to="/purrpoints" className="main-page-button">Purr Points</Link>
       </div>
   
       <div className="perfil-container">
