@@ -1,4 +1,5 @@
 import React from "react";
+import './TerminosCondiciones.scss';
 
 const Terminos: React.FC = () => {
 

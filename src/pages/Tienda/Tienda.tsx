@@ -1,21 +1,22 @@
 import React, { useState } from "react";
+import './Tienda.scss';
 import { Link } from "react-router-dom";
 
-import pescaito from "../assets/images/pescaito.png";
-import burger from "../assets/images/burger.png";
-import cake from "../assets/images/cake.png";
-import pollo from "../assets/images/pollo.png";
+import pescaito from "../../assets/images/pescaito.png";
+import burger from "../../assets/images/burger.png";
+import cake from "../../assets/images/cake.png";
+import pollo from "../../assets/images/pollo.png";
 
-import coffe from "../assets/images/coffe.png";
-import boba from "../assets/images/boba.png";
-import milk from "../assets/images/milk.png";
+import coffe from "../../assets/images/coffe.png";
+import boba from "../../assets/images/boba.png";
+import milk from "../../assets/images/milk.png";
 
-import pocion from "../assets/images/pocion.png";
-import sprinkles from "../assets/images/sprinkles.png";
+import pocion from "../../assets/images/pocion.png";
+import sprinkles from "../../assets/images/sprinkles.png";
 
-import pink from "../assets/images/pink.png";
-import blue from "../assets/images/blue.png";
-import purple from "../assets/images/purple.png";
+import pink from "../../assets/images/pink.png";
+import blue from "../../assets/images/blue.png";
+import purple from "../../assets/images/purple.png";
 
 // ======================= COMPONENTE PRINCIPAL ===========================
 const Tienda: React.FC = () => {

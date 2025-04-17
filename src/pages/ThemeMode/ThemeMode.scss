@@ -1,0 +1,12 @@
+@import '../../styles/variables';
+@import '../../styles/components';
+
+.theme-mode-selector {
+    margin-top: 10px;
+    font-size: 1rem;
+}
+
+.theme-mode-selector select {
+    margin-left: 10px;
+    padding: 5px;
+}

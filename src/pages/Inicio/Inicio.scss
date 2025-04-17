@@ -1,0 +1,142 @@
+@import '../../styles/variables';
+@import '../../styles/global';
+@import '../../styles/components';
+
+.botones_container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 30px;
+}
+
+.index_button_top {
+    font-size: 15px;
+    font-weight: bold;
+    color: var(--text-color);
+    text-decoration: none;
+}
+
+.index_button_entrar {
+    text-decoration: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 40px;
+    font-weight: bold;
+    z-index: 2;
+    cursor: pointer;
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px 35px;
+    border: 0;
+    border-radius: 15rem;
+    transition: all 0.02s;
+    color: rgb(37, 37, 37);
+    background: white;
+    overflow: hidden;
+    box-shadow: 0 15px 7px -5px #525097;
+}
+
+.index_button_instrucciones {
+    position: fixed;
+    top: 65%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 40px;
+    font-weight: bold;
+    z-index: 2;
+    text-decoration: none;
+    cursor: pointer;
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px 35px;
+    border: 0;
+    border-radius: 15rem;
+    transition: all 0.02s;
+    color: rgb(37, 37, 37);
+    background: white;
+    overflow: hidden;
+    box-shadow: 0 15px 7px -5px #525097;
+}
+
+.index_button_instrucciones:hover {
+    background: rgb(193, 228, 248);
+    color: rgb(33, 0, 85);
+}
+
+.index_button_instrucciones:active {
+    transform: translate(-50%, -50%) scale(0.97);
+}
+
+.index_button_instrucciones .hoverEffect {
+    position: absolute;
+    bottom: 0;
+    top: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1;
+}
+
+.index_button_instrucciones .hoverEffect div {
+    background: linear-gradient(90deg,
+            rgba(222, 0, 75, 1) 0%,
+            rgba(191, 70, 255, 1) 49%,
+            rgba(0, 212, 255, 1) 100%);
+    border-radius: 40rem;
+    width: 20rem;
+    height: 20rem;
+    transition: 0.4s;
+    filter: blur(20px);
+    animation: effect infinite 3s linear;
+    opacity: 0.45;
+}
+
+.index_button_instrucciones:hover .hoverEffect div {
+    width: 8rem;
+    height: 8rem;
+}
+
+.index_button_instrucciones .hoverEffect {
+    position: absolute;
+    bottom: 0;
+    top: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1;
+}
+
+.index_button_instrucciones .hoverEffect div {
+    background: linear-gradient(90deg,
+            rgba(222, 0, 75, 1) 0%,
+            rgba(191, 70, 255, 1) 49%,
+            rgba(0, 212, 255, 1) 100%);
+    border-radius: 40rem;
+    width: 20rem;
+    height: 20rem;
+    transition: 0.4s;
+    filter: blur(20px);
+    animation: effect infinite 3s linear;
+    opacity: 0.45;
+}
+
+.index_button_instrucciones:hover .hoverEffect div {
+    width: 8rem;
+    height: 8rem;
+}
+
+@keyframes effect {
+    0% {
+        transform: rotate(0deg);
+    }
+}

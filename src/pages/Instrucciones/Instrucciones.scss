@@ -1,0 +1,59 @@
+@import '../../styles/variables';
+@import '../../styles/components';
+
+.container_instrucciones {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    padding: 65px;
+    background-color: var(--background-color);
+    border-radius: 30px;
+    max-width: 50%;
+    margin: 0 auto;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    overflow: hidden;
+}
+
+.container_instrucciones .instructions_display {
+    display: block;
+}
+
+.consejo {
+    font-size: 1rem;
+    color: var(--primary-color);
+    margin-top: 20px;
+    margin-bottom: 5px;
+    text-align: center;
+    transition: transform 0.3s ease-in-out;
+}
+
+.consejo_animado {
+    transform: scale(1.1);
+}
+
+.game_buttons {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+}
+
+.instructions_display {
+    display: none;
+    width: 80%;
+    padding: 20px;
+    background-color: var(--secondary-color);
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    text-align: left;
+    font-size: 1rem;
+    color: #555;
+}
+
+.container_instrucciones .instructions_display {
+    display: block;
+}

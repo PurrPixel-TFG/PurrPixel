@@ -1,0 +1,14 @@
+@import '../../styles/variables';
+@import '../../styles/components';
+
+.h2_register {
+    text-align: center;
+    margin: 0 auto;
+    display: block;
+    color: #6b15b8;
+    background: #fff;
+    border-radius: 8px;
+    padding: 3px;
+    width: 200px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 5);
+}

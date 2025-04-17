@@ -1,4 +1,5 @@
 import React from "react";
+import './Inicio.scss';
 import { Link } from "react-router-dom";
 
 const Inicio: React.FC = () => {

@@ -1,4 +1,5 @@
 import React from "react";
+import './Juegos.scss';
 import { Link } from "react-router-dom";
 
 const Juegos: React.FC = () => {

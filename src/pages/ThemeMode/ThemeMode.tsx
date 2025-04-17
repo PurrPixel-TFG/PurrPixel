@@ -1,6 +1,7 @@
 import React from 'react';
-import { useTheme } from '../context/ThemeContext';
-import type { Theme } from '../context/ThemeContext'; // Error: Module '"../context/ThemeContext"' declares 'Theme' locally, but it is not exported.ts(2459)
+import './ThemeMode.scss';
+import { useTheme } from "../../context/ThemeContext";
+import type { Theme } from "../../context/ThemeContext";
 
 const ThemeMode: React.FC = () => {
   const { theme, setTheme } = useTheme();

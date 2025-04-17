@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-
+import './Instrucciones.scss';
 import { Link } from "react-router-dom"; // Asegúrate de importar Link
 
 const Instrucciones = () => {

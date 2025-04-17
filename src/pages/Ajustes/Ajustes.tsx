@@ -1,6 +1,7 @@
 import React from "react";
-import ThemeMode from "./ThemeMode";
+import ThemeMode from "../ThemeMode/ThemeMode";
 import { Link } from "react-router-dom";
+import './Ajustes.scss';
 
 const Ajustes: React.FC = () => {
   return (

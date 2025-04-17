@@ -14,18 +14,18 @@ import modoTarde from './assets/video/modoTarde.mp4';
 import modoNoche from './assets/video/modoNoche.mp4';
 
 import musicFile from './assets/audio/musicaFondo.mp3';
-import './styles/styles.css'
-import Inicio from './pages/inicio';
-import Instrucciones from './pages/instrucciones'
-import Login from './pages/login';
-import Registrar from './pages/register';
-import Terminos from './pages/terminos-condiciones';
-import MainPage from './pages/main-page';
-import Ajustes from './pages/ajustes';
-import Perfil from './pages/perfil';
-import Tienda from './pages/tienda';
-import Juegos from './pages/juegos';
-import PurrPoints from './pages/purrpoints';
+import './styles/global.scss';
+import './styles/components.scss';
+import Inicio from './pages/Inicio/Inicio';
+import Instrucciones from './pages/Instrucciones/Instrucciones'
+import Login from './pages/Login/Login';
+import Registrar from './pages/Register/Register';
+import Terminos from './pages/TerminosCondiciones/TerminosCondiciones';
+import MainPage from './pages/MainPage/MainPage';
+import Perfil from './pages/Perfil/Perfil';
+import Tienda from './pages/Tienda/Tienda';
+import Juegos from './pages/Juegos/Juegos';
+import Ajustes from './pages/Ajustes/Ajustes';
 import { ThemeProvider } from './context/ThemeContext';
 import { useTheme } from './context/ThemeContext';
 
@@ -180,7 +180,6 @@ const App: React.FC = () => {
             <Route path="perfil" element={<Perfil />} />
             <Route path="tienda" element={<Tienda />} />
             <Route path="juegos" element={<Juegos />} />
-            <Route path="purrpoints" element={<PurrPoints />} />
           </Route>
         </Routes>
       </Router>

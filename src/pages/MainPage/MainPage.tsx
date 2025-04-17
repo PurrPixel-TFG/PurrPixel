@@ -1,4 +1,5 @@
 import React from "react";
+import './MainPage.scss';
 import { Link } from "react-router-dom";
 
 const MainPage: React.FC = () => {

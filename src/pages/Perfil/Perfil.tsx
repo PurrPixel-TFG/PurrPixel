@@ -1,4 +1,5 @@
 import React from "react";
+import './Perfil.scss';
 import { Link } from "react-router-dom";
 
 const Perfil: React.FC = () => {

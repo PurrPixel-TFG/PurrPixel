@@ -1,4 +1,5 @@
 import React from "react";
+import './Register.scss';
 import { Link } from "react-router-dom";
 
 const Registrar: React.FC = () => {

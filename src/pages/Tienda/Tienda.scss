@@ -1,0 +1,196 @@
+@import '../../styles/variables';
+@import '../../styles/components';
+
+.tienda {
+    max-width: 1200px;
+    margin: 0 auto;
+
+    .titulo_tienda {
+        text-align: center;
+        font-size: 3rem;
+        margin-bottom: 40px;
+        color: var(--color-principal);
+    }
+
+    .categoria_tienda {
+        background-color: #fff;
+        border-radius: 10px;
+        margin-bottom: 20px;
+        box-shadow: 0 4px 6px var(--color-sombra);
+        overflow: hidden;
+
+        &-titulo {
+            background-color: var(--color-principal);
+            color: white;
+            padding: 15px;
+            font-size: 1.5rem;
+            width: 100%;
+            border: none;
+            text-align: left;
+            cursor: pointer;
+
+            &:hover {
+                background-color: var(--color-hover);
+            }
+
+            .productos_tienda {
+                display: flex;
+                gap: 20px;
+                padding: 20px;
+                overflow-x: auto;
+                padding-bottom: 10px;
+
+                .producto_tienda {
+                    background-color: #fff;
+                    border-radius: 10px;
+                    padding: 15px;
+                    box-shadow: 0 2px 5px var(--color-sombra);
+                    text-align: center;
+                    min-width: 200px;
+                    flex-shrink: 0;
+
+                    .img_tienda {
+                        width: 100%;
+                        max-width: 150px;
+                        height: auto;
+                        border-radius: 10px;
+                        margin-bottom: 10px;
+                    }
+
+                    .h2_tienda {
+                        font-size: 1.2rem;
+                        font-size: 1.2rem;
+                        margin-bottom: 5px;
+                        color: var(--color-principal);
+                    }
+
+                    .p_tienda {
+                        font-size: 1rem;
+                        color: var(--color-text);
+                    }
+
+                    .comprar-btn_tienda {
+                        background-color: var(--color-principal);
+                        color: var(--text-color);
+                        border: none;
+                        padding: 10px 20px;
+                        border-radius: 25px;
+                        cursor: pointer;
+                        font-size: 1rem;
+                        margin-top: 10px;
+                        transition: background-color 0.3s;
+
+                        &:hover {
+                            background-color: var(--color-hover);
+                        }
+
+                        .titulo_tienda {
+                            text-align: center;
+                            font-size: 3rem;
+                            margin-bottom: 40px;
+                            color: var(--color-principal);
+                        }
+
+                        .categoria_tienda {
+                            background-color: #fff;
+                            border-radius: 10px;
+                            margin-bottom: 20px;
+                            box-shadow: 0 4px 6px var(--color-sombra);
+                            overflow: hidden;
+
+                            &-titulo {
+                                background-color: var(--color-principal);
+                                color: white;
+                                padding: 15px;
+                                font-size: 1.5rem;
+                                width: 100%;
+                                border: none;
+                                text-align: left;
+                                cursor: pointer;
+
+                                &:hover {
+                                    background-color: var(--color-hover);
+                                }
+
+                                .productos_tienda {
+                                    display: flex;
+                                    gap: 20px;
+                                    padding: 20px;
+                                    overflow-x: auto;
+                                    padding-bottom: 10px;
+
+                                    .producto_tienda {
+                                        background-color: #fff;
+                                        border-radius: 10px;
+                                        padding: 15px;
+                                        box-shadow: 0 2px 5px var(--color-sombra);
+                                        text-align: center;
+                                        min-width: 200px;
+                                        flex-shrink: 0;
+
+                                        .img_tienda {
+                                            width: 100%;
+                                            max-width: 150px;
+                                            height: auto;
+                                            border-radius: 10px;
+                                            margin-bottom: 10px;
+                                        }
+
+                                        .producto_tienda {
+                                            background-color: #fff;
+                                            border-radius: 10px;
+                                            padding: 15px;
+                                            box-shadow: 0 2px 5px var(--color-sombra);
+                                            text-align: center;
+                                            min-width: 200px;
+                                            flex-shrink: 0;
+
+                                            .img_tienda {
+                                                width: 100%;
+                                                max-width: 150px;
+                                                height: auto;
+                                                border-radius: 10px;
+                                                margin-bottom: 10px;
+                                            }
+
+                                            .img_tienda {
+                                                width: 100%;
+                                                max-width: 150px;
+                                                height: auto;
+                                                border-radius: 10px;
+                                                margin-bottom: 10px;
+                                            }
+
+                                            .h2_tienda {
+                                                font-size: 1.2rem;
+                                                font-size: 1.2rem;
+                                                margin-bottom: 5px;
+                                                color: var(--color-principal);
+                                            }
+
+                                            .comprar-btn_tienda {
+                                                background-color: var(--color-principal);
+                                                color: var(--text-color);
+                                                border: none;
+                                                padding: 10px 20px;
+                                                border-radius: 25px;
+                                                cursor: pointer;
+                                                font-size: 1rem;
+                                                margin-top: 10px;
+                                                transition: background-color 0.3s;
+
+                                                &:hover {
+                                                    background-color: var(--color-hover);
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
