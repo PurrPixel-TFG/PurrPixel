@@ -1,6 +1,6 @@
 import React, { createContext, useContext, useEffect, useState } from "react";
 
-export type Theme = 'dia' | 'tarde' | 'noche';
+export type Theme = 'morning' | 'evening' | 'night';
 
 
 interface ThemeContextProps {
@@ -9,14 +9,14 @@ interface ThemeContextProps {
 }
 
 const ThemeContext = createContext<ThemeContextProps>({
-  theme: 'dia',
+  theme: 'morning',
   setTheme: () => {},
 });
 
 export const ThemeProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const [theme, setThemeState] = useState<Theme>(() => {
     const stored = localStorage.getItem('themeMode') as Theme | null;
-    return stored || 'dia';
+    return stored || 'morning';
   });
 
   const setTheme = (val: Theme) => {

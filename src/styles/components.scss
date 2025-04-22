@@ -1,4 +1,4 @@
-// Botones de inicio
+// Web Browser
 
 nav {
     position: absolute;
@@ -9,7 +9,7 @@ nav {
     padding-right: 75px;
 }
 
-// Botón de música ON / OFF
+// Music ON/OFF button
 
 .button_music {
     position: fixed;
@@ -23,7 +23,7 @@ nav {
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
 }
 
-// Botones de inicio > Instrucciones 
+// Index Buttons > Instructions
 
 .index_button_top {
     font-size: 15px;
@@ -32,7 +32,7 @@ nav {
     text-decoration: none;
 }
 
-//Botón de retroceder
+// Back button
 
 .boton-retroceder {
     position: fixed;
@@ -46,7 +46,7 @@ nav {
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
 }
 
-// Botón de cerrar sesión
+// Logout button
 
 .boton_cerrar-sesion {
     position: fixed;

@@ -1,8 +1,8 @@
 import React from "react";
-import './Perfil.scss';
+import './Profile.scss';
 import { Link } from "react-router-dom";
 
-const Perfil: React.FC = () => {
+const Profile: React.FC = () => {
   //Uniremos esta parte en la BBDD
   const user = {
     name: "Nombre",
@@ -13,29 +13,29 @@ const Perfil: React.FC = () => {
   };
 
   const handleEdit = () => {
-    alert("Editar perfil");
+    alert("Edit profile");
   };
 
   return (
     <>
       <div className="main-page-buttons-fixed">
-        <Link to="/ajustes" className="main-page-button">Ajustes</Link>
-        <Link to="/tienda" className="main-page-button">Tienda</Link>
-        <Link to="/juegos" className="main-page-button">Juegos</Link>
+        <Link to="/settings" className="main-page-button">Settings</Link>
+        <Link to="/store" className="main-page-button">Store</Link>
+        <Link to="/games" className="main-page-button">Games</Link>
       </div>
   
-      <div className="perfil-container">
-        <div className="perfil-header">
+      <div className="profile-container">
+        <div className="profile-header">
           <img src={user.avatarUrl} alt={`${user.name}'s avatar`} />
-          <div className="perfil-info">
+          <div className="profile-info">
             <h2>{user.name}</h2>
             <p>@{user.username}</p>
           </div>
         </div>
-        <p className="perfil-bio">{user.bio}</p>
-        <p className="perfil-email">📧 {user.email}</p>
+        <p className="profile-bio">{user.bio}</p>
+        <p className="profile-email">📧 {user.email}</p>
         <button className="edit-button" onClick={handleEdit}>
-          Editar perfil
+          Edit profile
         </button>
       </div>
     </>
@@ -43,4 +43,4 @@ const Perfil: React.FC = () => {
 
 };
 
-export default Perfil;
+export default Profile;

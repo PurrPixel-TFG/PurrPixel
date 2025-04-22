@@ -1,7 +1,7 @@
 import React from "react";
-import './TerminosCondiciones.scss';
+import './Terms.scss';
 
-const Terminos: React.FC = () => {
+const Terms: React.FC = () => {
 
   return (
     <>
@@ -21,4 +21,4 @@ const Terminos: React.FC = () => {
   );
 };
 
-export default Terminos;
+export default Terms;

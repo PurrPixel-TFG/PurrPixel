@@ -9,53 +9,52 @@ import {
 } from "react-router-dom";
 
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
-import modoDia from './assets/video/modoDia.mp4';
-import modoTarde from './assets/video/modoTarde.mp4';
-import modoNoche from './assets/video/modoNoche.mp4';
-import musicFile from './assets/audio/musicaFondo.mp3';
+import MorningMode from './assets/video/MorningMode.mp4';
+import NightMode from './assets/video/NightMode.mp4';
+import musicFile from './assets/audio/music1.mp3';
 import './styles/global.scss';
 import './styles/components.scss';
-import Inicio from './pages/Inicio/Inicio';
-import Instrucciones from './pages/Instrucciones/Instrucciones'
+import Index from './pages/Index/Index';
+import Instructions from './pages/Instructions/Instructions'
 import Login from './pages/Login/Login';
-import Registrar from './pages/Register/Register';
-import Terminos from './pages/TerminosCondiciones/TerminosCondiciones';
-import MainPage from './pages/MainPage/MainPage';
-import Perfil from './pages/Perfil/Perfil';
-import Tienda from './pages/Tienda/Tienda';
-import Juegos from './pages/Juegos/Juegos';
-import Ajustes from './pages/Ajustes/Ajustes';
+import Register from './pages/Register/Register';
+import Terms from './pages/Terms/Terms';
+import HomePage from './pages/HomePage/HomePage';
+import Profile from './pages/Profile/Profile';
+import Store from './pages/Store/Store';
+import Games from './pages/Games/Games';
+import Settings from './pages/Settings/Settings';
 import { ThemeProvider } from './context/ThemeContext';
 import { useTheme } from './context/ThemeContext';
 
 const queryClient = new QueryClient();
 
-const BotonRetroceder_MainPage = () => {
+const BackButtonHomePage = () => {
   const location = useLocation();
   const navigate = useNavigate();
 
-  const isBackButtonVisible = ["/ajustes", "/perfil", "/tienda", "/juegos", "/instrucciones"].includes(location.pathname);
+  const isBackButtonVisible = ["/settings", "/profile", "/store", "/games", "/instructions"].includes(location.pathname);
 
   if (!isBackButtonVisible) return null;
 
   return (
-    <button className="boton-retroceder" onClick={() => navigate('/main-page')}>
+    <button className="back-button" onClick={() => navigate('/home-page')}>
       ⬅ Página Principal
     </button>
   );
 };
 
-const BotonCerrarSesion = () => {
+const LogoutButton = () => {
   const location = useLocation();
   const navigate = useNavigate();
 
-  const isBotonCerrarSesionVisible = ["/main-page"].includes(location.pathname);
+  const isLogoutButtonVisible = ["/home-page"].includes(location.pathname);
 
-  if (!isBotonCerrarSesionVisible) return null;
+  if (!isLogoutButtonVisible) return null;
 
   return (
-    <button className="boton_cerrar-sesion" onClick={() => navigate('/inicio')}>
-      Cerrar sesión
+    <button className="logout-button" onClick={() => navigate('/index')}>
+      Logout
     </button>
   );
 }
@@ -64,8 +63,8 @@ const LayoutAllPages = () => {
 
   const location = useLocation();
 
-  const isMainPage = location.pathname === '/main-page';
-  const isTienda = location.pathname === "/tienda";
+  const isHomePage = location.pathname === '/home-page';
+  const isStore = location.pathname === "/store";
 
   const { theme } = useTheme();
 
@@ -85,7 +84,7 @@ const LayoutAllPages = () => {
   };
 
   useEffect(() => {
-    if (isTienda) {
+    if (isStore) {
       document.body.style.overflow = "auto";
     } else {
       document.body.style.overflow = "hidden";
@@ -94,7 +93,7 @@ const LayoutAllPages = () => {
     return () => {
       document.body.style.overflow = "auto";
     };
-  }, [isTienda]);
+  }, [isStore]);
 
   useEffect(() => {
     const updateTheme = () => {
@@ -111,7 +110,7 @@ const LayoutAllPages = () => {
     <QueryClientProvider client={queryClient}>
       <div>
         {/* Fondo: video (se oculta en main-page) */}
-        {!isMainPage && (
+        {!isHomePage && (
           <video
           key={theme} // ← esto es la clave
           autoPlay
@@ -130,32 +129,32 @@ const LayoutAllPages = () => {
         >
           <source
             src={
-              theme === 'tarde'
-                ? modoTarde
-                : theme === 'noche'
-                  ? modoNoche
-                  : modoDia
+              theme === 'evening'
+                ? MorningMode
+                : theme === 'night'
+                  ? NightMode
+                  : MorningMode
             }
             type="video/mp4"
           />
         </video>
         )}
 
-        <div className="container_cabecera">PURR PIXEL</div>
+        <div className="container_header">PURR PIXEL</div>
 
-        <BotonRetroceder_MainPage />
-        <BotonCerrarSesion />
+        <BackButtonHomePage />
+        <LogoutButton />
 
         <div className="button_music" onClick={toggleMusic}>
-          {isPlaying ? '🔊 Música ON' : '🔇 Música OFF'}
+          {isPlaying ? '🔊 Music ON' : '🔇 Music OFF'}
         </div>
 
         <audio ref={audioRef} src={musicFile} loop />
 
         <Outlet />
 
-        <div className="container_pie">
-          <p>&copy; 2025 PURRPIXEL. Todos los derechos reservados.</p>
+        <div className="container_footer">
+          <p>&copy; 2025 PURRPIXEL. All rights reserved.</p>
         </div>
       </div>
     </QueryClientProvider>
@@ -168,17 +167,17 @@ const App: React.FC = () => {
       <Router>
         <Routes>
           <Route path="/" element={<LayoutAllPages />}>
-            <Route index element={<Inicio />} />
-            <Route path="inicio" element={<Inicio />} />
-            <Route path="instrucciones" element={<Instrucciones />} />
+            <Route index element={<Index />} />
+            <Route path="index" element={<Index />} />
+            <Route path="instructions" element={<Instructions />} />
             <Route path="login" element={<Login />} />
-            <Route path="register" element={<Registrar />} />
-            <Route path="terminos-condiciones" element={<Terminos />} />
-            <Route path="main-page" element={<MainPage />} />
-            <Route path="ajustes" element={<Ajustes />} />
-            <Route path="perfil" element={<Perfil />} />
-            <Route path="tienda" element={<Tienda />} />
-            <Route path="juegos" element={<Juegos />} />
+            <Route path="register" element={<Register />} />
+            <Route path="terms-and-conditions" element={<Terms />} />
+            <Route path="home-page" element={<HomePage />} /> 
+            <Route path="settings" element={<Settings />} />
+            <Route path="profile" element={<Profile />} />
+            <Route path="store" element={<Store />} />
+            <Route path="games" element={<Games />} />
           </Route>
         </Routes>
       </Router>

@@ -7,10 +7,10 @@ const Login: React.FC = () => {
   return (
     <main>
       <section className="form-box">
-        <h2 className="h2_login">Iniciar sesión</h2>
+        <h2 className="h2_login">Login</h2>
         <form action="#" method="post">
           <div className="form-group">
-            <label htmlFor="login-email">Correo Electrónico:</label><br /><br />
+            <label htmlFor="login-email">Email:</label><br /><br />
             <input
               type="email"
               id="login-email"
@@ -21,7 +21,7 @@ const Login: React.FC = () => {
           </div>
 
           <div className="form-group">
-            <label htmlFor="login-password">Contraseña:</label> <br /><br />
+            <label htmlFor="login-password">Password:</label> <br /><br />
             <input
               type="password"
               id="login-password"
@@ -33,16 +33,16 @@ const Login: React.FC = () => {
 
           <div>
             <input type="checkbox" className="cbox_login" value="cbox_login" />&nbsp;&nbsp;
-            <label htmlFor="cbox_login" ><b> Recordar datos de acceso</b> </label><br />
+            <label htmlFor="cbox_login" ><b> Remember login details</b> </label><br />
           </div>
 
           <div className="form-button-container">
-            <Link to="/main-page" className="button_iniciar-sesion">Iniciar sesión</Link>
+            <Link to="/home-page" className="button_login">Login</Link>
           </div>
         </form>
 
         <div>
-          <p><b> ¿No tienes una cuenta? Pincha </b> <Link to="/register" className="button_registrar"><b> aquí</b> </Link><b> .</b> </p>
+          <p><b> Don't have an account? Click</b> <Link to="/register" className="button_register"><b> here</b> </Link><b> .</b> </p>
         </div>
       </section>
     </main>

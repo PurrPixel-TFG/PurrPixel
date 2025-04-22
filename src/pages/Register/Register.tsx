@@ -3,100 +3,96 @@ import './Register.scss';
 import '../Login/Login.scss'
 import { Link } from "react-router-dom";
 
-const Registrar: React.FC = () => {
-
-    /**
-     * Ojo, aquí cambia la id de todo con _register
-     */
+const Register: React.FC = () => {
 
     return (
         <>
             <main>
                 <section className="form-box">
 
-                    <h2 className="h2_register">Registro</h2>
+                    <h2 className="h2_register">Register</h2>
 
                     <form action="#" method="post">
 
                         <div className="form-group">
-                            <label htmlFor="nombre">Nombre:</label><br /><br />
+                            <label htmlFor="name">Name:</label><br /><br />
                             <input
                                 type="text"
-                                id="nombre_register"
-                                name="nombre"
+                                id="register_name"
+                                name="name"
                                 className="form-input"
                                 required
                             />
                         </div>
 
                         <div className="form-group">
-                            <label htmlFor="apellido1">Primer apellido:</label><br /><br />
+                            <label htmlFor="1st-surname">First surname:</label><br /><br />
                             <input
                                 type="text"
-                                id="apellido1_register"
-                                name="apellido1"
+                                id="register_1st_surname"
+                                name="1st_surname"
                                 className="form-input"
                                 required
                             />
                         </div>
 
                         <div className="form-group">
-                            <label htmlFor="apellido2">Segundo apellido:</label><br /><br />
+                            <label htmlFor="2nd-surname">Second surname:</label><br /><br />
                             <input
                                 type="text"
-                                id="apellido2_register"
-                                name="apellido2"
+                                id="register_2nd_surname"
+                                name="2nd_surname"
                                 className="form-input"
                                 required
                             />
                         </div>
 
                         <div className="form-group">
-                            <label htmlFor="login-email">Correo Electrónico:</label><br /><br />
+                            <label htmlFor="email">Email:</label><br /><br />
                             <input
                                 type="email"
-                                id="email_register"
-                                name="login-email"
+                                id="register_email"
+                                name="email"
                                 className="form-input"
                                 required
                             />
                         </div>
 
                         <div className="form-group">
-                            <label htmlFor="login-password">Elige una contraseña:</label><br /><br />
+                            <label htmlFor="password">Choose a password:</label><br /><br />
                             <input
                                 type="password"
-                                id="password_register"
-                                name="login-password"
+                                id="register_password"
+                                name="password"
                                 className="form-input"
                                 required
                             />
                         </div>
 
                         <div className="form-group">
-                            <label htmlFor="login-password">Repita la contraseña:</label><br /><br />
+                            <label htmlFor="verify_password">Repeat password:</label><br /><br />
                             <input
                                 type="password"
-                                id="password_register"
-                                name="login-password"
+                                id="verify_password"
+                                name="verify_password"
                                 className="form-input"
                                 required
                             />
                         </div>
 
                         <div>
-                            <input type="checkbox" className="cbox_terminos-condiciones" />
-                            <span className="texto_terminos">
-                                He leído y acepto los{" "}
-                                <Link to="/terminos-condiciones" className="terminos-condiciones">
-                                    términos y condiciones.
-                                </Link>
+                            <input type="checkbox" className="cbox_terms" />
+                            <span className="text-terms">
+                                I have read and accept the{" "}
+                                <Link to="/terms" className="read-terms">
+                                    terms and conditions
+                                </Link>.
                             </span>
 
                         </div>
 
                         <div className="form-button-container">
-                            <Link to="/main-page" className="button_iniciar-sesion">Crear cuenta</Link>
+                            <Link to="/home-page" className="button_login">Create account</Link>
                         </div>
 
                     </form>
@@ -107,4 +103,4 @@ const Registrar: React.FC = () => {
     );
 };
 
-export default Registrar;
+export default Register;

@@ -1,27 +1,27 @@
 import React from "react";
-import './Inicio.scss';
+import './Index.scss';
 import { Link } from "react-router-dom";
 
-const Inicio: React.FC = () => {
+const Index: React.FC = () => {
 
   return (
     <>
-      <header className="container_cabecera">
+      <header className="container_header">
         <h1 className="index_h1">PURR PIXEL</h1>
 
       </header>
 
 
       <main className="main_container">
-        <Link to="/instrucciones" className="index_button index_button_instrucciones">
-          Instrucciones
+        <Link to="/instructions" className="index_button index_button_instructions">
+          Instructions
           <span className="hoverEffect">
             <div></div>
           </span>
         </Link>
 
-        <Link to="/login" className="index_button index_button_entrar">
-          Iniciar
+        <Link to="/login" className="index_button index_button_start">
+          Start
           <span className="hoverEffect">
             <div></div>
           </span>
@@ -32,4 +32,4 @@ const Inicio: React.FC = () => {
   );
 };
 
-export default Inicio;
+export default Index;

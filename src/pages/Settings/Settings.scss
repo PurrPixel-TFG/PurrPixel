@@ -3,8 +3,7 @@
 
 // Ajustes
 
-.container_ajustes,
-.colorblind {
+.container_settings {
     position: fixed;
     top: calc(10vh + 80px);
     /* espacio para cabecera + botones */
@@ -24,7 +23,7 @@
     margin-top: 100px;
 }
 
-.container_ajustes>div {
+.container_settings>div {
     min-width: 150px;
     background: rgba(255, 255, 255, 0.9);
     border-radius: 12px;

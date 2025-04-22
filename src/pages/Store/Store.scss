@@ -3,19 +3,19 @@
 
 // Tienda
 
-.tienda {
+.store {
     max-width: 1200px;
     margin: 0 auto;
     margin-top: 50px;
 
-    .titulo_tienda {
+    .store_title {
         text-align: center;
         font-size: 3rem;
         margin-bottom: 40px;
         color: var(--color-principal);
     }
 
-    .categoria_tienda {
+    .store_category {
         background-color: #fff;
         border-radius: 10px;
         margin-bottom: 20px;
@@ -38,14 +38,14 @@
         }
 
 
-        .productos_tienda {
+        .store_products {
             display: flex;
             gap: 20px;
             padding: 20px;
             overflow-x: auto;
             padding-bottom: 10px;
 
-            .producto_tienda {
+            .store_product {
                 background-color: #fff;
                 border-radius: 10px;
                 padding: 15px;
@@ -54,7 +54,7 @@
                 min-width: 200px;
                 flex-shrink: 0;
 
-                .img_tienda {
+                .store_img {
                     width: 100%;
                     max-width: 150px;
                     height: auto;
@@ -62,19 +62,19 @@
                     margin-bottom: 10px;
                 }
 
-                .h2_tienda {
+                .store_h2 {
                     font-size: 1.2rem;
                     font-size: 1.2rem;
                     margin-bottom: 5px;
                     color: var(--color-principal);
                 }
 
-                .p_tienda {
+                .store_p {
                     font-size: 1rem;
                     color: var(--color-text);
                 }
 
-                .comprar-btn_tienda {
+                .store_button-buy {
                     background-color: var(--color-principal);
                     color: var(--text-color);
                     border: none;
