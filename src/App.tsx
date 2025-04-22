@@ -10,6 +10,7 @@ import {
 
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import MorningMode from './assets/video/MorningMode.mp4';
+import EveningMode from './assets/video/EveningMode.mp4';
 import NightMode from './assets/video/NightMode.mp4';
 import musicFile from './assets/audio/music1.mp3';
 import './styles/global.scss';
@@ -112,35 +113,36 @@ const LayoutAllPages = () => {
         {/* Fondo: video (se oculta en main-page) */}
         {!isHomePage && (
           <video
-          key={theme} // ← esto es la clave
-          autoPlay
-          loop
-          muted
-          style={{
-            position: 'fixed',
-            top: '10vh',
-            left: 0,
-            width: '100%',
-            height: '90vh',
-            objectFit: 'cover',
-            overflow: 'hidden',
-            zIndex: -1,
-          }}
-        >
-          <source
-            src={
-              theme === 'evening'
-                ? MorningMode
-                : theme === 'night'
-                  ? NightMode
-                  : MorningMode
-            }
-            type="video/mp4"
-          />
-        </video>
+            key={theme} // ← esto es la clave
+            autoPlay
+            loop
+            muted
+            style={{
+              position: 'fixed',
+              top: '10vh',
+              left: 0,
+              width: '100%',
+              height: '90vh',
+              objectFit: 'cover',
+              overflow: 'hidden',
+              zIndex: -1,
+            }}
+          >
+            <source
+              src={
+                theme === 'evening'
+                  ? EveningMode
+                  : theme === 'night'
+                    ? NightMode
+                    : MorningMode
+              }
+            />
+          </video>
         )}
 
-        <div className="container_header">PURR PIXEL</div>
+        <div className="container_header">
+          <div className="title_purrpixel">PURR PIXEL</div>
+        </div>
 
         <BackButtonHomePage />
         <LogoutButton />
@@ -173,7 +175,7 @@ const App: React.FC = () => {
             <Route path="login" element={<Login />} />
             <Route path="register" element={<Register />} />
             <Route path="terms-and-conditions" element={<Terms />} />
-            <Route path="home-page" element={<HomePage />} /> 
+            <Route path="home-page" element={<HomePage />} />
             <Route path="settings" element={<Settings />} />
             <Route path="profile" element={<Profile />} />
             <Route path="store" element={<Store />} />

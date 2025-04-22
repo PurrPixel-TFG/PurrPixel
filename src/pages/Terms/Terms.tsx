@@ -15,7 +15,7 @@ const Terms: React.FC = () => {
     <br />
     <br />
     <main>
-    <h1>Términos y condiciones</h1>
+    <h1>Terms and conditions</h1>
   </main>
     </>
   );

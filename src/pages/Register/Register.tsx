@@ -84,7 +84,7 @@ const Register: React.FC = () => {
                             <input type="checkbox" className="cbox_terms" />
                             <span className="text-terms">
                                 I have read and accept the{" "}
-                                <Link to="/terms" className="read-terms">
+                                <Link to="/terms-and-conditions" className="read-terms">
                                     terms and conditions
                                 </Link>.
                             </span>

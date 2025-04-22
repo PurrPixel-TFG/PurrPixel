@@ -1,33 +1,10 @@
-.main-page-buttons-fixed {
+@import '../../styles/variables';
+@import '../../styles/components';
+@import '../../styles/global';
+
+.container_cats {
     position: fixed;
-    top: 10vh;
-    left: 0;
-    width: 100%;
-    background: var(--primary-color);
-    display: flex;
-    justify-content: center;
-    gap: 1rem;
-    padding: 0.75rem 1rem;
-    z-index: 999;
-  
-    .main-page-button {
-      background-color: #fff;
-      padding: 0.5rem 1rem;
-      border-radius: 8px;
-      text-decoration: none;
-      color: #333;
-      font-weight: bold;
-      transition: background 0.3s;
-  
-      &:hover {
-        background-color: #f0f0f0;
-      }
-    }
-  }
-  
-  .container_cats {
-    position: fixed;
-    top: calc(10vh + 80px);
+    top: calc(10vh + 80px); // espacio para cabecera + botones
     left: 50%;
     transform: translateX(-50%);
     display: flex;
@@ -42,27 +19,29 @@
     z-index: 1;
     margin-top: 100px;
     overflow: hidden;
-  
-    > div {
-      min-width: 150px;
-      flex: 0 0 auto;
-      background: rgba(255, 255, 255, 0.9);
-      border-radius: 12px;
-      padding: 120px 2rem;
-      text-align: center;
-      font-weight: bold;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
-      transition: transform 0.3s ease;
-  
-      &:hover {
-        transform: translateY(-5px);
-      }
-    }
-  }
-  
-  .container_cats_status {
+}
+
+.container_cats>div {
+    min-width: 150px;
+    flex: 0 0 auto;
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 12px;
+    padding: 2rem;
+    text-align: center;
+    font-weight: bold;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+    transition: transform 0.3s ease;
+    padding-top: 120px;
+    padding-bottom: 120px;
+}
+
+.container_cats>div:hover {
+    transform: translateY(-5px);
+}
+
+.container_cats_status {
     position: fixed;
-    top: calc(50vh + 80px);
+    top: calc(50vh + 80px); // espacio para cabecera + botones
     left: 50%;
     transform: translateX(-50%);
     display: flex;
@@ -76,17 +55,16 @@
     box-sizing: border-box;
     z-index: 1;
     overflow: hidden;
-  
-    > div {
-      min-width: 150px;
-      flex: 0 0 auto;
-      background: rgba(255, 255, 255, 0.9);
-      border-radius: 12px;
-      padding: 2rem;
-      text-align: center;
-      font-weight: bold;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
-      transition: transform 0.3s ease;
-    }
-  }
-  
+}
+
+.container_cats_status>div {
+    min-width: 150px;
+    flex: 0 0 auto;
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 12px;
+    padding: 2rem;
+    text-align: center;
+    font-weight: bold;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+    transition: transform 0.3s ease;
+}

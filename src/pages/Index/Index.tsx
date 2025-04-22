@@ -6,12 +6,6 @@ const Index: React.FC = () => {
 
   return (
     <>
-      <header className="container_header">
-        <h1 className="index_h1">PURR PIXEL</h1>
-
-      </header>
-
-
       <main className="main_container">
         <Link to="/instructions" className="index_button index_button_instructions">
           Instructions

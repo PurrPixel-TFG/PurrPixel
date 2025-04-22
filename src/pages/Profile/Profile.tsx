@@ -5,11 +5,11 @@ import { Link } from "react-router-dom";
 const Profile: React.FC = () => {
   //Uniremos esta parte en la BBDD
   const user = {
-    name: "Nombre",
-    username: "Nombre de usuario",
-    email: "usuario@example.com",
-    bio: "Información que quiera añadir el usuario",
-    avatarUrl: "Foto",
+    name: "Name",
+    username: "Username",
+    email: "user@example.com",
+    bio: "Information that the user wants to add",
+    avatarUrl: "Picture",
   };
 
   const handleEdit = () => {

@@ -32,23 +32,57 @@ nav {
     text-decoration: none;
 }
 
+// Home Page
+
+.main-page-buttons-fixed {
+    position: fixed;
+    top: 10vh;
+    left: 0;
+    width: 100%;
+    background: var(--primary-color);
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;     
+    gap: 1rem;
+    padding: 0.75rem 1rem;
+    z-index: 999;
+  }
+  
+  .main-page-button {
+    padding: 0.6rem 1.2rem;
+    font-weight: bold;
+    border-radius: 8px;
+    background-color: white;
+    color: #333;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    text-decoration: none;
+  
+    &:hover {
+      background-color: #eee;
+    }
+  }  
+
 // Back button
 
-.boton-retroceder {
+.back-button {
     position: fixed;
+    display: flex;
     top: 1rem;
     left: 1rem;
     background: #fff;
     border-radius: 8px;
     padding: 0.5rem 1rem;
     cursor: pointer;
-    z-index: 1000;
+    z-index: 999;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
 }
 
 // Logout button
 
-.boton_cerrar-sesion {
+.button_logout {
     position: fixed;
     bottom: 5rem;
     right: 5rem;
