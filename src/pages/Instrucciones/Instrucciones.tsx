@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import './Instrucciones.scss';
-import { Link } from "react-router-dom"; // Asegúrate de importar Link
+import { Link } from "react-router-dom"; 
 
 const Instrucciones = () => {
   const [selectedGame, setSelectedGame] = useState<string | null>(null);
@@ -17,20 +17,20 @@ const Instrucciones = () => {
     switch (selectedGame) {
       case "saltar":
         return (
-          <p className="parrafo_explicación">
+          <p className="parrafo_explicacion">
             En este juego, ¡esquiva los obstáculos!
             Pulsa cualquier tecla para saltar. Si tocas un obstáculo, perderás una vida. Tienes 3 oportunidades para ganar Purr Points.
           </p>
         );
       case "encontrar":
         return (
-          <p className="parrafo_explicación">
+          <p className="parrafo_explicacion">
             En este juego deberás usar tu linterna para encontrar a los Purr escondidos en la oscuridad. ¡Tienes 15 segundos!
           </p>
         );
       case "quiz":
         return (
-          <p className="parrafo_explicación">
+          <p className="parrafo_explicacion">
             ¿Crees que sabes todo sobre gatos? ¡Demuéstralo! Responde a las preguntas y comprueba si eres un experto en gatos.
           </p>
         );

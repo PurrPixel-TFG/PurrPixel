@@ -1,14 +1,27 @@
 @import '../../styles/variables';
 @import '../../styles/components';
 
-.h2_register {
-    text-align: center;
-    margin: 0 auto;
-    display: block;
-    color: #6b15b8;
-    background: #fff;
-    border-radius: 8px;
-    padding: 3px;
-    width: 200px;
-    box-shadow: 0 0 15px rgba(0, 0, 0, 5);
+
+// Register, el resto de elementos se encuentran en Login.scss
+
+.cbox_terminos-condiciones {
+    accent-color: #d878b0;
+    margin-right: 8px;
+}
+
+.texto_terminos {
+    font-weight: bold;
+    color: #252525;
+    display: inline;
+    white-space: nowrap;
+}
+
+.terminos-condiciones {
+    display: inline !important;
+    color: #0056d6 !important;
+    font-weight: bold;
+    text-decoration: none !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    line-height: normal !important;
 }

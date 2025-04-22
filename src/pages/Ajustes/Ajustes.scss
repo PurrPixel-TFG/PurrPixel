@@ -1,17 +1,9 @@
 @import '../../styles/variables';
 @import '../../styles/components';
 
-.container_ajustes>div {
-    min-width: 150px;
-    background: rgba(255, 255, 255, 0.9);
-    border-radius: 12px;
-    padding: 2rem;
-    text-align: center;
-    font-weight: bold;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
-    transition: transform 0.3s ease;
-}
+// Ajustes
 
+.container_ajustes,
 .colorblind {
     position: fixed;
     top: calc(10vh + 80px);
@@ -30,4 +22,15 @@
     box-sizing: border-box;
     z-index: 1;
     margin-top: 100px;
+}
+
+.container_ajustes>div {
+    min-width: 150px;
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 12px;
+    padding: 2rem;
+    text-align: center;
+    font-weight: bold;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+    transition: transform 0.3s ease;
 }

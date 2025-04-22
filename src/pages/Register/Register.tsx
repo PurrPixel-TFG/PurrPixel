@@ -1,5 +1,6 @@
 import React from "react";
 import './Register.scss';
+import '../Login/Login.scss'
 import { Link } from "react-router-dom";
 
 const Registrar: React.FC = () => {
@@ -84,7 +85,14 @@ const Registrar: React.FC = () => {
                         </div>
 
                         <div>
-                            <input type="checkbox" className="cbox_terminos-condiciones" value="cbox_terminos-condiciones" /> <b> He leído y acepto los </b> <Link to="/terminos-condiciones" className="terminos-condiciones"><b> términos y condiciones.</b> </Link>
+                            <input type="checkbox" className="cbox_terminos-condiciones" />
+                            <span className="texto_terminos">
+                                He leído y acepto los{" "}
+                                <Link to="/terminos-condiciones" className="terminos-condiciones">
+                                    términos y condiciones.
+                                </Link>
+                            </span>
+
                         </div>
 
                         <div className="form-button-container">

@@ -1,6 +1,21 @@
 @import '../../styles/variables';
 @import '../../styles/components';
 
+// Login y Registro
+
+.h2_login,
+.h2_register {
+    text-align: center;
+    margin: 0 auto;
+    display: block;
+    color: #6b15b8;
+    background: #fff;
+    border-radius: 8px;
+    padding: 3px;
+    width: 200px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 5);
+}
+
 .form-box {
     margin-top: 2.5vh;
     color: #6b15b8;
@@ -38,21 +53,28 @@
         font-size: 16px;
         box-shadow: 0 0 15px rgba(0, 0, 0, 5);
     }
+}
 
-    .button_iniciar-sesion {
-        padding: 0.5rem 1rem;
-        text-align: center;
-        text-decoration: none;
-        font-weight: bold;
-        background-color: #d878b0;
-        color: white;
-        border-radius: 5px;
-        display: inline-block;
-        box-shadow: 0 0 15px rgba(0, 0, 0, 5);
-    }
+.form-button-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
 
-    .cbox_login:checked {
-        accent-color: #d878b0;
-        font-weight: bold;
-    }
+.button_iniciar-sesion {
+    padding: 0.5rem 1rem;
+    text-align: center;
+    text-decoration: none;
+    font-weight: bold;
+    background-color: #d878b0;
+    color: white;
+    border-radius: 5px;
+    display: inline-block;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 5);
+}
+
+.cbox_login:checked {
+    accent-color: #d878b0;
+    font-weight: bold;
 }

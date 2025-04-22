@@ -12,7 +12,6 @@ import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import modoDia from './assets/video/modoDia.mp4';
 import modoTarde from './assets/video/modoTarde.mp4';
 import modoNoche from './assets/video/modoNoche.mp4';
-
 import musicFile from './assets/audio/musicaFondo.mp3';
 import './styles/global.scss';
 import './styles/components.scss';
