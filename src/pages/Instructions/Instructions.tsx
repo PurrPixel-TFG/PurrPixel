@@ -52,7 +52,7 @@ const Instructions = () => {
 
             You will have the opportunity to care for, feed, and play with your beloved pet. <br></br>
 
-            ✨ What can you do? ✨ <br></br>
+            ✨ You can... ✨ <br></br>
             ✅ Feed her her favorite foods to keep her healthy and happy. <br></br>
             ✅ Bathe and take care of your hygiene so that you always look radiant.<br></br>
             ✅ Play fun mini-games to earn points and rewards. <br></br>

@@ -3,7 +3,7 @@ import './Profile.scss';
 import { Link } from "react-router-dom";
 
 const Profile: React.FC = () => {
-  //Uniremos esta parte en la BBDD
+  //Uniremos esta parte en la BBDD. okis wapa <3
   const user = {
     name: "Name",
     username: "Username",

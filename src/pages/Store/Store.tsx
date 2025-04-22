@@ -43,7 +43,6 @@ const Store: React.FC = () => {
       </div>
 
       <main className="store">
-        <h1 className="store_title">PurrShop!</h1>
 
         {/* Comida */}
         <Categoria name="Food" visible={visibleCategories.food} toggle={() => toggleCategory("food")}>
@@ -70,7 +69,7 @@ const Store: React.FC = () => {
         <Categoria name="Happiness" visible={visibleCategories.happiness} toggle={() => toggleCategory("happiness")}>
           <Products img={bowPink} title="Bow Pink" points={20} />
           <Products img={bowBlue} title="Bow Blue" points={40} />
-          <Products img={bowPurple} title="bowPurple" points={10} />
+          <Products img={bowPurple} title="Bow Purple" points={10} />
         </Categoria>
       </main>
     </>
@@ -88,7 +87,7 @@ interface CategoriaProps {
 
 const Categoria: React.FC<CategoriaProps> = ({ name: name, visible, toggle, children }) => (
   <div className="store_category">
-    <button className="category_store-title" onClick={toggle}>
+    <button className="store_category-title" onClick={toggle}>
       {name}
     </button>
     {visible && <div className="store_products">{children}</div>}

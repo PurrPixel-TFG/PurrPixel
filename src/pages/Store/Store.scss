@@ -7,23 +7,15 @@
 .store {
     max-width: 1200px;
     margin: 0 auto;
-    margin-top: 50px;
-
-    .store_title {
-        text-align: center;
-        font-size: 3rem;
-        margin-bottom: 40px;
-        color: var(--color-principal);
-    }
 
     .store_category {
         background-color: #fff;
         border-radius: 10px;
         margin-bottom: 20px;
-        box-shadow: 0 4px 6px var(--color-sombra);
+        box-shadow: 0 4px 6px var(--color-shadow);
         overflow: hidden;
 
-        &-titulo {
+        &-title {
             background-color: var(--color-principal);
             color: white;
             padding: 15px;
@@ -50,7 +42,7 @@
                 background-color: #fff;
                 border-radius: 10px;
                 padding: 15px;
-                box-shadow: 0 2px 5px var(--color-sombra);
+                box-shadow: 0 2px 5px var(--color-shadow);
                 text-align: center;
                 min-width: 200px;
                 flex-shrink: 0;
