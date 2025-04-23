@@ -1,3 +1,4 @@
+// App.tsx
 import { useRef, useState, useEffect } from 'react'
 import {
   BrowserRouter as Router,
@@ -18,6 +19,9 @@ import NightMode from './assets/video/NightMode.mp4';
 // src/ assets/ audio
 import musicFile from './assets/audio/music1.mp3';
 
+// src/ assets/ images
+import wallpaper from './assets/images/HomePage_wallpaper.png';
+
 // src/ styles
 import './styles/global.scss';
 import './styles/components.scss';
@@ -34,6 +38,7 @@ import Profile from './pages/Profile/Profile';
 import Store from './pages/Store/Store';
 import Games from './pages/Games/Games';
 import Settings from './pages/Settings/Settings';
+import HomePage from './pages/HomePage/HomePage';
 
 // src/ context
 import { ThemeProvider } from './context/ThemeContext';
@@ -45,8 +50,11 @@ const LayoutAllPages = () => {
   const location = useLocation();
   const navigate = useNavigate();
 
-  const isHomePage = location.pathname === '/character-selection';
+  const isHomePage = location.pathname === "/home-page";
   const isStore = location.pathname === "/store";
+
+  const noVideoPages = ["/home-page"];
+  const hideVideo = noVideoPages.includes(location.pathname);
 
   const { theme } = useTheme();
 
@@ -80,32 +88,32 @@ const LayoutAllPages = () => {
 
   return (
     <QueryClientProvider client={queryClient}>
-      {!isHomePage && (
-        <video
-          key={theme}
-          autoPlay
-          loop
-          muted
-          style={{
-            position: 'fixed',
-            left: 0,
-            width: '100%',
-            height: '100vh',
-            objectFit: 'cover',
-            overflow: 'hidden',
-            zIndex: -1,
-          }}
-        >
-          <source
-            src={
-              theme === 'evening'
-                ? EveningMode
-                : theme === 'night'
-                  ? NightMode
-                  : MorningMode
-            }
-          />
-        </video>
+      {!hideVideo && (
+      <video
+        key={theme}
+        autoPlay
+        loop
+        muted
+        style={{
+          position: 'fixed',
+          top: 0,
+          left: 0,
+          width: '100%',
+          height: '100vh',
+          objectFit: 'cover',
+          zIndex: 0, 
+        }}
+      >
+        <source
+          src={
+            theme === 'evening'
+              ? EveningMode
+              : theme === 'night'
+                ? NightMode
+                : MorningMode
+          }
+        />
+      </video>
       )}
 
       <div className="app-layout">
@@ -116,7 +124,7 @@ const LayoutAllPages = () => {
           {/* Botones */}
           <div className="header-buttons">
             <div className="left-buttons">
-              {["/store", "/settings", "/profile", "/games"].includes(location.pathname) && (
+              {["/store", "/settings", "/profile", "/games", "/home-page"].includes(location.pathname) && (
                 <button className="back-button" onClick={() => navigate('/character-selection')}>
                   ⬅ Home Page
                 </button>
@@ -132,8 +140,19 @@ const LayoutAllPages = () => {
           </div>
         </div>
 
-
-        <main className="main-content">
+        <main
+          className="main-content"
+          style={
+            isHomePage
+              ? {
+                backgroundImage: `url(${wallpaper})`,
+                backgroundSize: 'contain',
+                backgroundRepeat: 'no-repeat',
+                backgroundPosition: 'center',
+              }
+              : {}
+          }
+        >
           <Outlet />
         </main>
 
@@ -170,6 +189,7 @@ const App: React.FC = () => {
             <Route path="profile" element={<Profile />} />
             <Route path="store" element={<Store />} />
             <Route path="games" element={<Games />} />
+            <Route path="home-page" element={<HomePage />} />
           </Route>
         </Routes>
       </Router>

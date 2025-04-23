@@ -10,6 +10,7 @@ const Games: React.FC = () => {
               <Link to="/settings" className="main-page-button">Settings</Link>
               <Link to="/profile" className="main-page-button">Profile</Link>
               <Link to="/store" className="main-page-button">Store</Link>
+              <Link to="/home-page" className="main-page-button">PRUEBAS</Link>
             </div>
     </main>
   );

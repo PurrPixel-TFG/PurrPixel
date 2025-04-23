@@ -22,17 +22,17 @@ nav {
 // Home Page
 
 .main-page-buttons-fixed {
-    top: 10vh;
-    left: 0;
-    width: 100%;
-    background: var(--primary-color);
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;     
-    gap: 1rem;
-    padding: 0.75rem 1rem;
-    z-index: 999;
+  position: fixed;
+  top: 90px; 
+  left: 0;
+  width: 100%;
+  background: var(--primary-color);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem;
+  z-index: 1001;
   }
   
   .main-page-button {

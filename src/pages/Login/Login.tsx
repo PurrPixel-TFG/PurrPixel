@@ -37,7 +37,7 @@ const Login: React.FC = () => {
           </div>
 
           <div className="form-button-container">
-            <Link to="/home-page" className="button_login">Login</Link>
+            <Link to="/character-selection" className="button_login">Login</Link>
           </div>
         </form>
 

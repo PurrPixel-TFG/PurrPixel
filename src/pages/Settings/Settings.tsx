@@ -10,6 +10,7 @@ const Settings: React.FC = () => {
         <Link to="/profile" className="main-page-button">Profile</Link>
         <Link to="/store" className="main-page-button">Store</Link>
         <Link to="/games" className="main-page-button">Games</Link>
+        <Link to="/home-page" className="main-page-button">PRUEBAS</Link>
       </div>
 
       <div className="container_settings">
