@@ -29,7 +29,7 @@ import Instructions from './pages/Instructions/Instructions'
 import Login from './pages/Login/Login';
 import Register from './pages/Register/Register';
 import Terms from './pages/Terms/Terms';
-import HomePage from './pages/HomePage/HomePage';
+import CharacterSelection from './pages/CharacterSelection/CharacterSelection';
 import Profile from './pages/Profile/Profile';
 import Store from './pages/Store/Store';
 import Games from './pages/Games/Games';
@@ -45,7 +45,7 @@ const LayoutAllPages = () => {
   const location = useLocation();
   const navigate = useNavigate();
 
-  const isHomePage = location.pathname === '/home-page';
+  const isHomePage = location.pathname === '/character-selection';
   const isStore = location.pathname === "/store";
 
   const { theme } = useTheme();
@@ -117,7 +117,7 @@ const LayoutAllPages = () => {
           <div className="header-buttons">
             <div className="left-buttons">
               {["/store", "/settings", "/profile", "/games"].includes(location.pathname) && (
-                <button className="back-button" onClick={() => navigate('/home-page')}>
+                <button className="back-button" onClick={() => navigate('/character-selection')}>
                   ⬅ Home Page
                 </button>
               )}
@@ -137,8 +137,8 @@ const LayoutAllPages = () => {
           <Outlet />
         </main>
 
-        {/* LogoutButton only on home-page */}
-        {location.pathname === "/home-page" && (
+        {/* LogoutButton only on character-selection */}
+        {location.pathname === "/character-selection" && (
           <button className="logout-button" onClick={() => navigate('/index')}>
             Logout
           </button>
@@ -165,7 +165,7 @@ const App: React.FC = () => {
             <Route path="login" element={<Login />} />
             <Route path="register" element={<Register />} />
             <Route path="terms-and-conditions" element={<Terms />} />
-            <Route path="home-page" element={<HomePage />} />
+            <Route path="character-selection" element={<CharacterSelection />} />
             <Route path="settings" element={<Settings />} />
             <Route path="profile" element={<Profile />} />
             <Route path="store" element={<Store />} />
