@@ -5,18 +5,6 @@ import { Link } from "react-router-dom";
 const HomePage: React.FC = () => {
   return (
     <>
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <h1>Select your Purr to get started!</h1>
 
       <div className="main-page-buttons-fixed">
         <Link to="/settings" className="main-page-button">Settings</Link>
@@ -24,7 +12,9 @@ const HomePage: React.FC = () => {
         <Link to="/store" className="main-page-button">Store</Link>
         <Link to="/games" className="main-page-button">Games</Link>
       </div>
-
+      
+      <main className="container_HomePage">
+    
       <div className="container_cats">
         <div className="cat_1">Cat 1</div>
         <div className="cat_2">Cat 2</div>
@@ -39,6 +29,7 @@ const HomePage: React.FC = () => {
         <div className="status_cat_4">Status Cat 4</div>
       </div>
 
+      </main>
     </>
   );
 };

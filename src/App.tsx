@@ -9,12 +9,21 @@ import {
 } from "react-router-dom";
 
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+
+// src/ assets/ video
 import MorningMode from './assets/video/MorningMode.mp4';
 import EveningMode from './assets/video/EveningMode.mp4';
 import NightMode from './assets/video/NightMode.mp4';
+
+// src/ assets/ audio
 import musicFile from './assets/audio/music1.mp3';
+
+// src/ styles
 import './styles/global.scss';
 import './styles/components.scss';
+import './styles/variables.scss';
+
+// src/ pages
 import Index from './pages/Index/Index';
 import Instructions from './pages/Instructions/Instructions'
 import Login from './pages/Login/Login';
@@ -25,44 +34,16 @@ import Profile from './pages/Profile/Profile';
 import Store from './pages/Store/Store';
 import Games from './pages/Games/Games';
 import Settings from './pages/Settings/Settings';
+
+// src/ context
 import { ThemeProvider } from './context/ThemeContext';
 import { useTheme } from './context/ThemeContext';
 
 const queryClient = new QueryClient();
 
-const BackButtonHomePage = () => {
-  const location = useLocation();
-  const navigate = useNavigate();
-
-  const isBackButtonVisible = ["/settings", "/profile", "/store", "/games", "/instructions"].includes(location.pathname);
-
-  if (!isBackButtonVisible) return null;
-
-  return (
-    <button className="back-button" onClick={() => navigate('/home-page')}>
-      ⬅ Página Principal
-    </button>
-  );
-};
-
-const LogoutButton = () => {
-  const location = useLocation();
-  const navigate = useNavigate();
-
-  const isLogoutButtonVisible = ["/home-page"].includes(location.pathname);
-
-  if (!isLogoutButtonVisible) return null;
-
-  return (
-    <button className="logout-button" onClick={() => navigate('/index')}>
-      Logout
-    </button>
-  );
-}
-
 const LayoutAllPages = () => {
-
   const location = useLocation();
+  const navigate = useNavigate();
 
   const isHomePage = location.pathname === '/home-page';
   const isStore = location.pathname === "/store";
@@ -72,27 +53,18 @@ const LayoutAllPages = () => {
   const audioRef = useRef<HTMLAudioElement | null>(null);
   const [isPlaying, setIsPlaying] = useState(false);
 
-  const toggleMusic = () => {
-    if (!audioRef.current) return;
-
-    if (isPlaying) {
-      audioRef.current.pause();
-    } else {
-      audioRef.current.play();
-    }
-
+  function toggleMusic() {
+    const audio = audioRef.current;
+    if (!audio) return;
+    isPlaying ? audio.pause() : audio.play();
     setIsPlaying(!isPlaying);
-  };
+  }
 
   useEffect(() => {
-    if (isStore) {
-      document.body.style.overflow = "auto";
-    } else {
-      document.body.style.overflow = "hidden";
-    }
-
+    document.body.style.overflow = "visible";
+    document.documentElement.style.overflow = isStore ? "auto" : "hidden";
     return () => {
-      document.body.style.overflow = "auto";
+      document.documentElement.style.overflow = "auto";
     };
   }, [isStore]);
 
@@ -106,54 +78,71 @@ const LayoutAllPages = () => {
     return () => window.removeEventListener("theme-changed", updateTheme);
   }, []);
 
-
   return (
     <QueryClientProvider client={queryClient}>
-      <div>
-        {/* Fondo: video (se oculta en main-page) */}
-        {!isHomePage && (
-          <video
-            key={theme} // ← esto es la clave
-            autoPlay
-            loop
-            muted
-            style={{
-              position: 'fixed',
-              top: '10vh',
-              left: 0,
-              width: '100%',
-              height: '90vh',
-              objectFit: 'cover',
-              overflow: 'hidden',
-              zIndex: -1,
-            }}
-          >
-            <source
-              src={
-                theme === 'evening'
-                  ? EveningMode
-                  : theme === 'night'
-                    ? NightMode
-                    : MorningMode
-              }
-            />
-          </video>
-        )}
+      {!isHomePage && (
+        <video
+          key={theme}
+          autoPlay
+          loop
+          muted
+          style={{
+            position: 'fixed',
+            left: 0,
+            width: '100%',
+            height: '100vh',
+            objectFit: 'cover',
+            overflow: 'hidden',
+            zIndex: -1,
+          }}
+        >
+          <source
+            src={
+              theme === 'evening'
+                ? EveningMode
+                : theme === 'night'
+                  ? NightMode
+                  : MorningMode
+            }
+          />
+        </video>
+      )}
+
+      <div className="app-layout">
 
         <div className="container_header">
           <div className="title_purrpixel">PURR PIXEL</div>
+
+          {/* Botones */}
+          <div className="header-buttons">
+            <div className="left-buttons">
+              {["/store", "/settings", "/profile", "/games"].includes(location.pathname) && (
+                <button className="back-button" onClick={() => navigate('/home-page')}>
+                  ⬅ Home Page
+                </button>
+              )}
+            </div>
+
+            <div className="right-buttons">
+              <div className="button_music" onClick={toggleMusic}>
+                {isPlaying ? '🔊 Music ON' : '🔇 Music OFF'}
+                <audio ref={audioRef} src={musicFile} loop />
+              </div>
+            </div>
+          </div>
         </div>
 
-        <BackButtonHomePage />
-        <LogoutButton />
 
-        <div className="button_music" onClick={toggleMusic}>
-          {isPlaying ? '🔊 Music ON' : '🔇 Music OFF'}
-        </div>
+        <main className="main-content">
+          <Outlet />
+        </main>
 
-        <audio ref={audioRef} src={musicFile} loop />
-
-        <Outlet />
+        {/* LogoutButton only on home-page */}
+        {location.pathname === "/home-page" && (
+          <button className="logout-button" onClick={() => navigate('/index')}>
+            Logout
+          </button>
+        )}
 
         <div className="container_footer">
           <p>&copy; 2025 PURRPIXEL. All rights reserved.</p>
@@ -162,6 +151,7 @@ const LayoutAllPages = () => {
     </QueryClientProvider>
   );
 };
+
 
 const App: React.FC = () => {
   return (

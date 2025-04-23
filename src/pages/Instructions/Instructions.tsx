@@ -42,10 +42,6 @@ const Instructions = () => {
   return (
     <>
       <main>
-        <Link to="/index" className="index_h1">
-          <h1>PURR PIXEL</h1>
-        </Link>
-
         <div className="container_instructions">
           <h3 className={`advice`}>
             Let's start this adventure! 🐱 <br></br>
@@ -60,14 +56,14 @@ const Instructions = () => {
             Are you ready for adventure? Start now and create an unbreakable bond with your new friend! 🐾💖
           </h3>
 
-          <div className="game_buttons">
-            <button onClick={() => setSelectedGame("jump")} className="game_button">
+          <div className="game_buttons_instructions">
+            <button onClick={() => setSelectedGame("jump")} className="game_button_instructions">
               Jump with your PURR
             </button>
-            <button onClick={() => setSelectedGame("catch")} className="game_button">
+            <button onClick={() => setSelectedGame("catch")} className="game_button_instructions">
               Catch with your PURR
             </button>
-            <button onClick={() => setSelectedGame("quiz")} className="game_button">
+            <button onClick={() => setSelectedGame("quiz")} className="game_button_instructions">
               PURR-Quiz!
             </button>
           </div>
