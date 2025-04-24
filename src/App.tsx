@@ -21,6 +21,7 @@ import musicFile from './assets/audio/music1.mp3';
 
 // src/ assets/ images
 import wallpaper from './assets/images/HomePage_wallpaper.png';
+import way from './assets/images/HomePage_way.png';
 
 // src/ styles
 import './styles/global.scss';
@@ -56,7 +57,7 @@ const LayoutAllPages = () => {
   const noVideoPages = ["/home-page"];
   const hideVideo = noVideoPages.includes(location.pathname);
 
-  {/* Rutes: main-page-buttons-fixed */}
+  {/* Rutes: main-page-buttons-fixed */ }
   const navButtonsMap: Record<string, { to: string; label: string }[]> = {
     "/character-selection": [
       { to: "/settings", label: "Settings" },
@@ -193,12 +194,12 @@ const LayoutAllPages = () => {
               ? {
                 backgroundImage: `url(${wallpaper})`,
                 backgroundSize: 'contain',
-                backgroundRepeat: 'no-repeat',
-                backgroundPosition: 'center',
+                backgroundRepeat: 'repeat',
               }
               : {}
           }
         >
+
           <Outlet />
         </main>
 

@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import './Store.scss';
-import { Link } from "react-router-dom";
 
 import fish from "../../assets/images/fish.png";
 import burger from "../../assets/images/burger.png";
