@@ -1,6 +1,5 @@
 import React from "react";
 import './Profile.scss';
-import { Link } from "react-router-dom";
 
 const Profile: React.FC = () => {
   //Uniremos esta parte en la BBDD. okis wapa <3
@@ -18,13 +17,7 @@ const Profile: React.FC = () => {
 
   return (
     <>
-      <div className="main-page-buttons-fixed">
-        <Link to="/settings" className="main-page-button">Settings</Link>
-        <Link to="/store" className="main-page-button">Store</Link>
-        <Link to="/games" className="main-page-button">Games</Link>
-        <Link to="/home-page" className="main-page-button">PRUEBAS</Link>
-      </div>
-  
+
       <div className="profile-container">
         <div className="profile-header">
           <img src={user.avatarUrl} alt={`${user.name}'s avatar`} />

@@ -8,7 +8,7 @@ import {
   useLocation,
   useNavigate,
 } from "react-router-dom";
-
+import { Link } from "react-router-dom";
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 
 // src/ assets/ video
@@ -56,6 +56,41 @@ const LayoutAllPages = () => {
   const noVideoPages = ["/home-page"];
   const hideVideo = noVideoPages.includes(location.pathname);
 
+  {/* Rutes: main-page-buttons-fixed */}
+  const navButtonsMap: Record<string, { to: string; label: string }[]> = {
+    "/character-selection": [
+      { to: "/settings", label: "Settings" },
+      { to: "/store", label: "Store" },
+      { to: "/profile", label: "Profile" },
+      { to: "/games", label: "Games" },
+      { to: "/home-page", label: "PRUEBAS" },
+    ],
+    "/settings": [
+      { to: "/store", label: "Store" },
+      { to: "/profile", label: "Profile" },
+      { to: "/games", label: "Games" },
+      { to: "/home-page", label: "PRUEBAS" },
+    ],
+    "/store": [
+      { to: "/settings", label: "Settings" },
+      { to: "/profile", label: "Profile" },
+      { to: "/games", label: "Games" },
+      { to: "/home-page", label: "PRUEBAS" },
+    ],
+    "/profile": [
+      { to: "/settings", label: "Settings" },
+      { to: "/store", label: "Store" },
+      { to: "/games", label: "Games" },
+      { to: "/home-page", label: "PRUEBAS" },
+    ],
+    "/games": [
+      { to: "/settings", label: "Settings" },
+      { to: "/profile", label: "Profile" },
+      { to: "/store", label: "Store" },
+      { to: "/home-page", label: "PRUEBAS" },
+    ],
+  };
+
   const { theme } = useTheme();
 
   const audioRef = useRef<HTMLAudioElement | null>(null);
@@ -89,31 +124,31 @@ const LayoutAllPages = () => {
   return (
     <QueryClientProvider client={queryClient}>
       {!hideVideo && (
-      <video
-        key={theme}
-        autoPlay
-        loop
-        muted
-        style={{
-          position: 'fixed',
-          top: 0,
-          left: 0,
-          width: '100%',
-          height: '100vh',
-          objectFit: 'cover',
-          zIndex: 0, 
-        }}
-      >
-        <source
-          src={
-            theme === 'evening'
-              ? EveningMode
-              : theme === 'night'
-                ? NightMode
-                : MorningMode
-          }
-        />
-      </video>
+        <video
+          key={theme}
+          autoPlay
+          loop
+          muted
+          style={{
+            position: 'fixed',
+            top: 0,
+            left: 0,
+            width: '100%',
+            height: '100vh',
+            objectFit: 'cover',
+            zIndex: 0,
+          }}
+        >
+          <source
+            src={
+              theme === 'evening'
+                ? EveningMode
+                : theme === 'night'
+                  ? NightMode
+                  : MorningMode
+            }
+          />
+        </video>
       )}
 
       <div className="app-layout">
@@ -126,7 +161,7 @@ const LayoutAllPages = () => {
             <div className="left-buttons">
               {["/store", "/settings", "/profile", "/games", "/home-page"].includes(location.pathname) && (
                 <button className="back-button" onClick={() => navigate('/character-selection')}>
-                  ⬅ Home Page
+                  ⬅ Character Selection
                 </button>
               )}
             </div>
@@ -139,6 +174,17 @@ const LayoutAllPages = () => {
             </div>
           </div>
         </div>
+
+        {/* Rutes: main-page-buttons-fixed */}
+        {navButtonsMap[location.pathname] && (
+          <div className="main-page-buttons-fixed">
+            {navButtonsMap[location.pathname].map((btn) => (
+              <Link key={btn.to} to={btn.to} className="main-page-button">
+                {btn.label}
+              </Link>
+            ))}
+          </div>
+        )}
 
         <main
           className="main-content"

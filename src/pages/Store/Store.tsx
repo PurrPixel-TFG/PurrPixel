@@ -36,12 +36,6 @@ const Store: React.FC = () => {
 
   return (
     <>
-      <div className="main-page-buttons-fixed">
-        <Link to="/settings" className="main-page-button">Settings</Link>
-        <Link to="/profile" className="main-page-button">Profile</Link>
-        <Link to="/games" className="main-page-button">Games</Link>
-      </div>
-
       <main className="store">
 
         {/* Comida */}
