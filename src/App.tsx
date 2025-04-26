@@ -38,6 +38,9 @@ import CharacterSelection from './pages/CharacterSelection/CharacterSelection';
 import Profile from './pages/Profile/Profile';
 import Store from './pages/Store/Store';
 import Games from './pages/Games/Games';
+import Jump from './pages/Games/Jump';
+import Catch from './pages/Games/Catch';
+import Quizz from './pages/Games/Quizz';
 import Settings from './pages/Settings/Settings';
 import HomePage from './pages/HomePage/HomePage';
 
@@ -236,6 +239,9 @@ const App: React.FC = () => {
             <Route path="profile" element={<Profile />} />
             <Route path="store" element={<Store />} />
             <Route path="games" element={<Games />} />
+            <Route path="Jump" element={<Jump />} />
+            <Route path="Catch" element={<Catch />} />
+            <Route path="Quizz" element={<Quizz />} />
             <Route path="home-page" element={<HomePage />} />
           </Route>
         </Routes>
