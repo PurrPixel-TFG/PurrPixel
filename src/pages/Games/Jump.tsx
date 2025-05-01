@@ -16,7 +16,7 @@ const Jump: React.FC = () => {
       {/* Game content */}
 
       {/* Button to go back */}
-      <button className="back-button" onClick={handleBack}>
+      <button className="gameBack-button" onClick={handleBack}>
         ⬅ Go back
       </button>
     </div>

@@ -16,7 +16,7 @@ const Catch: React.FC = () => {
       {/* Aquí va el contenido del juego */}
 
       {/* Botón de retroceso */}
-      <button className="back-button" onClick={handleBack}>
+      <button className="gameBack-button" onClick={handleBack}>
         ⬅ Volver a la selección de juegos
       </button>
     </div>
