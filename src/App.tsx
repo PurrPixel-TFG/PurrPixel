@@ -197,7 +197,8 @@ const LayoutAllPages = () => {
               ? {
                 backgroundImage: `url(${wallpaper})`,
                 backgroundSize: 'contain',
-                backgroundRepeat: 'repeat',
+                backgroundRepeat: 'no-repeat',
+                backgroundPosition: 'center',
               }
               : {}
           }
