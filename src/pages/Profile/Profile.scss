@@ -65,3 +65,480 @@
     background-color: #7a2b89;
   }
   
+
+  //DRESS UP
+  /////////////////////////////////////////////////////////////////////////
+
+.dressUp_container {
+  margin: 0;
+  padding: 0;
+  border: 50px solid black;
+  display: flex;
+  justify-content: right;
+  align-items: center;
+  min-height: 100vh;
+  background-image: url('../../assets/assets_dressUp/background/background-yellow.png');
+  background-size: 100% auto;
+  background-repeat: no-repeat;
+  background-position: bottom center;
+  background-color: #FFF4B6;
+  transition: background-color 0.5s ease, background-image 0.5s ease;
+
+}
+
+/* Media Query for Mobile Devices */
+@media (max-width: 768px) {
+  body {
+    background-size: cover; /* Adjust background size to cover the screen */
+    background-position: bottom center; /* Position the background at the top */
+    background-repeat: no-repeat; /* Make sure the background does not repeat */
+  }
+}
+
+/* Position and animate the first cloud */
+.floating-cloud {
+  position: absolute;
+  top: 4%; /* Adjust the vertical position */
+  left: 10%; /* Initial horizontal position */
+  width: 100px; /* Adjust the size of the cloud */
+  animation: moveClouds 10s ease-in-out infinite; /* Animation to move cloud */
+  z-index: -1; /* Ensure cloud stays in the background */
+}
+
+/* Position and animate the second cloud with different speed and position */
+.floating-cloud-2 {
+  position: absolute;
+  top: 5%; /* Adjust the vertical position of the second cloud */
+  left: 70%; /* Initial horizontal position of the second cloud */
+  width: 120px; /* Adjust the size of the second cloud */
+  animation: moveClouds2 15s ease-in-out infinite; /* Animation to move second cloud */
+  z-index: -2; /* Ensure second cloud stays behind the first */
+}
+
+/* Position and animate the third cloud with its own position and speed */
+.floating-cloud-3 {
+  position: absolute;
+  top: 3%; /* Adjust the vertical position of the third cloud */
+  left: 40%; /* Initial horizontal position of the third cloud */
+  width: 90px; /* Adjust the size of the third cloud */
+  animation: moveClouds3 12s ease-in-out infinite; /* Animation to move third cloud */
+  z-index: -3; /* Ensure third cloud stays behind the others */
+}
+
+/* Define the keyframe animation for floating the first cloud */
+@keyframes moveClouds {
+  0%, 100% {
+    left: 10%; /* Cloud starts at 10% of the container width */
+  }
+  50% {
+    left: 20%; /* Cloud reaches 20% of the container width */
+  }
+}
+
+/* Define the keyframe animation for floating the second cloud */
+@keyframes moveClouds2 {
+  0%, 100% {
+    left: 70%; /* Second cloud starts at 70% of the container width */
+  }
+  50% {
+    left: 80%; /* Second cloud reaches 80% of the container width */
+  }
+}
+
+/* Define the keyframe animation for floating the third cloud */
+@keyframes moveClouds3 {
+  0%, 100% {
+    left: 50%; /* Third cloud starts at 40% of the container width */
+  }
+  50% {
+    left: 40%; /* Third cloud reaches 50% of the container width */
+  }
+}
+
+/* Mobile view adjustments (optional) */
+@media (max-width: 768px) {
+  body {
+    background-size: cover;
+    background-position: top center;
+    background-repeat: no-repeat;
+    background-color: #FFF4B6;
+  }
+
+  .floating-cloud {
+    width: 80px; /* Smaller cloud size for mobile */
+    top: 5%; /* Adjust vertical position for mobile */
+  }
+
+  .floating-cloud-2 {
+    width: 90px; /* Smaller second cloud size for mobile */
+    top: 8%; /* Adjust vertical position for mobile */
+  }
+
+  .floating-cloud-3 {
+    width: 75px; /* Smaller third cloud size for mobile */
+    top: 10%; /* Adjust vertical position for mobile */
+  }
+}
+
+
+/* Main container for tablet/desktop */
+.container {
+  position: relative;
+  width: 400px; /* Fixed width for larger screens */
+  aspect-ratio: 400 / 532;
+  border-radius: 1.18481rem;
+  border: 2.528px solid #50A486;
+  background: linear-gradient(126deg, #EFF4CC 7.09%, #9EDAE2 71.5%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+/* Main inner container for tablet/desktop */
+.inner-container {
+  position: relative;
+  width: 90%; /* Fixed width for larger screens */
+  aspect-ratio: 360 / 493;
+  border-radius: 1.07169rem;
+  border: 2.528px solid #50A486;
+  background: linear-gradient(90deg, #F9FFDB -9.7%, #D0EDF4 36.94%, #E1F4FF 51.15%, #EBFDFF 66.7%, #FAFFE2 100%);
+  display: flex;
+  flex-direction: column;
+  justify-content: top;
+  align-items: center;
+  overflow: hidden;
+  padding: 0px;
+  margin: 0px;
+}
+
+/* text container */
+.main-text {
+  position: relative;
+  height: 12%; /* Fixed height */
+  width: 100%;
+  aspect-ratio: 359 / 60;
+  border-bottom: 2.528px solid #50A486; /* Only bottom border */
+  background: linear-gradient(90deg, #F9FFDB -9.7%, #D0EDF4 36.94%, #E1F4FF 51.15%, #EBFDFF 66.7%, #FAFFE2 100%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  
+}
+
+#text-content {
+  height: width 40%;
+  background-position: center; /* Position the background at the top */
+  background-repeat: no-repeat; 
+  max-width: 80%; /* Optional: to ensure the image is responsive */
+  max-height: 100%; /* Optional: to ensure the image doesn't overflow */
+  display: flex;
+  padding: 10%;
+  justify-content: center;
+  align-items: center;
+
+}
+/* Pochacco container */
+.pochacco-container {
+  position: relative;
+  height: 62%; /* Fixed height */
+  width: 100%;
+  aspect-ratio: 360 / 493;
+  background-image: url('../../assets/assets_dressUp/background/background-yellow.png');
+  background-size: cover; /* Ensure background covers width, height will be cut off if needed */
+  background-repeat: no-repeat;
+  background-position: center center;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  overflow: hidden;
+  transition: background-color 0.5s ease, background-image 0.5s ease;
+}
+
+/* Outfit container to center the outfit display */
+.outfit-container {
+  width: 50%;
+  aspect-ratio: 180 / 260;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative; /* Allows absolute positioning of the images */
+  overflow: hidden;
+}
+
+/* Outfit display */
+#outfit-display {
+  position: relative; /* Enables absolute positioning for images */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%; /* Ensures the display area takes up the full width of the container */
+  height: 100%; /* Takes up the full height of the container */
+}
+
+/* Outfit elements (hat, skirt, shirt) */
+#outfit-display img {
+  position: absolute;
+  top: 0;
+  width: 100%; /* Adjust the size of the outfit elements */
+  z-index: 1; /* Default z-index for stacking */
+}
+
+/* Stack the elements in the following order: head on top of skirt, skirt on top of shirt */
+#head {
+  position: absolute;
+  top: 0;
+  z-index: 4; /* Head on top */
+}
+
+#hat {
+  z-index: 3; /* Hat on top of skirt, below head */
+}
+
+#skirt {
+  z-index: 2; /* Skirt below hat */
+}
+
+#shirt {
+  z-index: 1; /* Shirt at the bottom */
+}
+
+#left-background-button {
+  cursor: pointer;
+  transition: all 0.3s ease;
+  background-color: transparent;
+  border: none;
+  padding: 0px;
+  margin: 0px;
+  padding-left: 2%;
+}
+
+#right-background-button {
+  cursor: pointer;
+  transition: all 0.3s ease;
+  background-color: transparent;
+  border: none;
+  padding: 0px;
+  margin: 0px;
+  padding-right: 2%;
+}
+
+button {
+  cursor: pointer;
+  transition: all 0.3s ease;
+  background-color: none;
+  background-color: transparent;
+  border: none;
+  padding: 0px;
+  margin: 0px;
+}
+
+button:hover {
+  transform: scale(1.1);
+  background-color: none;
+  padding: 0px;
+  margin: 0px;
+}
+
+/* Option panel styles */
+.option-panel {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 10%;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;  /* Ensure options are vertically centered */
+  padding: 0px;
+  margin-bottom: 0px;
+  z-index: 8;
+}
+
+/* Default button style */
+.option-button {
+  background: #C8ECE4;  
+  cursor: pointer;
+}
+
+/* Selected button style */
+.option-button.selected {
+  background-color: #F9FFDB; /* Background color when selected */
+  color: F9FFDB;
+}
+
+
+#shirt-button {
+  border-radius: 0.39494rem 0.39494rem 0rem 0rem;
+  border-top: 2.528px solid #50A486;
+  border-right: 2.528px solid #50A486;
+  border-left: 2.528px solid #50A486;
+  background: #C8ECE4;  
+  width: 25%; 
+  aspect-ratio: 94/33;
+  background-image: url('../../../assets_dressUp/label-icons/shirt-icon.png');
+  background-size: 38%; /* Set custom width and height (50% of element width and height) */
+  background-repeat: no-repeat;
+  background-position: center center; /* Center the image */
+}
+
+#skirt-button {
+  border-radius: 0.39494rem 0.39494rem 0rem 0rem;
+  border-top: 2.528px solid #50A486;
+  border-right: 2.528px solid #50A486;
+  border-left: 2.528px solid #50A486;
+  background: #C8ECE4;  
+  width: 25%; 
+  aspect-ratio: 94/33;
+  background-image: url('../../../assets_dressUp/label-icons/pants-icon.png');
+  background-size: 38%; /* Set custom width and height (50% of element width and height) */
+  background-repeat: no-repeat;
+  background-position: center center; /* Center the image */
+}
+
+#hat-button {
+  border-radius: 0.39494rem 0.39494rem 0rem 0rem;
+  border-top: 2.528px solid #50A486;
+  border-right: 2.528px solid #50A486;
+  border-left: 2.528px solid #50A486;
+  background: #C8ECE4;  
+  width: 25%; 
+  aspect-ratio: 94/33;
+  background-image: url('../../../assets_dressUp/label-icons/hat-icon.png');
+  background-size: 38%; /* Set custom width and height (50% of element width and height) */
+  background-repeat: no-repeat;
+  background-position: center center; /* Center the image */
+}
+
+#done-button {
+  border-radius: 0.39494rem;
+  border: 2.528px solid #50A486;
+  width: 1.93525rem;
+  height: 1.73775rem;
+  flex-shrink: 0;
+  background: #F9FFDB;
+  background-image: url('../../../assets_dressUp/label-icons/hat-icon.png');
+  background-size: 70%; /* Set custom width and height (50% of element width and height) */
+  background-repeat: no-repeat;
+  background-position: center center; /* Center the image */
+
+}
+
+
+.selection-container {
+  position: relative;
+  height: 26%; /* Fixed height */
+  width: 100%;
+  aspect-ratio: 360 / 127;
+  border-top: 2.528px solid #50A486; /* Only top border */
+  background: linear-gradient(90deg, #F9FFDB 2.73%, #D0EDF4 42.4%, #C4E7FB 54.49%, #9EDAE2 67.71%, #F9FFDB 96.03%);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 4%;
+}
+
+#shirt-options,
+#skirt-options,
+#hat-options {
+  display: flex;
+  gap: 1rem;
+}
+
+/* Custom button styles for shirt options */
+#shirt-1,
+#shirt-2,
+#shirt-3,
+#skirt-1,
+#skirt-2,
+#skirt-3,
+#hat-1,
+#hat-2,
+#hat-3 {
+  display: flex;
+  width: 6.16113rem;
+  aspect-ratio: 99 / 71;
+  padding: 0.89975rem 0.81206rem 0.536rem 0.91963rem;
+  justify-content: center;
+  align-items: center;
+  flex-shrink: 0;
+  align-self: stretch;
+  border-radius: 0.78988rem;
+  background: #FFF;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+}
+
+/* Custom button styles for shirt options */
+#shirt-1 {
+  background-image: url('../../assets/assets_dressUp/option-icons/blue-shirt-icon.png');
+}
+
+#shirt-2 {
+  background-image: url('../../assets/assets_dressUp/option-icons/red-shirt-icon.png');
+}
+
+#shirt-3 {
+  background-image: url('../../assets/assets_dressUp/option-icons/sailor-shirt-icon.png');
+}
+
+/* Custom button styles for skirt options */
+#skirt-1 {
+  background-image: url('../../assets/assets_dressUp/option-icons/blue-skirt-icon.png');
+}
+
+#skirt-2 {
+  background-image: url('../../assets/assets_dressUp/option-icons/yellow-pants-icon.png');
+}
+
+#skirt-3 {
+  background-image: url('../../assets/assets_dressUp/option-icons/blue-pants-icon.png');
+}
+
+/* Custom button styles for hat options */
+#hat-1 {
+  background-image: url('../../assets/assets_dressUp/option-icons/straw-hat-icon.png');
+}
+
+#hat-2 {
+  background-image: url('../../assets/assets_dressUp/option-icons/frog-hat-icon.png');
+}
+
+#hat-3 {
+  background-image: url('../../assets/assets_dressUp/option-icons/blue-bow-icon.png');
+}
+
+
+/*final page*/
+
+/* Pochacco container */
+.pochacco-final-container {
+  position: relative;
+  height: 88%; /* Fixed height */
+  width: 100%;
+  background-image: url('../../assets/assets_dressUp/background/background-yellow.png');
+  background-size: cover; /* Ensure background covers width, height will be cut off if needed */
+  background-repeat: no-repeat;
+  background-position: center center;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+/* Outfit container to center the outfit display */
+.outfit-final-container {
+  width: 70%;
+  aspect-ratio: 180 / 260;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative; /* Allows absolute positioning of the images */
+  overflow: hidden;
+}
+
