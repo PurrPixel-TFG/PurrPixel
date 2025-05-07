@@ -2,6 +2,8 @@
 @import '../../styles/components';
 @import '../../styles/global';
 
+// Profile.scss
+
 // Wallpaper
 .profile-wallpaper {
   width: 100%;
@@ -170,7 +172,7 @@
   grid-column: 1 / -1;
   grid-row: 2;
   justify-self: center;
-  width: 470px;
+  width: 600px;
   height: auto;
   background-color: transparent;
   border: 4px solid #add3ea;
@@ -213,12 +215,12 @@
 }
 
 .character-area {
-  position: relative;
-  width: 100px;
-  height: 100px;
+  width: 200px;  // o el tamaño que quieras para el personaje
+  overflow: hidden;
   display: flex;
-  align-items: center;
   justify-content: center;
+  align-items: center;
+  position: relative;
 }
 
 .preview-bg {
@@ -230,59 +232,74 @@
 }
 
 .preview-character {
-  position: relative;
+  margin-top: 2rem;
+  width: 100%;     
+  height: auto;
+  max-height: 100%; // garantiza que se mantenga dentro
+  object-fit: contain;
   z-index: 1;
-  width: 80px;
 }
 
 .arrow-left,
 .arrow-right {
   background: none;
   border: none;
-  font-size: 1.5rem;
+  padding: 3rem;
   cursor: pointer;
-  color: #333;
-  z-index: 2;
-  padding: 0 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  img {
+    width: 70px;  // ajusta según el tamaño que quieras mostrar
+    height: auto;
+  }
 }
 
-.category-tabs {
+
+.menu-dressUp {
   display: flex;
   width: 100%;
   margin-bottom: 1rem;
   justify-content: center;
-
   gap: 2rem;
 
+  img {
+    width: 70%;
+    height: 70%;
+    object-fit: contain;
+  }
+
   .tab {
-    width: 50px;
-    height: 50px;
-    background-color: transparent;
-    border: 2px solid #ce7cdf;
+    width: 60px;
+    height: 55px;
+    background-color: #bce2e0;
+    border: 2px solid #63b296;
     border-radius: 8px;
     cursor: pointer;
 
     &.active {
-      background-color: #be43d6;
+      background-color: rgb(157, 241, 237);
     }
   }
 }
 
-.item-options {
+.dress-dressUp {
   display: flex;
   justify-content: center;
   gap: 2rem;
 
   img {
-    width: 50px;
-    height: 50px;
-    border: 2px solid #ce7cdf;
+    width: 140px;
+    height: 120px;
+    border: 2px solid #729dcf;
     border-radius: 6px;
     background-color: transparent;
     cursor: pointer;
 
     &:hover {
-      border-color: #729dcf;
+      border-color: #ce7cdf;
     }
   }
 }
+
