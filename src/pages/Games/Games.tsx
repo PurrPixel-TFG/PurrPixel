@@ -5,7 +5,7 @@ import { Link, Outlet } from "react-router-dom";
 const Games: React.FC = () => {
   return (
     <main className="games">
-      <h1>Choose A Game To Play With Your PURR! ✨</h1>
+      <h1 className="h1_games">Choose A Game To Play With Your PURR! ✨</h1>
       
       <div className="games-buttons">
         {/* Botones para cada juego */}

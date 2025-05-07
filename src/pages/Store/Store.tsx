@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import './Store.scss';
 
+// Store.tsx
+
 import fish from "../../assets/images/fish.png";
 import burger from "../../assets/images/burger.png";
 import cake from "../../assets/images/cake.png";

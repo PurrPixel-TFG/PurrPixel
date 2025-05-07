@@ -2,13 +2,17 @@
 @import '../../styles/components';
 @import '../../styles/global';
 
-// Tienda
+// Store.scss
 
 .store {
+    display: flex;
+    flex-direction: column;
     max-width: 1200px;
     margin: 0 auto;
     margin-top: 20px;
-    z-index: 1000;
+    z-index: 1;
+    position: relative;
+    min-height: 100vh;
 
     .store_category {
         background-color: #fff;

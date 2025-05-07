@@ -1,31 +1,34 @@
 import React, { useEffect } from "react";
 import './Profile.scss';
 
+// Profile.tsx
+
 // Text header
 import textContent from '../../../assets_dressUp/text-content.png';
 
 // Moving clouds
-import cloud1 from '../../../assets_dressUp/background/cloud-1.png';
-import cloud2 from '../../../assets_dressUp/background/cloud-2.png';
-import cloud3 from '../../../assets_dressUp/background/cloud-3.png';
+import cloud1 from '../../assets/assets_dressUp/clouds_dressUp/cloud-1.png';
+import cloud2 from '../../assets/assets_dressUp/clouds_dressUp/cloud-2.png';
+import cloud3 from '../../assets/assets_dressUp/clouds_dressUp/cloud-3.png';
 
-// Elementos de vestuario
-import head from '../../assets/assets_dressUp/dress-up-elements/head.png';
+// Menu icons
+import checkIcon from '../../../assets/assets_dressUp/menu_dressUp/menu-check-icon.png';
+import hatIcon from '../../../assets/assets_dressUp/menu_dressUp/menu-hat-icon.png';
+import pantsIcon from '../../../assets/assets_dressUp/menu_dressUp/menu-pants-icon.png';
+import shirtIcon from '../../../assets/assets_dressUp/menu_dressUp/menu-shirt-icon.png';
+
+// Elements
+import head from '../../../assets/assets_dressUp/dress_dressUp/head.png';
 import blueShirt from '../../assets/assets_dressUp/dress-up-elements/blue-shirt.png';
 import redShirt from '../../assets/assets_dressUp/dress-up-elements/red-shirt.png';
-import sailorShirt from '../../assets/assets_dressUp/dress-up-elements/sailor-shirt.png';
-import skirtImg from '../../assets/assets_dressUp/dress-up-elements/skirt.png';
+import sailorShirt from '../../assets/assets_dressUp/dress_dressUp/shirt-sailor.png';
+import blueSkirt from '../../assets/assets_dressUp/dress-up-elements/skirt.png';
 import yellowPants from '../../assets/assets_dressUp/dress-up-elements/yellow-pants.png';
 import bluePants from '../../assets/assets_dressUp/dress-up-elements/blue-pants.png';
 import frogHat from '../../assets/assets_dressUp/dress-up-elements/frog-hat.png';
 import strawHat from '../../assets/assets_dressUp/dress-up-elements/straw-hat.png';
-import bow from '../../assets/assets_dressUp/dress-up-elements/bow.png';
+import blueBow from '../../assets/assets_dressUp/dress-up-elements/bow.png';
 
-// Iconos de etiquetas
-import checkIcon from '../../../assets_dressUp/label-icons/check-icon.png';
-import hatIcon from '../../../assets_dressUp/label-icons/hat-icon.png';
-import pantsIcon from '../../../assets_dressUp/label-icons/pants-icon.png';
-import shirtIcon from '../../../assets_dressUp/label-icons/shirt-icon.png';
 
 // ROPITA
 import optBlueBow from '../../assets/assets_dressUp/option-icons/blue-bow-icon.png';
@@ -43,6 +46,8 @@ import optFrogHat from '../../assets/assets_dressUp/option-icons/frog-hat-icon.p
 
 
 const Profile: React.FC = () => {
+
+  // Container Profile info
   const user = {
     name: "Name",
     username: "Username",
@@ -53,108 +58,68 @@ const Profile: React.FC = () => {
 
   const handleEdit = () => alert("Edit profile");
 
-  // Tipos para evitar error TS7053. D': ioro muy fuertemente
-  type ShirtKey = "shirt-1" | "shirt-2" | "shirt-3";
-  type SkirtKey = "skirt-1" | "skirt-2" | "skirt-3";
-  type HatKey = "hat-1" | "hat-2" | "hat-3";
-
-  const shirtOptions: Record<ShirtKey, string> = {
-    "shirt-1": blueShirt,
-    "shirt-2": redShirt,
-    "shirt-3": sailorShirt,
-  };
-  const skirtOptions: Record<SkirtKey, string> = {
-    "skirt-1": skirtImg,
-    "skirt-2": yellowPants,
-    "skirt-3": bluePants,
-  };
-  const hatOptions: Record<HatKey, string> = {
-    "hat-1": strawHat,
-    "hat-2": frogHat,
-    "hat-3": bow,
-  };
-
-  const backgroundOptions = [bgYellow];
-
-  useEffect(() => {
-    const shirtEl = document.getElementById('shirt') as HTMLImageElement | null;
-    const skirtEl = document.getElementById('skirt') as HTMLImageElement | null;
-    const hatEl = document.getElementById('hat') as HTMLImageElement | null;
-    const container = document.querySelector('.pochacco-container') as HTMLElement | null;
-    if (!shirtEl || !skirtEl || !hatEl || !container) return;
-
-    let currentBg = 0;
-    const updateBg = (i: number) => {
-      container.style.backgroundImage = `url(${backgroundOptions[i]})`;
-      document.body.style.backgroundImage = `url(${backgroundOptions[i]})`;
-    };
-    const updateShirt = (key: ShirtKey) => { shirtEl.src = shirtOptions[key]; };
-    const updateSkirt = (key: SkirtKey) => { skirtEl.src = skirtOptions[key]; };
-    const updateHat = (key: HatKey) => { hatEl.src = hatOptions[key]; };
-
-    (Object.keys(shirtOptions) as ShirtKey[]).forEach(id => {
-      document.getElementById(id)?.addEventListener('click', () => updateShirt(id));
-    });
-    (Object.keys(skirtOptions) as SkirtKey[]).forEach(id => {
-      document.getElementById(id)?.addEventListener('click', () => updateSkirt(id));
-    });
-    (Object.keys(hatOptions) as HatKey[]).forEach(id => {
-      document.getElementById(id)?.addEventListener('click', () => updateHat(id));
-    });
-
-    document.getElementById('left-background-button')?.addEventListener('click', () => {
-      currentBg = (currentBg - 1 + backgroundOptions.length) % backgroundOptions.length;
-      updateBg(currentBg);
-    });
-    document.getElementById('right-background-button')?.addEventListener('click', () => {
-      currentBg = (currentBg + 1) % backgroundOptions.length;
-      updateBg(currentBg);
-    });
-
-    updateBg(currentBg);
-  }, []);
-
   return (
+    <>
+      {/* Profile container */}
+      <div className="profile-layout">
 
-    //PARTE DEL PERFIL ANTERIOR
-    <div className="profile-page">
-      <div className="profile-container">
-        <div className="profile-header">
-          <img src={user.avatarUrl} alt="Avatar" />
-          <div className="profile-info">
-            <h2>{user.name}</h2>
-            <p>@{user.username}</p>
+        <div className="profile-container">
+          <div className="profile-header">
+            <img src={user.avatarUrl} alt={`${user.name}'s avatar`} />
+            <div className="profile-info">
+              <h2>{user.name}</h2>
+              <p>@{user.username}</p>
+            </div>
+          </div>
+          <p className="profile-bio">{user.bio}</p>
+          <p className="profile-email">📧 {user.email}</p>
+          <button className="edit-button" onClick={handleEdit}>
+            Edit profile
+          </button>
+        </div>
+
+        {/* Clouds */}
+        <div className="clouds-wrapper">
+          <div className="cloudsGroup">
+            <img src={cloud1} alt="Cloud 1" className="cloud cloud-1" />
+            <img src={cloud2} alt="Cloud 2" className="cloud cloud-2" />
+            <img src={cloud3} alt="Cloud 3" className="cloud cloud-3" />
           </div>
         </div>
-        <p className="profile-bio">{user.bio}</p>
-        <p className="profile-email">📧 {user.email}</p>
-        <button className="edit-button" onClick={handleEdit}>Edit profile</button>
-      </div>
 
-      <div className="dressUp_container">
-        <div className="dress-up-panel">
-          <div className="pochacco-container">
-            <img id="shirt" src={head} alt="shirt" />
-            <img id="skirt" src={skirtImg} alt="skirt" />
-            <img id="hat" src={frogHat} alt="hat" />
+
+        {/* Dressup */}
+        <div className="dressup-frame">
+          <div className="dressup-header">What should i wear today?</div>
+
+          <div className="dressup-preview">
+            <button className="arrow-left">←</button>
+            <div className="character-area">
+              <img src="background.png" className="preview-bg" />
+              <img src="character.png" className="preview-character" />
+            </div>
+            <button className="arrow-right">→</button>
           </div>
-          <div className="dress-up-controls">
-            <button id="shirt-1" className="option-button"><img src={optBlueShirt} alt="Blue Shirt"/></button>
-            <button id="shirt-2" className="option-button"><img src={optRedShirt} alt="Red Shirt"/></button>
-            <button id="shirt-3" className="option-button"><img src={optSailorShirt} alt="Sailor Shirt"/></button>
-            <button id="skirt-1" className="option-button"><img src={optBlueSkirt} alt="Skirt"/></button>
-            <button id="skirt-2" className="option-button"><img src={optYellowPants} alt="Yellow Pants"/></button>
-            <button id="skirt-3" className="option-button"><img src={optBluePants} alt="Blue Pants"/></button>
-            <button id="hat-1" className="option-button"><img src={optStrawHat} alt="Straw Hat"/></button>
-            <button id="hat-2" className="option-button"><img src={optFrogHat} alt="Frog Hat"/></button>
-            <button id="hat-3" className="option-button"><img src={optBlueBow} alt="Bow"/></button>
-            <button id="left-background-button">←</button>
-            <button id="right-background-button">→</button>
+
+          <div className="category-tabs">
+            <button className="tab shirt"></button>
+            <button className="tab pants active"></button>
+            <button className="tab hat"></button>
+            <button className="tab confirm"></button>
+          </div>
+
+          <div className="item-options">
+            <img src="item1.png" />
+            <img src="item2.png" />
+            <img src="item3.png" />
           </div>
         </div>
+
       </div>
-    </div>
+
+    </>
   );
+
 };
 
 export default Profile;

@@ -20,8 +20,8 @@ import NightMode from './assets/video/NightMode.mp4';
 import musicFile from './assets/audio/music1.mp3';
 
 // src/ assets/ images
-import wallpaper from './assets/images/HomePage_wallpaper.png';
-import way from './assets/images/HomePage_way.png';
+import wallpaperHomePage from './assets/images/HomePage_wallpaper.png';
+import wallpaperProfilePage from './assets/assets_dressUp/background_dressUp.jpg';
 
 // src/ styles
 import './styles/global.scss';
@@ -56,6 +56,7 @@ const LayoutAllPages = () => {
   const navigate = useNavigate();
 
   const isHomePage = location.pathname === "/home-page";
+  const isProfilePage = location.pathname === "/profile";
   const isStore = location.pathname === "/store";
 
   const noVideoPages = ["/home-page", "/profile"];
@@ -192,21 +193,36 @@ const LayoutAllPages = () => {
         )}
 
         <main
-          className="main-content"
+          className={
+            isHomePage ? 'home-wallpaper' :
+              isProfilePage ? 'profile-wallpaper' :
+                ''
+          }
           style={
             isHomePage
               ? {
-                backgroundImage: `url(${wallpaper})`,
+                backgroundImage: `url(${wallpaperHomePage})`,
                 backgroundSize: 'contain',
                 backgroundRepeat: 'no-repeat',
                 backgroundPosition: 'center',
               }
-              : {}
+              : isProfilePage
+                ? {
+                  backgroundImage: `url(${wallpaperProfilePage})`,
+                  backgroundSize: 'contain',
+                  backgroundRepeat: 'repeat',
+                  backgroundPosition: 'center',
+                }
+                : {}
           }
         >
-
           <Outlet />
         </main>
+
+        <div className="container_footer">
+          <p>&copy; 2025 PURRPIXEL. All rights reserved.</p>
+        </div>
+
 
         {/* LogoutButton only on character-selection */}
         {location.pathname === "/character-selection" && (
@@ -215,9 +231,6 @@ const LayoutAllPages = () => {
           </button>
         )}
 
-        <div className="container_footer">
-          <p>&copy; 2025 PURRPIXEL. All rights reserved.</p>
-        </div>
       </div>
     </QueryClientProvider>
   );
