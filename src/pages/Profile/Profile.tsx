@@ -93,20 +93,25 @@ const Profile: React.FC = () => {
           <div className="dressup-header">What should i wear today?</div>
 
           <div className="dressup-preview">
-            <button className="arrow-left">←</button>
-            <div className="character-area">
-              <img src="background.png" className="preview-bg" />
-              <img src="character.png" className="preview-character" />
+            <div className="character-navigation">
+              <button className="arrow-left">←</button>
+
+              <div className="character-area">
+                <img src="background.png" className="preview-bg" />
+                <img src="character.png" className="preview-character" />
+              </div>
+
+              <button className="arrow-right">→</button>
             </div>
-            <button className="arrow-right">→</button>
+
+            <div className="category-tabs">
+              <button className="tab shirt"></button>
+              <button className="tab pants active"></button>
+              <button className="tab hat"></button>
+              <button className="tab confirm"></button>
+            </div>
           </div>
 
-          <div className="category-tabs">
-            <button className="tab shirt"></button>
-            <button className="tab pants active"></button>
-            <button className="tab hat"></button>
-            <button className="tab confirm"></button>
-          </div>
 
           <div className="item-options">
             <img src="item1.png" />
