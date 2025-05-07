@@ -58,7 +58,7 @@ const LayoutAllPages = () => {
   const isHomePage = location.pathname === "/home-page";
   const isStore = location.pathname === "/store";
 
-  const noVideoPages = ["/home-page"];
+  const noVideoPages = ["/home-page", "/profile"];
   const hideVideo = noVideoPages.includes(location.pathname);
 
   {/* Rutes: main-page-buttons-fixed */ }

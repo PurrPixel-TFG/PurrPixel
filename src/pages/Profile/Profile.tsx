@@ -1,11 +1,10 @@
 import React, { useEffect } from "react";
 import './Profile.scss';
 
-// Imágenes de contenido
+// Text header
 import textContent from '../../../assets_dressUp/text-content.png';
 
-// Fondos y nubes
-import bgYellow from '../../assets/assets_dressUp/background/background-yellow.png';
+// Moving clouds
 import cloud1 from '../../../assets_dressUp/background/cloud-1.png';
 import cloud2 from '../../../assets_dressUp/background/cloud-2.png';
 import cloud3 from '../../../assets_dressUp/background/cloud-3.png';
@@ -30,14 +29,18 @@ import shirtIcon from '../../../assets_dressUp/label-icons/shirt-icon.png';
 
 // ROPITA
 import optBlueBow from '../../assets/assets_dressUp/option-icons/blue-bow-icon.png';
+
 import optBlueShirt from '../../assets/assets_dressUp/option-icons/blue-shirt-icon.png';
 import optBlueSkirt from '../../assets/assets_dressUp/option-icons/blue-skirt-icon.png';
-import optBluePants from '../../assets/assets_dressUp/option-icons/blue-pants-icon.png';
 import optRedShirt from '../../assets/assets_dressUp/option-icons/red-shirt-icon.png';
 import optSailorShirt from '../../assets/assets_dressUp/option-icons/sailor-shirt-icon.png';
+
+import optBluePants from '../../assets/assets_dressUp/option-icons/blue-pants-icon.png';
+import optYellowPants from '../../assets/assets_dressUp/option-icons/yellow-pants-icon.png';
+
 import optStrawHat from '../../assets/assets_dressUp/option-icons/straw-hat-icon.png';
 import optFrogHat from '../../assets/assets_dressUp/option-icons/frog-hat-icon.png';
-import optYellowPants from '../../assets/assets_dressUp/option-icons/yellow-pants-icon.png';
+
 
 const Profile: React.FC = () => {
   const user = {
