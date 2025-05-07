@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import './Profile.scss';
 
 // Profile.tsx
@@ -19,16 +19,15 @@ import pantsIcon from '../../assets/assets_dressUp/menu_dressUp/menu-pants-icon.
 import shirtIcon from '../../assets/assets_dressUp/menu_dressUp/menu-shirt-icon.png';
 
 // Elements
-import head from '../../../assets/assets_dressUp/dress_dressUp/head.png';
-import shirtBlue from '../../../assets/assets_dressUp/dress_dressUp/shirt-blue.png';
-import shirtRed from '../../../assets/assets_dressUp/dress_dressUp/shirt-red.png';
-import shirtSailor from '../../../assets/assets_dressUp/dress_dressUp/shirt-sailor.png';
-import skirtBlue from '../../../assets/assets_dressUp/dress_dressUp/skirt-blue.png';
-import pantsYellow from '../../../assets/assets_dressUp/dress_dressUp/pants-yellow.png';
-import pantsBlue from '../../../assets/assets_dressUp/dress_dressUp/pants-blue.png';
-import hatFrog from '../../../assets/assets_dressUp/dress_dressUp/hat-frog.png';
-import hatStraw from '../../../assets/assets_dressUp/dress_dressUp/hat-straw.png';
-import hatBlueBow from '../../../assets/assets_dressUp/dress_dressUp/hat-blueBow.png';
+import shirtBlue from '../../assets/assets_dressUp/dress_dressUp/shirt-blue.png';
+import shirtRed from '../../assets/assets_dressUp/dress_dressUp/shirt-red.png';
+import shirtSailor from '../../assets/assets_dressUp/dress_dressUp/shirt-sailor.png';
+import skirtBlue from '../../assets/assets_dressUp/dress_dressUp/skirt-blue.png';
+import pantsYellow from '../../assets/assets_dressUp/dress_dressUp/pants-yellow.png';
+import pantsBlue from '../../assets/assets_dressUp/dress_dressUp/pants-blue.png';
+import hatFrog from '../../assets/assets_dressUp/dress_dressUp/hat-frog.png';
+import hatStraw from '../../assets/assets_dressUp/dress_dressUp/hat-straw.png';
+import hatBlueBow from '../../assets/assets_dressUp/dress_dressUp/hat-blueBow.png';
 
 // Icon
 import iconHatBlueBow from '../../assets/assets_dressUp/icon_dressUp/icon-hat-blueBow.png';
@@ -53,6 +52,21 @@ const Profile: React.FC = () => {
   };
 
   const handleEdit = () => alert("Edit profile");
+
+  const [activeShirt, setActiveShirt] = useState<string | null>(null);
+  const [activePants, setActivePants] = useState<string | null>(null);
+  const [activeHat, setActiveHat] = useState<string | null>(null);
+
+  const toggleClothing = (type: 'shirt' | 'pants' | 'hat', value: string) => {
+    if (type === 'shirt') {
+      setActiveShirt(prev => prev === value ? null : value);
+    } else if (type === 'pants') {
+      setActivePants(prev => prev === value ? null : value);
+    } else if (type === 'hat') {
+      setActiveHat(prev => prev === value ? null : value);
+    }
+  };
+
 
   return (
     <>
@@ -96,13 +110,24 @@ const Profile: React.FC = () => {
               </button>
 
               <div className="character-area">
-                <img src={catOrange} className="preview-character" alt="Cat Character" />
+                <img src={catOrange} className="layer face" alt="Cat base" />
+                {activeHat === 'hat-frog' && (
+                  <img src={hatFrog} className="layer hat" alt="Hat" />
+                )}
+                {activeShirt === 'shirt-blue' && (
+                  <img src={shirtBlue} className="layer shirt" alt="Shirt" />
+                )}
+                {activePants === 'pants-blue' && (
+                  <img src={pantsBlue} className="layer pants" alt="Pants" />
+                )}
               </div>
+
+
 
               <button className="arrow-right">
                 <img src={arrowRightDressUp} alt="Right" />
               </button>
-              
+
             </div>
 
 
@@ -124,10 +149,23 @@ const Profile: React.FC = () => {
 
 
           <div className="dress-dressUp">
-            <img src={iconShirtBlue} alt="Blue Shirt" />
-            <img src={iconShirtRed} alt="Red Shirt" />
-            <img src={iconShirtSailor} alt="Sailor Shirt" />
+            <img
+              src={iconShirtBlue}
+              alt="Blue Shirt"
+              onClick={() => toggleClothing('shirt', 'shirt-blue')}
+            />
+            <img
+              src={iconShirtRed}
+              alt="Red Shirt"
+              onClick={() => toggleClothing('shirt', 'shirt-red')}
+            />
+            <img
+              src={iconShirtSailor}
+              alt="Sailor Shirt"
+              onClick={() => toggleClothing('shirt', 'shirt-sailor')}
+            />
           </div>
+
 
         </div>
 
