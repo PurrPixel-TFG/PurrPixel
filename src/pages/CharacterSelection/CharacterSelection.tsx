@@ -16,55 +16,106 @@ const CharacterSelection: React.FC = () => {
 
         <div className="container_cats_status">
           <div className="status_cat_1 status-cat">
-            <img src={img1} alt="Food" />
-            <img src={img1} alt="Food" />
-            <img src={img1} alt="Food" />
-            <img src={img1} alt="Food" />
-            <img src={img1} alt="Food" />
-            <img src={img3} alt="Water" />
-            <img src={img3} alt="Water" />
-            <img src={img3} alt="Water" />
-            <img src={img3} alt="Water" />
-            <img src={img3} alt="Water" />
-            <img src={img2} alt="Happiness" />
-            <img src={img2} alt="Happiness" />
-            <img src={img2} alt="Happiness" />
-            <img src={img2} alt="Happiness" />
-            <img src={img2} alt="Happiness" />
+            <div className="status-block">
+              <p className="text_health">Health</p>
+              <div className="icons-row">
+                <img src={img1} alt="Health" />
+                <img src={img1} alt="Health" />
+                <img src={img1} alt="Health" />
+                <img src={img1} alt="Health" />
+                <img src={img1} alt="Health" />
+              </div>
+            </div>
+
+            <div className="status-block">
+              <p className="text_clean">Clean</p>
+              <div className="icons-row">
+                <img src={img3} alt="Clean" />
+                <img src={img3} alt="Clean" />
+                <img src={img3} alt="Clean" />
+                <img src={img3} alt="Clean" />
+                <img src={img3} alt="Clean" />
+              </div>
+            </div>
+
+            <div className="status-block">
+              <p className="text_happiness">Happiness</p>
+              <div className="icons-row">
+                <img src={img2} alt="Happiness" />
+                <img src={img2} alt="Happiness" />
+                <img src={img2} alt="Happiness" />
+                <img src={img2} alt="Happiness" />
+                <img src={img2} alt="Happiness" />
+              </div>
+            </div>
           </div>
           <div className="status_cat_2 status-cat">
-            <img src={img1} alt="Food" />
-            <img src={img1} alt="Food" />
-            <img src={img1} alt="Food" />
-            <img src={img1} alt="Food" />
-            <img src={img1} alt="Food" />
-            <img src={img3} alt="Water" />
-            <img src={img3} alt="Water" />
-            <img src={img3} alt="Water" />
-            <img src={img3} alt="Water" />
-            <img src={img3} alt="Water" />
-            <img src={img2} alt="Happiness" />
-            <img src={img2} alt="Happiness" />
-            <img src={img2} alt="Happiness" />
-            <img src={img2} alt="Happiness" />
-            <img src={img2} alt="Happiness" />
+            <div className="status-block">
+              <p className="text_health">Health</p>
+              <div className="icons-row">
+                <img src={img1} alt="Health" />
+                <img src={img1} alt="Health" />
+                <img src={img1} alt="Health" />
+                <img src={img1} alt="Health" />
+                <img src={img1} alt="Health" />
+              </div>
+            </div>
+
+            <div className="status-block">
+              <p className="text_clean">Clean</p>
+              <div className="icons-row">
+                <img src={img3} alt="Clean" />
+                <img src={img3} alt="Clean" />
+                <img src={img3} alt="Clean" />
+                <img src={img3} alt="Clean" />
+                <img src={img3} alt="Clean" />
+              </div>
+            </div>
+
+            <div className="status-block">
+              <p className="text_happiness">Happiness</p>
+              <div className="icons-row">
+                <img src={img2} alt="Happiness" />
+                <img src={img2} alt="Happiness" />
+                <img src={img2} alt="Happiness" />
+                <img src={img2} alt="Happiness" />
+                <img src={img2} alt="Happiness" />
+              </div>
+            </div>
           </div>
           <div className="status_cat_3 status-cat">
-            <img src={img1} alt="Food" />
-            <img src={img1} alt="Food" />
-            <img src={img1} alt="Food" />
-            <img src={img1} alt="Food" />
-            <img src={img1} alt="Food" />
-            <img src={img3} alt="Water" />
-            <img src={img3} alt="Water" />
-            <img src={img3} alt="Water" />
-            <img src={img3} alt="Water" />
-            <img src={img3} alt="Water" />
-            <img src={img2} alt="Happiness" />
-            <img src={img2} alt="Happiness" />
-            <img src={img2} alt="Happiness" />
-            <img src={img2} alt="Happiness" />
-            <img src={img2} alt="Happiness" />
+            <div className="status-block">
+              <p className="text_health">Health</p>
+              <div className="icons-row">
+                <img src={img1} alt="Health" />
+                <img src={img1} alt="Health" />
+                <img src={img1} alt="Health" />
+                <img src={img1} alt="Health" />
+                <img src={img1} alt="Health" />
+              </div>
+            </div>
+
+            <div className="status-block">
+              <p className="text_clean">Clean</p>
+              <div className="icons-row">
+                <img src={img3} alt="Clean" />
+                <img src={img3} alt="Clean" />
+                <img src={img3} alt="Clean" />
+                <img src={img3} alt="Clean" />
+                <img src={img3} alt="Clean" />
+              </div>
+            </div>
+
+            <div className="status-block">
+              <p className="text_happiness">Happiness</p>
+              <div className="icons-row">
+                <img src={img2} alt="Happiness" />
+                <img src={img2} alt="Happiness" />
+                <img src={img2} alt="Happiness" />
+                <img src={img2} alt="Happiness" />
+                <img src={img2} alt="Happiness" />
+              </div>
+            </div>
           </div>
         </div>
       </main>
