@@ -22,6 +22,7 @@ import musicFile from './assets/audio/music1.mp3';
 // src/ assets/ images
 import wallpaperHomePage from './assets/images/HomePage_wallpaper.png';
 import wallpaperProfilePage from './assets/assets_dressUp/background_dressUp.jpg';
+import titlePurrPixel from './assets/images/PURRPIXEL_title.png'
 
 // src/ styles
 import './styles/global.scss';
@@ -160,7 +161,11 @@ const LayoutAllPages = () => {
       <div className="app-layout">
 
         <div className="container_header">
-          <div className="title_purrpixel">PURR PIXEL</div>
+          <img
+            src={titlePurrPixel}
+            alt="PurrPixel Title"
+            className="title-purrpixel"
+          />
 
           {/* Botones */}
           <div className="header-buttons">
@@ -182,7 +187,7 @@ const LayoutAllPages = () => {
         </div>
 
         {/* Rutes: main-page-buttons-fixed */}
-        {navButtonsMap[location.pathname] && (
+        {/* {navButtonsMap[location.pathname] && (
           <div className="main-page-buttons-fixed">
             {navButtonsMap[location.pathname].map((btn) => (
               <Link key={btn.to} to={btn.to} className="main-page-button">
@@ -190,7 +195,7 @@ const LayoutAllPages = () => {
               </Link>
             ))}
           </div>
-        )}
+        )} */}
 
         <main
           className={

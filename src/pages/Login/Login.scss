@@ -15,35 +15,37 @@
     padding: 3px;
     width: 200px;
     box-shadow: 0 0 15px rgba(0, 0, 0, 5);
+    font-family: 'Press Start 2P', monospace;
 }
 
 .form-box {
-    margin-top: 2.5vh;
-    color: #6b15b8;
+    margin-top: 5vh;
+    color: #23143b;
     font-size: 15px;
 
     width: 400px;
     padding: 10px;
-    background-color: transparent;
+    background-color: rgba(144, 91, 172, 0.8); 
     border-radius: 12px;
     box-shadow: 0 0 15px rgba(0, 0, 0, 5);
     position: absolute;
 
-    top: 50%;
+    top: 45%;
     left: 50%;
     transform: translate(-50%, -50%);
     z-index: 10;
 }
 
 .form-group {
-    margin: 20px;
+    margin: 10px;
 
     label {
         margin-bottom: 8px;
+        font-family: 'Press Start 2P', monospace;
         font-weight: bold;
         background: #fff;
         border-radius: 4px;
-        border: 2px solid var(--primary-color);
+        border: 0px;
     }
 
     .form-input {
@@ -59,8 +61,8 @@
 .form-button-container {
     display: flex;
     justify-content: center;
-    margin-top: 20px;
-    margin-bottom: 20px;
+    margin-top: 15px;
+    margin-bottom: 5px;
 }
 
 .button_login {
@@ -73,6 +75,7 @@
     border-radius: 5px;
     display: inline-block;
     box-shadow: 0 0 15px rgba(0, 0, 0, 5);
+    margin-bottom: 1rem;
 }
 
 .cbox_login:checked {

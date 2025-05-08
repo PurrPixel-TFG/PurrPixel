@@ -20,7 +20,9 @@
   align-items: center;
   gap: 20px;
   padding: 65px;
-  background-color: var(--background-color);
+  padding: 10px;
+  background-color: rgba(144, 91, 172, 0.8); 
+  box-shadow: 0 0 15px rgba(0, 0, 0, 5);
   border-radius: 30px;
   max-width: 50%;
   margin: 0 auto;
@@ -32,7 +34,7 @@
 
   .advice {
     font-size: 1rem;
-    color: var(--primary-color);
+    color: #23143b;
     margin-top: 20px;
     margin-bottom: 5px;
     text-align: center;
@@ -66,7 +68,7 @@
     }
 
     .game_button_instructions:hover {
-      background-color: var(--secondary-color);
+      background-color: #fb9184;
       transform: scale(1.05);
     }
   }

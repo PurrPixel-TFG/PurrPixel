@@ -92,7 +92,7 @@ const Register: React.FC = () => {
                         </div>
 
                         <div className="form-button-container">
-                            <Link to="/home-page" className="button_login">Create account</Link>
+                            <Link to="/character-selection" className="button_new_register">Create account</Link>
                         </div>
 
                     </form>
