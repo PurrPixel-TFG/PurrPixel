@@ -6,13 +6,13 @@
 
 .container_cats {
     position: fixed;
-    top: calc(10vh + 80px); // espacio para cabecera + botones
+    top: calc(3vh + 80px); // espacio para cabecera + botones
     left: 50%;
     transform: translateX(-50%);
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 2rem;
+    gap: 5rem;
     flex-wrap: nowrap;
     overflow-x: auto;
     padding: 10px;
@@ -43,13 +43,13 @@
 
 .container_cats_status {
     position: fixed;
-    top: calc(50vh + 80px); // espacio para cabecera + botones
+    top: calc(43vh + 80px); // espacio para cabecera + botones
     left: 50%;
     transform: translateX(-50%);
     display: flex;
     justify-content: space-around;
     align-items: center;
-    gap: 1.5rem;
+    gap: 5rem;
     flex-wrap: nowrap;
     overflow-x: auto;
     padding: 2rem 1rem;
