@@ -3,9 +3,7 @@ import './Profile.scss';
 
 // Profile.tsx
 
-import catOrange from '../../assets/assets_dressUp/catOrange.png';
-import arrowLeftDressUp from '../../assets/assets_dressUp/left-arrow-dressUp.png';
-import arrowRightDressUp from '../../assets/assets_dressUp/right-arrow-dressUp.png';
+import characterUs from '../../assets/assets_dressUp/characterUs.png';
 
 // Moving clouds
 import cloud1 from '../../assets/assets_dressUp/clouds_dressUp/cloud-1.png';
@@ -105,12 +103,8 @@ const Profile: React.FC = () => {
           <div className="dressup-preview">
             <div className="character-navigation">
 
-              <button className="arrow-left">
-                <img src={arrowLeftDressUp} alt="Left" />
-              </button>
-
               <div className="character-area">
-                <img src={catOrange} className="layer face" alt="Cat base" />
+                <img src={characterUs} className="layer face" alt="Cat base" />
                 {activeHat === 'hat-frog' && (
                   <img src={hatFrog} className="layer hat" alt="Hat" />
                 )}
@@ -121,16 +115,13 @@ const Profile: React.FC = () => {
                   <img src={pantsBlue} className="layer pants" alt="Pants" />
                 )}
               </div>
-
-
-
-              <button className="arrow-right">
-                <img src={arrowRightDressUp} alt="Right" />
-              </button>
+             
 
             </div>
 
 
+
+            {/* botones.., borrar? */}
             <div className="menu-dressUp">
               <button className="tab shirt">
                 <img src={shirtIcon} alt="Shirt" />
@@ -141,10 +132,27 @@ const Profile: React.FC = () => {
               <button className="tab hat">
                 <img src={hatIcon} alt="Hat" />
               </button>
-              <button className="tab confirm">
-                <img src={checkIcon} alt="Confirm" />
-              </button>
             </div>
+          </div>
+
+
+
+          <div className="dress-dressUp">
+            <img
+              src={iconHatBlueBow}
+              alt="Blue Bow"
+              onClick={() => toggleClothing('shirt', 'hat-blueBow')}
+            />
+            <img
+              src={iconHatFrog}
+              alt="Frog Hat"
+              onClick={() => toggleClothing('shirt', 'hat-frog')}
+            />
+            <img
+              src={iconHatStraw}
+              alt="Straw Hat"
+              onClick={() => toggleClothing('shirt', 'hat-straw')}
+            />
           </div>
 
 
@@ -165,6 +173,27 @@ const Profile: React.FC = () => {
               onClick={() => toggleClothing('shirt', 'shirt-sailor')}
             />
           </div>
+
+          
+          <div className="dress-dressUp">
+            <img
+              src={iconPantsBlue}
+              alt="Blue Pants"
+              onClick={() => toggleClothing('shirt', 'pants-blue')}
+            />
+            <img
+              src={iconPantsYellow}
+              alt="Yellow Pants"
+              onClick={() => toggleClothing('shirt', 'pants-yellow')}
+            />
+            <img
+              src={iconSkirtBlue}
+              alt="Blue Skirt"
+              onClick={() => toggleClothing('shirt', 'skirt-blue')}
+            />
+          </div>
+
+
 
 
         </div>
