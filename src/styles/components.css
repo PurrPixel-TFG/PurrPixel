@@ -1,0 +1,115 @@
+nav {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  display: flex;
+  gap: 15px;
+  padding-right: 75px;
+}
+
+.index_button_top {
+  font-size: 15px;
+  font-weight: bold;
+  color: var(--text-color);
+  text-decoration: none;
+}
+
+.main-page-buttons-fixed {
+  position: relative;
+  width: 100%;
+  background: var(--primary-color);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem;
+  z-index: 1000;
+}
+
+.main-page-button {
+  padding: 0.6rem 1.2rem;
+  font-weight: bold;
+  border-radius: 8px;
+  background-color: white;
+  color: #333;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  text-decoration: none;
+}
+.main-page-button:hover {
+  background-color: #eee;
+}
+
+.button_logout {
+  position: fixed;
+  bottom: 5rem;
+  right: 5rem;
+  background: #fff;
+  border-radius: 8px;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  z-index: 1000;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+/* Header container for the buttons */
+.container_header {
+  position: relative;
+}
+
+/* Button container: back on the left, music on the right */
+.header-buttons {
+  position: absolute;
+  top: 10px;
+  left: 0;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 1rem;
+}
+
+.left-buttons,
+.right-buttons {
+  display: flex;
+  align-items: center;
+}
+
+/* Shared base style for buttons */
+.back-button,
+.button_music {
+  background: white;
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: bold;
+  border: none;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.button_music {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 120px;
+  white-space: nowrap;
+  color: black;
+  font-size: 18px;
+}
+
+/* Logout button, if you leave it on another line */
+.logout-button {
+  position: fixed;
+  bottom: 5rem;
+  right: 1.5rem;
+  background: white;
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
+  border: none;
+  color: black;
+  z-index: 2000;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}/*# sourceMappingURL=components.css.map */
