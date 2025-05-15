@@ -1,3 +1,18 @@
 @import '../../styles/variables';
 @import '../../styles/components';
 @import '../../styles/global';
+
+.p-6 {
+  position: relative;  /* para que z-index funcione */
+  z-index: 10000;      /* un valor alto para estar arriba */
+  background-color: white;  /* opcional, para que el quiz no se vea transparente */
+  max-width: 600px;          /* opcional: para que no ocupe todo */
+  margin: 2rem auto;         /* opcional: centrarlo y separar del borde */
+  padding: 1rem;             /* opcional: espacio interno */
+  border-radius: 8px;        /* opcional: bordes redondeados */
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15); /* opcional: sombra para destacar */
+}
+
+
+  
+

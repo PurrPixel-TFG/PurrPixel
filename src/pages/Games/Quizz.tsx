@@ -3,9 +3,10 @@ import './Quizz.scss';
 import { questions } from "./questions";
 
 const App: React.FC = () => {
+  
   const [step, setStep] = useState(0); // 0 = inicio, 1-n = preguntas, n+1 = resultados
   const [score, setScore] = useState(0);
-
+console.log("Step actual:", step);
   const handleAnswer = (answer: string) => {
     const currentQuestion = questions[step - 1];
     if (answer === currentQuestion.correctAnswer) {
