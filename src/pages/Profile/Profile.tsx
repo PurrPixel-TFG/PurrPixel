@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import './Profile.scss';
 
 // Profile.tsx
@@ -10,12 +10,6 @@ import cloud1 from '../../assets/assets_dressUp/clouds_dressUp/cloud-1.png';
 import cloud2 from '../../assets/assets_dressUp/clouds_dressUp/cloud-2.png';
 import cloud3 from '../../assets/assets_dressUp/clouds_dressUp/cloud-3.png';
 
-// Menu icons
-import checkIcon from '../../assets/assets_dressUp/menu_dressUp/menu-check-icon.png';
-import hatIcon from '../../assets/assets_dressUp/menu_dressUp/menu-hat-icon.png';
-import pantsIcon from '../../assets/assets_dressUp/menu_dressUp/menu-pants-icon.png';
-import shirtIcon from '../../assets/assets_dressUp/menu_dressUp/menu-shirt-icon.png';
-
 // Elements
 import shirtBlue from '../../assets/assets_dressUp/dress_dressUp/shirt-blue.png';
 import shirtRed from '../../assets/assets_dressUp/dress_dressUp/shirt-red.png';
@@ -25,10 +19,10 @@ import pantsYellow from '../../assets/assets_dressUp/dress_dressUp/pants-yellow.
 import pantsBlue from '../../assets/assets_dressUp/dress_dressUp/pants-blue.png';
 import hatFrog from '../../assets/assets_dressUp/dress_dressUp/hat-frog.png';
 import hatStraw from '../../assets/assets_dressUp/dress_dressUp/hat-straw.png';
-import hatBlueBow from '../../assets/assets_dressUp/dress_dressUp/hat-blueBow.png';
+import hatPink from '../../assets/assets_dressUp/dress_dressUp/hat-pink.png';
 
 // Icon
-import iconHatBlueBow from '../../assets/assets_dressUp/icon_dressUp/icon-hat-blueBow.png';
+import iconHatPink from '../../assets/assets_dressUp/icon_dressUp/icon-hat-pink.png';
 import iconShirtBlue from '../../assets/assets_dressUp/icon_dressUp/icon-shirt-blue.png';
 import iconShirtRed from '../../assets/assets_dressUp/icon_dressUp/icon-shirt-red.png';
 import iconShirtSailor from '../../assets/assets_dressUp/icon_dressUp/icon-shirt-sailor.png';
@@ -105,53 +99,59 @@ const Profile: React.FC = () => {
 
               <div className="character-area">
                 <img src={characterUs} className="layer face" alt="Cat base" />
+                <img src={hatStraw} className="layer hat" alt="Hat" />
+                <img src={shirtRed} className="layer shirt" alt="Shirt" />
+                <img src={pantsBlue} className="layer pants" alt="Pants" />
+
+                
                 {activeHat === 'hat-frog' && (
                   <img src={hatFrog} className="layer hat" alt="Hat" />
                 )}
+                {activeHat === 'hat-straw' && (
+                  <img src={hatStraw} className="layer hat" alt="Hat" />
+                )}
+                {activeHat === 'hat-Pink' && (
+                  <img src={hatPink} className="layer hat" alt="Hat" />
+                )}
+
                 {activeShirt === 'shirt-blue' && (
                   <img src={shirtBlue} className="layer shirt" alt="Shirt" />
+                )}
+                {activeShirt === 'shirt-red' && (
+                  <img src={shirtRed} className="layer shirt" alt="Shirt" />
+                )}
+                {activeShirt === 'shirt-sailor' && (
+                  <img src={shirtSailor} className="layer shirt" alt="Shirt" />
                 )}
                 {activePants === 'pants-blue' && (
                   <img src={pantsBlue} className="layer pants" alt="Pants" />
                 )}
+                 {activePants === 'pants-yellow' && (
+                  <img src={pantsYellow} className="layer pants" alt="Pants" />
+                )}
+                {activePants === 'skirt-blue' && (
+                  <img src={skirtBlue} className="layer pants" alt="Pants" />
+                )}
               </div>
-             
-
-            </div>
-
-
-
-            {/* botones.., borrar? */}
-            <div className="menu-dressUp">
-              <button className="tab shirt">
-                <img src={shirtIcon} alt="Shirt" />
-              </button>
-              <button className="tab pants active">
-                <img src={pantsIcon} alt="Pants" />
-              </button>
-              <button className="tab hat">
-                <img src={hatIcon} alt="Hat" />
-              </button>
             </div>
           </div>
 
 
-
           <div className="dress-dressUp">
             <img
-              src={iconHatBlueBow}
-              alt="Blue Bow"
-              onClick={() => toggleClothing('shirt', 'hat-blueBow')}
+              src={iconHatPink}
+              alt="Pink Hat"
+              onClick={() => toggleClothing('hat', 'hat-Pink')}
             />
             <img
               src={iconHatFrog}
               alt="Frog Hat"
-              onClick={() => toggleClothing('shirt', 'hat-frog')}
+              onClick={() => toggleClothing('hat', 'hat-frog')}
             />
             <img
               src={iconHatStraw}
               alt="Straw Hat"
-              onClick={() => toggleClothing('shirt', 'hat-straw')}
+              onClick={() => toggleClothing('hat', 'hat-straw')}
             />
           </div>
 
@@ -179,22 +179,19 @@ const Profile: React.FC = () => {
             <img
               src={iconPantsBlue}
               alt="Blue Pants"
-              onClick={() => toggleClothing('shirt', 'pants-blue')}
+              onClick={() => toggleClothing('pants', 'pants-blue')}
             />
             <img
               src={iconPantsYellow}
               alt="Yellow Pants"
-              onClick={() => toggleClothing('shirt', 'pants-yellow')}
+              onClick={() => toggleClothing('pants', 'pants-yellow')}
             />
             <img
               src={iconSkirtBlue}
               alt="Blue Skirt"
-              onClick={() => toggleClothing('shirt', 'skirt-blue')}
+              onClick={() => toggleClothing('pants', 'skirt-blue')}
             />
           </div>
-
-
-
 
         </div>
 
