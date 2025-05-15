@@ -15,6 +15,7 @@ const App: React.FC = () => {
   };
 
   const startQuiz = () => {
+    console.log("Iniciando el quiz...");
     setStep(1);
     setScore(0);
   };

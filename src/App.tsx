@@ -45,7 +45,15 @@ import Quizz from './pages/Games/Quizz';
 import Settings from './pages/Settings/Settings';
 import HomePage from './pages/HomePage/HomePage';
 import Cat from './pages/Cats/Cat_1';
+//Test Víctor:
+/*
+import { Link } from 'react-router-dom';
 
+function SomeComponent() {
+  return (
+    <Link to="/quizz">Ir al Quiz</Link>
+  );
+}*/
 // src/ context
 import { ThemeProvider } from './context/ThemeContext';
 import { useTheme } from './context/ThemeContext';
