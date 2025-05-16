@@ -23,7 +23,7 @@ import hatStraw from '../../assets/assets_dressUp/dress_dressUp/hat-straw.png';
 import hatPink from '../../assets/assets_dressUp/dress_dressUp/hat-Pink.png';
 
 // Icon
-import iconHatPink from '../../assets/assets_dressUp/icon_dressUp/icon-hat-pink.png';
+import iconHatPink from '../../assets/assets_dressUp/icon_dressUp/icon-hat-Pink.png';
 import iconShirtBlue from '../../assets/assets_dressUp/icon_dressUp/icon-shirt-blue.png';
 import iconShirtRed from '../../assets/assets_dressUp/icon_dressUp/icon-shirt-red.png';
 import iconShirtSailor from '../../assets/assets_dressUp/icon_dressUp/icon-shirt-sailor.png';
