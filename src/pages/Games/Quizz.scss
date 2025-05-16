@@ -2,6 +2,7 @@
 @import '../../styles/components';
 @import '../../styles/global';
 
+//Estilos creados para preservar el z-index del quiz y poder trabajar con el.
 .p-6 {
   position: relative;  /* para que z-index funcione */
   z-index: 10000;      /* un valor alto para estar arriba */

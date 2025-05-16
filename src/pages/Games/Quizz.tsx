@@ -2,11 +2,33 @@ import React, { useState } from "react";
 import './Quizz.scss';
 import { questions } from "./questions";
 
+/* 
+Función que devuelve el mensaje de resultado según la puntuación obtenida y el total de preguntas.
+Dependiendo de la puntuación, se devuelve un mensaje diferente.
+*/
+function getResultMessage(score: number, total: number): string {
+  if (score === 0) {
+    return "Si te ponen un gato delante y un elefante no los diferencias. ¡Sigue intentándolo!";
+  } else if (score < total / 2) {
+    return "¡No está mal! Pero puedes mejorar. ¡Sigue aprendiendo sobre gatos!";
+  } else if (score === Math.floor(total / 2)) {
+    return "¡Aprobado raspado! ¡Sigue aprendiendo sobre gatos!";
+  } else if (score < total) {
+    return "¡Controlas bastante de gatos! ¡Muy bien!";
+  } else {
+    return "¡Eres un verdadero amante de los gatos! ¡Increíble!";
+  }
+}
+/*
+Esta función es el componente principal de la aplicación.
+Maneja el estado del cuestionario, incluyendo la pregunta actual y la puntuación.
+Muestra la pantalla de inicio, las preguntas y los resultados.
+El estado se gestiona con useState, que permite actualizar el estado de la aplicación.
+*/
 const App: React.FC = () => {
-  
   const [step, setStep] = useState(0); // 0 = inicio, 1-n = preguntas, n+1 = resultados
   const [score, setScore] = useState(0);
-console.log("Step actual:", step);
+
   const handleAnswer = (answer: string) => {
     const currentQuestion = questions[step - 1];
     if (answer === currentQuestion.correctAnswer) {
@@ -16,11 +38,11 @@ console.log("Step actual:", step);
   };
 
   const startQuiz = () => {
-    console.log("Iniciando el quiz...");
     setStep(1);
     setScore(0);
   };
 
+  // Pantalla de inicio
   if (step === 0) {
     return (
       <div className="text-center p-6">
@@ -35,6 +57,7 @@ console.log("Step actual:", step);
     );
   }
 
+  // Pantalla de resultados
   if (step > questions.length) {
     return (
       <div className="text-center p-6">
@@ -43,11 +66,7 @@ console.log("Step actual:", step);
           Aciertos: {score} / {questions.length}
         </p>
         <p className="mt-2 italic">
-          {score === questions.length
-            ? "¡Eres un verdadero amante de los gatos! 😺"
-            : score > 1
-            ? "¡Buen trabajo! 🐾"
-            : "¡A seguir aprendiendo sobre gatos! 🐱"}
+          {getResultMessage(score, questions.length)}
         </p>
         <button
           onClick={startQuiz}
@@ -59,6 +78,7 @@ console.log("Step actual:", step);
     );
   }
 
+  // Pantalla de pregunta actual
   const current = questions[step - 1];
 
   return (
