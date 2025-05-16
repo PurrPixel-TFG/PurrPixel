@@ -20,7 +20,7 @@ import pantsYellow from '../../assets/assets_dressUp/dress_dressUp/pants-yellow.
 import pantsBlue from '../../assets/assets_dressUp/dress_dressUp/pants-blue.png';
 import hatFrog from '../../assets/assets_dressUp/dress_dressUp/hat-frog.png';
 import hatStraw from '../../assets/assets_dressUp/dress_dressUp/hat-straw.png';
-import hatPink from '../../assets/assets_dressUp/dress_dressUp/hat-Pink.png';
+import hatPink from '../../assets/assets_dressUp/dress_dressUp/hat-pink.png';
 
 // Icon
 import iconHatPink from '../../assets/assets_dressUp/icon_dressUp/icon-hat-pink.png';
