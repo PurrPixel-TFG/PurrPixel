@@ -24,11 +24,11 @@ const HomePage: React.FC = () => {
 
     const hitboxSize = { width: 50, height: 50 };
 
-    const stationSettingsImagePos = { x: 800, y: 300 };
-    const stationStoreImagePos = { x: 600, y: 480 };
-    const stationProfileImagePos = { x: 1250, y: 480 };
+    const stationSettingsImagePos = { x: 800, y: 70 };
+    const stationStoreImagePos = { x: 600, y: 350 };
+    const stationProfileImagePos = { x: 1250, y: 320 };
     const stationPharmacyImagePos = { x: 1100, y: 115 };
-    const stationGamesImagePos = { x: 200, y: 200 };
+    const stationGamesImagePos = { x: 300, y: 100 };
 
     const stationSettingsBounds = {
         x: stationSettingsImagePos.x + 100 / 2 - hitboxSize.width / 2,
@@ -69,25 +69,25 @@ const HomePage: React.FC = () => {
         const handleKeyDown = (e: KeyboardEvent) => {
             setIsMoving(true);
             setCatPosition((prev) => {
-              const speed = 10;
-              let newPos = { ...prev };
-          
-              if (e.key === "ArrowRight") {
-                newPos.x += speed;
-                setDirection("right");
-              } else if (e.key === "ArrowLeft") {
-                newPos.x -= speed;
-                setDirection("left");
-              } else if (e.key === "ArrowUp") {
-                newPos.y -= speed;
-              } else if (e.key === "ArrowDown") {
-                newPos.y += speed;
-              }
-          
-              return newPos;
+                const speed = 10;
+                let newPos = { ...prev };
+
+                if (e.key === "ArrowRight") {
+                    newPos.x += speed;
+                    setDirection("right");
+                } else if (e.key === "ArrowLeft") {
+                    newPos.x -= speed;
+                    setDirection("left");
+                } else if (e.key === "ArrowUp") {
+                    newPos.y -= speed;
+                } else if (e.key === "ArrowDown") {
+                    newPos.y += speed;
+                }
+
+                return newPos;
             });
-          };
-          
+        };
+
 
         const handleKeyUp = () => {
             setIsMoving(false);
@@ -102,21 +102,38 @@ const HomePage: React.FC = () => {
     }, []);
 
     useEffect(() => {
-        const isColliding = (a: typeof catPosition, b: { x: number; y: number; width: number; height: number }) => {
-            return (
-                a.x + 50 > b.x &&
-                a.x < b.x + b.width &&
-                a.y + 50 > b.y &&
-                a.y < b.y + b.height
-            );
+        const doesCatCollideWithArea = (
+            catPosition: { x: number; y: number },
+            area: { x: number; y: number; width: number; height: number }
+        ) => {
+            const catWidth = 50;
+            const catHeight = 50;
+
+            const catRight = catPosition.x + catWidth;
+            const catBottom = catPosition.y + catHeight;
+
+            const areaRight = area.x + area.width;
+            const areaBottom = area.y + area.height;
+
+            const isHorizontallyOverlapping = catRight > area.x && catPosition.x < areaRight;
+            const isVerticallyOverlapping = catBottom > area.y && catPosition.y < areaBottom;
+
+            return isHorizontallyOverlapping && isVerticallyOverlapping;
         };
 
-        if (isColliding(catPosition, stationSettingsBounds)) navigate("/settings");
-        else if (isColliding(catPosition, stationStoreBounds)) navigate("/store");
-        else if (isColliding(catPosition, stationProfileBounds)) navigate("/profile");
-        else if (isColliding(catPosition, stationPharmacyBounds)) navigate("/store");
-        else if (isColliding(catPosition, stationGamesBounds)) navigate("/games");
+        if (doesCatCollideWithArea(catPosition, stationSettingsBounds)) {
+            navigate("/settings");
+        } else if (doesCatCollideWithArea(catPosition, stationStoreBounds)) {
+            navigate("/store");
+        } else if (doesCatCollideWithArea(catPosition, stationProfileBounds)) {
+            navigate("/profile");
+        } else if (doesCatCollideWithArea(catPosition, stationPharmacyBounds)) {
+            navigate("/store");
+        } else if (doesCatCollideWithArea(catPosition, stationGamesBounds)) {
+            navigate("/games");
+        }
     }, [catPosition, navigate]);
+
 
     useEffect(() => {
         const centerX = window.innerWidth / 2 - 25;
@@ -126,6 +143,7 @@ const HomePage: React.FC = () => {
 
     return (
         <div className="home-page-way-wrapper">
+            <div className="home-background-layer" />
             <div className="scene">
                 <img src={stationSettings} alt="Settings" className="station_settings" style={{
                     position: 'absolute',

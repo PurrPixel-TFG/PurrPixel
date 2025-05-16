@@ -37,7 +37,8 @@ body {
   color: var(--text-color);
   text-align: center;
   align-items: center;
-  z-index: 1;
+  position: relative;
+  z-index: 11;
 }
 
 .container_header {

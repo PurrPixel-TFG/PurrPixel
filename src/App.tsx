@@ -197,7 +197,7 @@ const LayoutAllPages = () => {
           </div>
         )} */}
 
-        <main
+        {/* <main
           className={
             isHomePage ? 'home-wallpaper' :
               isProfilePage ? 'profile-wallpaper' :
@@ -207,22 +207,40 @@ const LayoutAllPages = () => {
             isHomePage
               ? {
                 backgroundImage: `url(${wallpaperHomePage})`,
-                backgroundSize: 'contain',
+                backgroundSize: 'cover', // importante para ocupar todo el fondo
                 backgroundRepeat: 'no-repeat',
                 backgroundPosition: 'center',
+                position: 'fixed',
+                top: 0,
+                left: 0,
+                width: '100%',
+                height: '100%',
+                zIndex: -1, // asegura que esté detrás de todo
               }
               : isProfilePage
                 ? {
                   backgroundImage: `url(${wallpaperProfilePage})`,
-                  backgroundSize: 'contain',
+                  backgroundSize: 'cover',
                   backgroundRepeat: 'repeat',
                   backgroundPosition: 'center',
+                  position: 'fixed',
+                  top: 0,
+                  left: 0,
+                  width: '100%',
+                  height: '100%',
+                  zIndex: -1,
                 }
                 : {}
           }
+
         >
           <Outlet />
+        </main> */}
+
+        <main>
+          <Outlet />
         </main>
+
 
         <div className="container_footer">
           <p>&copy; 2025 PURRPIXEL. All rights reserved.</p>
