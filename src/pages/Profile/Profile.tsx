@@ -4,6 +4,7 @@ import './Profile.scss';
 // Profile.tsx
 
 import characterUs from '../../assets/assets_dressUp/characterUs.png';
+import wallpaperProfilePage from '../../assets/assets_dressUp/background_dressUp.jpg';
 
 // Moving clouds
 import cloud1 from '../../assets/assets_dressUp/clouds_dressUp/cloud-1.png';
@@ -63,8 +64,8 @@ const Profile: React.FC = () => {
   return (
     <>
       {/* Profile container */}
+      <div className="profile-background-layer" />
       <div className="profile-layout">
-
         <div className="profile-container">
           <div className="profile-header">
             <img src={user.avatarUrl} alt={`${user.name}'s avatar`} />

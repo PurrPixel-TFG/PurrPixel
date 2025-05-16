@@ -20,8 +20,6 @@ import NightMode from './assets/video/NightMode.mp4';
 import musicFile from './assets/audio/music1.mp3';
 
 // src/ assets/ images
-import wallpaperHomePage from './assets/images/HomePage_wallpaper.png';
-import wallpaperProfilePage from './assets/assets_dressUp/background_dressUp.jpg';
 import titlePurrPixel from './assets/images/PURRPIXEL_title.png'
 
 // src/ styles
@@ -196,46 +194,6 @@ const LayoutAllPages = () => {
             ))}
           </div>
         )} */}
-
-        {/* <main
-          className={
-            isHomePage ? 'home-wallpaper' :
-              isProfilePage ? 'profile-wallpaper' :
-                ''
-          }
-          style={
-            isHomePage
-              ? {
-                backgroundImage: `url(${wallpaperHomePage})`,
-                backgroundSize: 'cover', // importante para ocupar todo el fondo
-                backgroundRepeat: 'no-repeat',
-                backgroundPosition: 'center',
-                position: 'fixed',
-                top: 0,
-                left: 0,
-                width: '100%',
-                height: '100%',
-                zIndex: -1, // asegura que esté detrás de todo
-              }
-              : isProfilePage
-                ? {
-                  backgroundImage: `url(${wallpaperProfilePage})`,
-                  backgroundSize: 'cover',
-                  backgroundRepeat: 'repeat',
-                  backgroundPosition: 'center',
-                  position: 'fixed',
-                  top: 0,
-                  left: 0,
-                  width: '100%',
-                  height: '100%',
-                  zIndex: -1,
-                }
-                : {}
-          }
-
-        >
-          <Outlet />
-        </main> */}
 
         <main>
           <Outlet />

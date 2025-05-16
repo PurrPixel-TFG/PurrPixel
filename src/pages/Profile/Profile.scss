@@ -10,17 +10,21 @@
   height: 76vh;
 }
 
-// All layout Profile
-.profile-layout {
-  display: grid;
-  grid-template-columns: auto 1fr;
-  grid-template-rows: auto auto;
-  column-gap: 2rem;
-  row-gap: 0.5rem;
-  align-items: start;
+.profile-background-layer {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url('../../assets/assets_dressUp/background_dressUp.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  z-index: 0;
+  pointer-events: none;
 }
 
-// Profile container
+// All layout Profile
 .profile-layout {
   display: grid;
   grid-template-columns: auto 1fr;
@@ -39,7 +43,7 @@
   flex-direction: column;
   align-items: center;
   margin-top: 1rem;
-  margin-left: 1rem;
+  margin-left: 6rem;
   padding: 2rem;
   background-color: #f0f0f0;
   border-radius: 10px;
@@ -107,9 +111,10 @@
 
 .cloudsGroup {
   display: flex;
-  gap: 15rem;
+  gap: 10rem;
   padding: 1rem;
   margin-top: 35px;
+  margin-left: -300px;
 }
 
 .cloud {
@@ -181,7 +186,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: -140px;
+  margin-top: -200px;
   font-family: 'Press Start 2P', monospace;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
   z-index: 2000;
