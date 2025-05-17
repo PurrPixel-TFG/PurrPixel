@@ -2,3 +2,91 @@
 @import '../../styles/components';
 @import '../../styles/global';
 
+body{
+    //font-family: 'Times New Roman', Times, serif;
+    background-image: url(../../assets/images/wallp.jpg);
+    //display: flex;
+    //justify-content: center;
+    //align-items: center;
+    //flex-direction: column;
+    height: 100vh;
+}
+
+h1 {
+    color: black;
+    font-size: 3rem;
+    text-shadow: 5px 5px 8px rgb(175, 55, 175);
+    animation: fadeIn 2s ease-out, swing 2s ease-in-out infinite;
+    z-index: 2;
+}
+
+p{
+    display: flex;
+    justify-content: center;
+}
+
+p:last-child{
+    font-weight: bold;
+    font-size: large;
+    color: #ea6506;
+}
+
+@keyframes fadeIn { /*aparición al cargar la página*/
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+}
+
+@keyframes swing { /*balanceo del título*/
+    0% { transform: rotate(-5deg); }
+    25% { transform: rotate(5deg); }
+    50% { transform: rotate(-5deg); }
+    75% { transform: rotate(5deg); }
+    100% { transform: rotate(0); }
+}
+
+/*CONFIGURACIÓN DEL BORDE ROTATORIO*/
+#main-jumpPage{ /*un primer div grande*/
+    height: 350px;
+    width: 600px;
+    background-color: rgb(209, 114, 185);
+    border-radius: 10%;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+#main-jumpPage::before{ /*parte rotatorio*/
+    content: "";
+    position: absolute;
+    height: 680px;
+    width: 700px;
+    background-image: conic-gradient(rgb(6, 6, 6) 20deg, transparent 120deg);
+    animation: rotar 4s linear infinite;
+}
+
+@keyframes rotar{
+    from{
+        transform: rotate(0deg);
+    }
+    to{
+        transform: rotate(-360deg);
+    }
+}
+
+#main-jumpPage::after{ /*un segundo div más pequeño que está por encima del div grande y la parte móvil*/
+    content: "";
+    position: absolute;
+    height: 330px;
+    width: 580px;
+    background-color: rgb(209, 114, 185);
+    border-radius: 10%;
+
+}
+
+.menu{
+    z-index: 2; /*para que se visualice por encima del resto de elementos*/
+}
+

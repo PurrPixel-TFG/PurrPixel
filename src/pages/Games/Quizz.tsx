@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import './Quizz.scss';
+import { useNavigate } from "react-router-dom";
 
 
 /* 
@@ -25,9 +26,15 @@ Maneja el estado del cuestionario, incluyendo la pregunta actual y la puntuació
 Muestra la pantalla de inicio, las preguntas y los resultados.
 El estado se gestiona con useState, que permite actualizar el estado de la aplicación.
 */
+
+
+/* ... tu función getResultMessage y questions siguen igual ... */
+
 const App: React.FC = () => {
   const [step, setStep] = useState(0); // 0 = inicio, 1-n = preguntas, n+1 = resultados
   const [score, setScore] = useState(0);
+
+  const navigate = useNavigate();
 
   const handleAnswer = (answer: string) => {
     const currentQuestion = questions[step - 1];
@@ -42,10 +49,18 @@ const App: React.FC = () => {
     setScore(0);
   };
 
+  // Botón para regresar a la pantalla principal de juegos
+  const BackToGamesButton = () => (
+    <button onClick={() => navigate("/games")}>
+      ← Go back
+    </button>
+  );
+
   // Pantalla de inicio
   if (step === 0) {
     return (
       <div className="text-center p-6">
+        <BackToGamesButton />
         <h1 className="text-2xl font-bold mb-4">¿How much do you know about cats?</h1>
         <button
           onClick={startQuiz}
@@ -53,7 +68,6 @@ const App: React.FC = () => {
         >
           Start Quiz
         </button>
-        
       </div>
     );
   }
@@ -62,6 +76,7 @@ const App: React.FC = () => {
   if (step > questions.length) {
     return (
       <div className="text-center p-6">
+        <BackToGamesButton />
         <h2 className="text-xl font-bold mb-2">Resultado</h2>
         <p>
           Aciertos: {score} / {questions.length}
@@ -84,6 +99,7 @@ const App: React.FC = () => {
 
   return (
     <div className="p-6">
+      <BackToGamesButton />
       <h2 className="text-lg font-semibold mb-4">{current.question}</h2>
       <div className="grid gap-2">
         {current.options.map((option) => (
@@ -99,6 +115,7 @@ const App: React.FC = () => {
     </div>
   );
 };
+
 
 /*
 Este archivo contiene un array de objetos que representan preguntas y respuestas para el quizz de gatos.

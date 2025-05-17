@@ -168,8 +168,8 @@ const LayoutAllPages = () => {
           {/* Botones */}
           <div className="header-buttons">
             <div className="left-buttons">
-              {(location.pathname.startsWith("/games")) ||
-              ["/store", "/settings", "/profile", "/home-page"].includes(location.pathname) && (
+              {
+              ["/store", "/settings", "/profile", "/games", "/home-page"].includes(location.pathname) && (
                 <button className="back-button" onClick={() => navigate('/character-selection')}>
                   ⬅ Character Selection
                 </button>
