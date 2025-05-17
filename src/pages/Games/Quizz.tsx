@@ -8,15 +8,15 @@ Dependiendo de la puntuación, se devuelve un mensaje diferente.
 */
 function getResultMessage(score: number, total: number): string {
   if (score === 0) {
-    return "Si te ponen un gato delante y un elefante no los diferencias. ¡Sigue intentándolo!";
+    return "If you're faced with a cat and an elephant, you can't tell them apart. Keep trying!";
   } else if (score < total / 2) {
-    return "¡No está mal! Pero puedes mejorar. ¡Sigue aprendiendo sobre gatos!";
+    return "Not bad! But you can improve. Keep learning about cats!";
   } else if (score === Math.floor(total / 2)) {
-    return "¡Aprobado raspado! ¡Sigue aprendiendo sobre gatos!";
+    return "Barely passed! Keep learning about cats!";
   } else if (score < total) {
-    return "¡Controlas bastante de gatos! ¡Muy bien!";
+    return "You know quite a bit about cats! Very good!";
   } else {
-    return "¡Eres un verdadero amante de los gatos! ¡Increíble!";
+    return "You're a true cat lover! Amazing!";
   }
 }
 /*
@@ -46,12 +46,12 @@ const App: React.FC = () => {
   if (step === 0) {
     return (
       <div className="text-center p-6">
-        <h1 className="text-2xl font-bold mb-4">¿Cuánto sabes sobre gatos?</h1>
+        <h1 className="text-2xl font-bold mb-4">¿How much do you know about cats?</h1>
         <button
           onClick={startQuiz}
           className="bg-purple-500 text-white px-4 py-2 rounded"
         >
-          Empezar el Quiz
+          Start Quiz
         </button>
       </div>
     );
@@ -109,80 +109,80 @@ El array de preguntas se importa y utiliza en Quizz.tsx para crear un juego inte
 export const questions = [
   {
     id: 1,
-    question: "¿Cuántas horas duerme un gato al día?",
+    question: "How many hours does a cat sleep per day?",
     options: ["4-6", "12-16", "18-20", "22-24"],
     correctAnswer: "12-16",
   },
   {
     id: 2,
-    question: "¿Qué significa cuando un gato amasa con sus patas?",
+    question: "What does it mean when a cat kneads with its paws?",
     options: [
-      "Está cazando",
-      "Está enfadado",
-      "Está cómodo y feliz",
-      "Tiene hambre",
+      "It is hunting",
+      "It is angry",
+      "It is comfortable and happy",
+      "It is hungry",
     ],
-    correctAnswer: "Está cómodo y feliz",
+    correctAnswer: "It is comfortable and happy",
   },
   {
     id: 3,
-    question: "¿Cómo se llama el sonido que hacen los gatos al estar contentos?",
-    options: ["Maullido", "Ronroneo", "Chillido", "Aullido"],
-    correctAnswer: "Ronroneo",
+    question: "What is the name of the sound cats make when they are happy?",
+    options: ["Meow", "Purr", "Scream", "Howl"],
+    correctAnswer: "Purr",
   },
   {
     id: 4,
-    question: "¿Qué debe beber un gato adulto?",
-    options: ["Agua", "Leche", "Zumo", "Cerveza"],
-    correctAnswer: "Agua",
+    question: "What should an adult cat drink?",
+    options: ["Water", "Milk", "Juice", "Beer"],
+    correctAnswer: "Water",
   },
-    {
+  {
     id: 5,
-    question: "Qué sabor NO perciben los gatos?",
-    options: ["Salado", "Amargo", "Ácido", "Dulce"],
-    correctAnswer: "Dulce",
+    question: "Which taste can cats NOT perceive?",
+    options: ["Salty", "Bitter", "Sour", "Sweet"],
+    correctAnswer: "Sweet",
   },
   {
     id: 6,
-    question: "¿Cuántos dientes tiene un gato adulto?",
+    question: "How many teeth does an adult cat have?",
     options: ["20", "24", "30", "32"],
     correctAnswer: "30",
   },
   {
     id: 7,
-    question: "¿Qué parte del cuerpo de un gato es más sensible?",
-    options: ["Patas", "Nariz", "Orejas", "Cola"],
-    correctAnswer: "Nariz",
+    question: "Which part of a cat's body is the most sensitive?",
+    options: ["Paws", "Nose", "Ears", "Tail"],
+    correctAnswer: "Nose",
   },
   {
     id: 9,
-    question: "¿Cuántos sonidos puede emitir un gato para comunicarse?",
-    options: ["Hasta 50", "Hasta 100", "Hasta 10", "Hasta 1000"],
-    correctAnswer: "Hasta 100",
+    question: "How many sounds can a cat make to communicate?",
+    options: ["Up to 50", "Up to 100", "Up to 10", "Up to 1000"],
+    correctAnswer: "Up to 100",
   },
-    {
+  {
     id: 10,
-    question: "¿Cuántos huesos tiene un gato?",
-    options: ["30", "170", "Más de 700", "Alrededor de 230"],
-    correctAnswer: "Alrededor de 230",
+    question: "How many bones does a cat have?",
+    options: ["30", "170", "More than 700", "Around 230"],
+    correctAnswer: "Around 230",
   },
   {
     id: 11,
-    question: "¿Qué color no pueden ver los gatos?",
-    options: ["Rojo", "Verde", "Azul", "Amarillo"],
-    correctAnswer: "Rojo",
+    question: "Which color can't cats see?",
+    options: ["Red", "Green", "Blue", "Yellow"],
+    correctAnswer: "Red",
   },
   {
     id: 12,
-    question: "¿Por qué a los gatos sólo les gusta el agua que se mueve?",
-    options: ["Por higiene", "Porque les divierte", "Porque tienen sed", "Porque está fresquita"],
-    correctAnswer: "Por higiene",
+    question: "Why do cats only like moving water?",
+    options: ["For hygiene", "Because it's fun", "Because they're thirsty", "Because it's fresh"],
+    correctAnswer: "For hygiene",
   },
-    {
+  {
     id: 13,
-    question: "¿Qué significa que un gato se ponga panza arriba?",
-    options: ["Que confía en ti", "Que está preparado para todo", "Que tiene miedo", "Que le pica la espalda"],
-    correctAnswer: "Que confía en ti",
+    question: "What does it mean when a cat shows its belly?",
+    options: ["It trusts you", "It's ready for anything", "It's scared", "Its back itches"],
+    correctAnswer: "It trusts you",
   },
 ];
 
