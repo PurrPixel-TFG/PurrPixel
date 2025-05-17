@@ -15,9 +15,9 @@ const Catch: React.FC = () => {
       <h1>Juego de Atrapar</h1>
       {/* Aquí va el contenido del juego */}
 
-      {/* Botón de retroceso */}
+      {/* Button to go back */}
       <button className="gameBack-button" onClick={handleBack}>
-        ⬅ Volver a la selección de juegos
+        ⬅ Go back
       </button>
     </div>
   );

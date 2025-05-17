@@ -53,6 +53,7 @@ const App: React.FC = () => {
         >
           Start Quiz
         </button>
+        
       </div>
     );
   }

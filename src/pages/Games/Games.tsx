@@ -19,6 +19,7 @@ const Games: React.FC = () => {
           <button>PURR Quizz!</button>
         </Link>
       </div>
+      <Outlet />
     </main>
   );
 };

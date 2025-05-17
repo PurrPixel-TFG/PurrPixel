@@ -168,7 +168,8 @@ const LayoutAllPages = () => {
           {/* Botones */}
           <div className="header-buttons">
             <div className="left-buttons">
-              {["/store", "/settings", "/profile", "/games", "/home-page"].includes(location.pathname) && (
+              {(location.pathname.startsWith("/games")) ||
+              ["/store", "/settings", "/profile", "/home-page"].includes(location.pathname) && (
                 <button className="back-button" onClick={() => navigate('/character-selection')}>
                   ⬅ Character Selection
                 </button>
@@ -235,12 +236,16 @@ const App: React.FC = () => {
             <Route path="profile" element={<Profile />} />
             <Route path="store" element={<Store />} />
             <Route path="games" element={<Games />} />
-            <Route path="jump" element={<Jump />} />
-            <Route path="catch" element={<Catch />} />
-            <Route path="quizz" element={<Quizz />} />
             <Route path="home-page" element={<HomePage />} />
             <Route path="cat" element={<Cat />} />
           </Route>
+
+          <Route path="games" element={<Games />}>
+            <Route path="jump" element={<Jump />} />
+            <Route path="catch" element={<Catch />} />
+            <Route path="quizz" element={<Quizz />} />
+          </Route>
+
         </Routes>
       </Router>
     </ThemeProvider>
