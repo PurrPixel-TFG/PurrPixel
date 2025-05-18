@@ -2,13 +2,14 @@
 @import '../../styles/components';
 @import '../../styles/global';
 
-body{
-    //font-family: 'Times New Roman', Times, serif;
+#jumpBody{
+    font-family: 'Times New Roman', Times, serif;
     background-image: url(../../assets/images/wallp.jpg);
-    //display: flex;
-    //justify-content: center;
-    //align-items: center;
-    //flex-direction: column;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 100vw;
     height: 100vh;
 }
 
@@ -88,5 +89,32 @@ p:last-child{
 
 .menu{
     z-index: 2; /*para que se visualice por encima del resto de elementos*/
+}
+
+.buttonJump-jugar, .gameBack-button{
+    background-color: #e69acc;
+    border: none;
+    padding: 15px 30px;
+    margin: 10px;
+    color: white;
+    font-size: 1.2rem;
+    text-align: center;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+    animation: slideUp 1s ease-out;
+}
+
+.buttonJump-jugar:hover{ /*al pasar por encima del botón, aunmente de tamaño*/
+    transform: scale(1.1);
+}
+
+@keyframes slideUp { /*animación de abajo a arriba al carga la página*/
+    0% { transform: translateY(30px); opacity: 0; }
+    100% { transform: translateY(0); opacity: 1; }
+}
+
+.buttonJump-jugar:active { /*al hacer click se expande*/
+    transform: scale(1.5);
 }
 

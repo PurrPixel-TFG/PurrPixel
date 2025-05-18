@@ -11,16 +11,17 @@ const Jump: React.FC = () => {
   };
 
   return (
-    
+  
+<div id="jumpBody">
 <div id="main-jumpPage">
-    <h1>¡Purr Salto!</h1>
+    <h1>Jump Jump!</h1>
 
     <div className="menu">
-        <button id="button-jugar">Iniciar el juego</button>
+        <button className="buttonJump-jugar">Start</button>
         <div id="instrucciones" className="hidden">
-            <p>¡Las instrucciones son muy sencillas!</p>
-            <p>Pulsa cualquier tecla para esquivar los obstáculos. Si chocas contrea el arbusto, ¡pierdes!</p>
-            <p>¡Aguanta hasta 10 segundos para ganar!</p>
+            <p>The rules are pretty simple!</p>
+            <p>Press any key to avoid asteroids. If you do, you lose!</p>
+            <p>Hold on for up to 10 seconds to win!</p>
 
             {/* Button to go back */}
             <button className="gameBack-button" onClick={handleBack}>
@@ -28,6 +29,7 @@ const Jump: React.FC = () => {
             </button>    
           </div>
     </div>
+</div>
 </div>
   );
 };
