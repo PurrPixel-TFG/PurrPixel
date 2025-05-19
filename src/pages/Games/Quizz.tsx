@@ -20,6 +20,14 @@ function getResultMessage(score: number, total: number): string {
   }
 }
 
+/*
+Esta constante contiene un array de objetos que representan preguntas y respuestas para el quizz de gatos.
+Cada objeto tiene un id, una pregunta, un array de opciones y la respuesta correcta.
+El array se utiliza para mostrar preguntas en el cuestionario, y cada pregunta tiene varias opciones de respuesta.
+El array de preguntas se importa y utiliza en Quizz.tsx para crear un juego interactivo.
+
+*/
+
 export const questions = [
   { id: 1, question: "How many hours does a cat sleep per day?", options: ["4-6", "12-16", "18-20", "22-24"], correctAnswer: "12-16" },
   { id: 2, question: "What does it mean when a cat kneads with its paws?", options: ["It is hunting", "It is angry", "It is comfortable and happy", "It is hungry"], correctAnswer: "It is comfortable and happy" },
@@ -36,10 +44,14 @@ export const questions = [
 ];
 
 const App: React.FC = () => {
-  const [step, setStep] = useState(0); // 0 = inicio, 1-n = preguntas, n+1 = resultados
-  const [score, setScore] = useState(0);
-  const navigate = useNavigate();
 
+//Estado que representa el paso actual del cuestionario
+  const [step, setStep] = useState(0); // 0 = inicio, 1-n = preguntas, n+1 = resultados
+  //// Estado para llevar el control de puntuación
+  const [score, setScore] = useState(0);
+  // Hook para navegar entre rutas
+  const navigate = useNavigate();
+  // Maneja la selección de una respuesta
   const handleAnswer = (answer: string) => {
     const currentQuestion = questions[step - 1];
     if (answer === currentQuestion.correctAnswer) {
@@ -47,45 +59,49 @@ const App: React.FC = () => {
     }
     setStep(step + 1);
   };
-
+// Inicia el  quizz desde el paso 1, con puntuación 0.
   const startQuiz = () => {
     setStep(1);
     setScore(0);
   };
-
+// Permite retroceder a la pregunta anterior restando 1 al step
   const goToPreviousQuestion = () => {
     if (step > 1) {
       setStep(step - 1);
     }
   };
-
+// Permite avanzar (saltar) a la siguiente pregunta
   const goToNextQuestion = () => {
     if (step < questions.length) {
       setStep(step + 1);
     }
   };
-
+// Reinicia el quiz desde la primera pregunta.
   const restartQuiz = () => {
     setStep(1);
     setScore(0);
   };
-
+// Botón para volver a la página de selección de juego (games)
   const BackToGamesButton = () => (
     <button onClick={() => navigate("/games")} className="gameBack-button">
       ← Go back
     </button>
   );
-
+// Barra de progreso visual del cuestionario (comentario extenso en el scss)
+// Calcula el progreso en base al número de preguntas respondidas
+// step - 1 porque step=1 es la primera pregunta, entonces 0% de progreso
   const ProgressBar = () => {
     const progress = ((step - 1) / questions.length) * 100;
     return (
       <div className="progress-bar">
+        {/* Esta barra representa el porcentaje completado */}
         <div className="progress" style={{ width: `${progress}%` }}></div>
       </div>
     );
   };
 
   // Pantalla de inicio
+  // Se muestra antes de comenzar el cuestionario
   if (step === 0) {
     return (
       <div id="Quizzbody">
@@ -101,6 +117,7 @@ const App: React.FC = () => {
   }
 
   // Pantalla de resultados
+  // Se muestra cuando se han respondido todas las preguntas
   if (step > questions.length) {
     return (
       <div id="Quizzbody">
@@ -118,6 +135,7 @@ const App: React.FC = () => {
   }
 
   // Pantalla de preguntas
+  // Incluye la pregunta, opciones de respuesta, barra de progreso y navegación
   const current = questions[step - 1];
   return (
     <div id="Quizzbody">
@@ -133,16 +151,19 @@ const App: React.FC = () => {
         </div>
         <ProgressBar />
         <div className="main-page-buttons-fixed">
+          {/* Botón para retroceder a la pregunta anterior */}
           {step > 1 && (
             <button onClick={goToPreviousQuestion} className="prev-btn">
               ← Previous
             </button>
           )}
+          {/* Botón para avanzar a la siguiente pregunta */}
           {step < questions.length && (
             <button onClick={goToNextQuestion} className="nxt-btn">
               Next →
             </button>
           )}
+          {/* Botón para reiniciar el cuestionario desde la primera pregunta */}
           <button onClick={restartQuiz} className="main-page-button">
             Restart Quiz
           </button>
