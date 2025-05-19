@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import './Store.scss';
+import { supabase } from "../../supabase/SupabaseClient";
 
 // Store.tsx
 

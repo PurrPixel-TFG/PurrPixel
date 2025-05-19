@@ -17,7 +17,7 @@ const CharacterSelection: React.FC = () => {
     <>
       <main className="container_HomePage">
         <div className="container_cats">
-          <div className="cat_1" onClick={handleCatClick}>Cat 1</div>
+          <div className="cat_1" onClick={handleCatClick}>¡Añádeme!</div>
           <div className="cat_2" onClick={handleCatClick}>Cat 2</div>
           <div className="cat_3" onClick={handleCatClick}>Cat 3</div>
         </div>

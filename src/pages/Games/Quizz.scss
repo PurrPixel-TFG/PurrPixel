@@ -2,18 +2,152 @@
 @import '../../styles/components';
 @import '../../styles/global';
 
-//Estilos creados para preservar el z-index del quiz y poder trabajar con el.
-.p-6 {
-  position: relative;  /* para que z-index funcione */
-  z-index: 10000;      /* un valor alto para estar arriba */
-  background-color: white;  /* opcional, para que el quiz no se vea transparente */
-  max-width: 600px;          /* opcional: para que no ocupe todo */
-  margin: 2rem auto;         /* opcional: centrarlo y separar del borde */
-  padding: 1rem;             /* opcional: espacio interno */
-  border-radius: 8px;        /* opcional: bordes redondeados */
-  box-shadow: 0 4px 12px rgba(0,0,0,0.15); /* opcional: sombra para destacar */
+/* 
+Contenedor principal que envuelve toda la vista del quiz.
+Aplica el fondo con GIF, tipografía y centrado.
+*/
+#Quizzbody {
+  font-family: 'Times New Roman', Times, serif;
+  background-image: url(../../assets/images/header_wallpaper.gif);
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 100vw;
+  height: 100vh;
 }
 
+/*
+Caja blanca contiene el contenido del quiz: 
+título, preguntas, botones y resultados.
+*/
+.QuizzContainer {
+  position: relative;
+  z-index: 10000;
+  background-color: var(--background-color);
+  max-width: 600px;
+  margin: 2rem auto;
+  padding: 1.5rem;
+  border-radius: 8px;
+  box-shadow: var(--color-shadow);
+}
 
+/* 
+Estilo para todos los encabezados dentro de .QuizzContainer
+(títulos de inicio, preguntas y resultados). 
+*/
+.QuizzContainer h1,
+.QuizzContainer h2 {
+  color: var(--color-text);
+  text-align: center;
+  margin-bottom: 1rem;
+  text-shadow: 2px 2px 4px var(--color-shadow);
+}
+
+/*
+Grid de opciones: separa los botones de respuesta
+en filas y columnas con espacio uniforme.
+*/
+.options-grid {
+  display: grid;
+  gap: 0.75rem;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  margin-bottom: 1rem;
+}
+
+/* 
+Barra de progreso que muestra el avance porcentual
+del cuestionario.
+*/
+.progress-bar {
+  width: 100%;
+  height: 12px;
+  background: #eee;
+  border-radius: 6px;
+  margin: 1.5rem 0;
+  overflow: hidden;
+}
+.progress {
+  height: 100%;
+  background: var(--color-principal);
+  transition: width 0.3s ease-in-out;
+}
+
+/* 
+Botones principales (respuestas, Start, Restart).
+Usan variables de color de tu tema.
+*/
+.main-page-button {
+  display: inline-block;
+  background-color: var(--primary-color);
+  color: var(--text-color);
+  padding: 0.6rem 1.2rem;
+  font-weight: bold;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  margin: 0.5rem;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+.main-page-button:hover {
+  background-color: var(--color-hover);
+  transform: translateY(-2px);
+}
+.main-page-button:active {
+  transform: translateY(1px) scale(0.98);
+}
+
+/*
+Botón de “Go back” que no debe animarse.
+Sólo posición relativa para colocarlo en esquina si se desea.
+*/
+.gameBack-button {
+  display: inline-block;
+  background-color: var(--background-color);
+  color: var(--color-text);
+  padding: 0.6rem 1.2rem;
+  font-weight: bold;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  margin: 0.5rem;
   
+}
 
+/* 
+Botones de navegación interna: Previous y Next
+*/
+.prev-btn,
+.nxt-btn {
+  @extend .main-page-button;
+}
+
+/*
+Contenedor que agrupa Previous, Next y Restart
+y los posiciona en la parte inferior del quiz.
+*/
+.main-page-buttons-fixed {
+  position: absolute;
+  bottom: 1rem;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 1rem;
+  z-index: 1000;
+}
+
+/*
+Párrafos dentro del quiz: resultados y mensajes.
+*/
+.QuizzContainer p {
+  font-size: 1rem;
+  color: #333;
+  text-align: center;
+  margin: 0.5rem 0;
+}
+.QuizzContainer p.italic {
+  font-style: italic;
+  color: var(--text-color);
+}

@@ -32,6 +32,7 @@
   column-gap: 2rem;
   row-gap: 0.5rem;
   align-items: start;
+  color: #a349a4;
 }
 
 .profile-container {
@@ -50,7 +51,6 @@
   z-index: 1000;
 }
 
-
 .profile-header {
   display: flex;
   align-items: center;
@@ -62,7 +62,7 @@
   width: 100px;
   height: 100px;
   border-radius: 50%;
-  background-color: #ccc;
+  background-color: transparent;
 }
 
 .profile-info h2 {
@@ -224,7 +224,7 @@
 //Posición de ropa
 .character-area {
   position: relative;
-  width: 100vw;
+  width: 300px;
   height: 15vh;
   display: flex;
   align-items: center;
@@ -255,6 +255,7 @@
   max-height: 100%; 
   object-fit: contain;
   z-index: 1;
+
 }
 
 .menu-dressUp {
@@ -304,3 +305,74 @@
   }
 }
 
+// Camera and Chest 
+.profile-side-buttons {
+  position: fixed;
+  top: 50%;
+  right: 15rem;
+  transform: translateY(-50%);
+  display: flex;
+  flex-direction: column;
+  gap: 6rem;
+  z-index: 2000;
+}
+
+.profile-button img {
+  width: 80px;
+  height: auto;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+
+  &:hover {
+    transform: scale(1.1);
+  }
+}
+
+// Nueva información
+
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0,0,0,0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+}
+
+.modal-content {
+  align-items: center;
+  background: white;
+  padding: 2rem;
+  border-radius: 12px;
+  min-width: 300px;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.modal-content input,
+.modal-content textarea {
+  width: 100%;
+  padding: 0.5rem;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+}
+
+.modal-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 1rem;
+}
+
+.modal-actions button {
+  padding: 0.5rem 1rem;
+  border: none;
+  background-color: #be43d6;
+  color: white;
+  border-radius: 6px;
+  cursor: pointer;
+}

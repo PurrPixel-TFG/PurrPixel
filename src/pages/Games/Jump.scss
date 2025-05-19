@@ -13,24 +13,31 @@
     height: 100vh;
 }
 
-h1 {
+.h1_jump {
     color: black;
     font-size: 3rem;
     text-shadow: 5px 5px 8px rgb(175, 55, 175);
     animation: fadeIn 2s ease-out, swing 2s ease-in-out infinite;
     z-index: 2;
+    margin-bottom: 1rem;
+    text-align: center;
 }
 
-p{
+.p_jump {
     display: flex;
     justify-content: center;
+    font-size: 1.1rem;
+    color: #333;
+    margin: 0.5rem 0;
+    text-align: center;
+
+    &:last-child {
+        font-weight: bold;
+        font-size: large;
+        color: #ea6506;
+    }
 }
 
-p:last-child{
-    font-weight: bold;
-    font-size: large;
-    color: #ea6506;
-}
 
 @keyframes fadeIn { /*aparición al cargar la página*/
     0% { opacity: 0; }

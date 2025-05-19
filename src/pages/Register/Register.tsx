@@ -1,106 +1,153 @@
-import React from "react";
+// Register.tsx
+import React, { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { supabase } from "../../supabase/SupabaseClient";
+
 import './Register.scss';
-import '../Login/Login.scss'
-import { Link } from "react-router-dom";
+import '../Login/Login.scss';
 
 const Register: React.FC = () => {
+  const navigate = useNavigate();
+  const [name, setName] = useState("");
+  const [surname1, setSurname1] = useState("");
+  const [surname2, setSurname2] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [verifyPassword, setVerifyPassword] = useState("");
+  const [error, setError] = useState<string | null>(null);
 
-    return (
-        <>
-            <main>
-                <section className="form-box">
+  const handleRegister = async (e: React.FormEvent) => {
+    e.preventDefault();
 
-                    <h2 className="h2_register">Register</h2>
+    if (password !== verifyPassword) {
+      setError("Passwords do not match.");
+      return;
+    }
 
-                    <form action="#" method="post">
+    const { data, error: signUpError } = await supabase.auth.signUp({
+      email,
+      password,
+    });
 
-                        <div className="form-group">
-                            <label htmlFor="name">Name:</label><br /><br />
-                            <input
-                                type="text"
-                                id="register_name"
-                                name="name"
-                                className="form-input"
-                                required
-                            />
-                        </div>
+    if (signUpError) {
+      setError(signUpError.message);
+      return;
+    }
 
-                        <div className="form-group">
-                            <label htmlFor="1st-surname">First surname:</label><br /><br />
-                            <input
-                                type="text"
-                                id="register_1st_surname"
-                                name="1st_surname"
-                                className="form-input"
-                                required
-                            />
-                        </div>
+    const user = data.user;
+    if (user) {
+      const { error: profileError } = await supabase.from("profiles").insert([
+        {
+          id: user.id,
+          username: name + " " + surname1,
+        },
+      ]);
 
-                        <div className="form-group">
-                            <label htmlFor="2nd-surname">Second surname:</label><br /><br />
-                            <input
-                                type="text"
-                                id="register_2nd_surname"
-                                name="2nd_surname"
-                                className="form-input"
-                                required
-                            />
-                        </div>
+      if (profileError) {
+        console.error(profileError.message);
+      }
+    }
 
-                        <div className="form-group">
-                            <label htmlFor="email">Email:</label><br /><br />
-                            <input
-                                type="email"
-                                id="register_email"
-                                name="email"
-                                className="form-input"
-                                required
-                            />
-                        </div>
+    setError(null);
+    navigate("/character-selection");
+  };
 
-                        <div className="form-group">
-                            <label htmlFor="password">Choose a password:</label><br /><br />
-                            <input
-                                type="password"
-                                id="register_password"
-                                name="password"
-                                className="form-input"
-                                required
-                            />
-                        </div>
+  return (
+    <main>
+      <section className="form-box">
+        <h2 className="h2_register">Register</h2>
+        <form onSubmit={handleRegister}>
+          <div className="form-group">
+            <label htmlFor="name">Name:</label><br /><br />
+            <input
+              type="text"
+              id="register_name"
+              className="form-input"
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+              required
+            />
+          </div>
 
-                        <div className="form-group">
-                            <label htmlFor="verify_password">Repeat password:</label><br /><br />
-                            <input
-                                type="password"
-                                id="verify_password"
-                                name="verify_password"
-                                className="form-input"
-                                required
-                            />
-                        </div>
+          <div className="form-group">
+            <label htmlFor="1st-surname">First surname:</label><br /><br />
+            <input
+              type="text"
+              id="register_1st_surname"
+              className="form-input"
+              value={surname1}
+              onChange={(e) => setSurname1(e.target.value)}
+              required
+            />
+          </div>
 
-                        <div>
-                            <input type="checkbox" className="cbox_terms" />
-                            <span className="text-terms">
-                                I have read and accept the{" "}
-                                <Link to="/terms-and-conditions" className="read-terms">
-                                    terms and conditions
-                                </Link>.
-                            </span>
+          <div className="form-group">
+            <label htmlFor="2nd-surname">Second surname:</label><br /><br />
+            <input
+              type="text"
+              id="register_2nd_surname"
+              className="form-input"
+              value={surname2}
+              onChange={(e) => setSurname2(e.target.value)}
+              required
+            />
+          </div>
 
-                        </div>
+          <div className="form-group">
+            <label htmlFor="email">Email:</label><br /><br />
+            <input
+              type="email"
+              id="register_email"
+              className="form-input"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              required
+            />
+          </div>
 
-                        <div className="form-button-container">
-                            <Link to="/character-selection" className="button_new_register">Create account</Link>
-                        </div>
+          <div className="form-group">
+            <label htmlFor="password">Choose a password:</label><br /><br />
+            <input
+              type="password"
+              id="register_password"
+              className="form-input"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              required
+            />
+          </div>
 
-                    </form>
+          <div className="form-group">
+            <label htmlFor="verify_password">Repeat password:</label><br /><br />
+            <input
+              type="password"
+              id="verify_password"
+              className="form-input"
+              value={verifyPassword}
+              onChange={(e) => setVerifyPassword(e.target.value)}
+              required
+            />
+          </div>
 
-                </section>
-            </main>
-        </>
-    );
+          <div>
+            <input type="checkbox" className="cbox_terms" required />
+            <span className="text-terms">
+              I have read and accept the{" "}
+              <Link to="/terms-and-conditions" className="read-terms">
+                terms and conditions
+              </Link>.
+            </span>
+          </div>
+
+          <div className="form-button-container">
+            <button type="submit" className="button_new_register">Create account</button>
+          </div>
+
+          {error && <p style={{ color: 'red' }}>{error}</p>}
+        </form>
+      </section>
+    </main>
+  );
 };
 
 export default Register;

@@ -42,7 +42,7 @@ import Catch from './pages/Games/Catch';
 import Quizz from './pages/Games/Quizz';
 import Settings from './pages/Settings/Settings';
 import HomePage from './pages/HomePage/HomePage';
-import Cat from './pages/Cats/Cat_1';
+import Cat from './pages/Cat/Cat';
 
 // src/ context
 import { ThemeProvider } from './context/ThemeContext';
@@ -245,7 +245,6 @@ const App: React.FC = () => {
             <Route path="catch" element={<Catch />} />
             <Route path="quizz" element={<Quizz />} />
           </Route>
-
         </Routes>
       </Router>
     </ThemeProvider>
