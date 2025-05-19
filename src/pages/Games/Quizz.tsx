@@ -83,7 +83,7 @@ const App: React.FC = () => {
   };
 // Botón para volver a la página de selección de juego (games)
   const BackToGamesButton = () => (
-    <button onClick={() => navigate("/games")} className="gameBack-button">
+    <button onClick={() => navigate("/games")} className="gameBack-buttonCatch">
       ← Go back
     </button>
   );
@@ -108,7 +108,7 @@ const App: React.FC = () => {
         <div className="QuizzContainer">
           <BackToGamesButton />
           <h1>How much do you know about cats?</h1>
-          <button onClick={startQuiz} className="main-page-button">
+          <button onClick={startQuiz} className="main-page-buttonQuizz">
             Start Quiz
           </button>
         </div>
@@ -126,7 +126,7 @@ const App: React.FC = () => {
           <h2>Score</h2>
           <p>Successes: {score} / {questions.length}</p>
           <p className="italic">{getResultMessage(score, questions.length)}</p>
-          <button onClick={startQuiz} className="main-page-button">
+          <button onClick={startQuiz} className="main-page-buttonQuizz">
             Try again
           </button>
         </div>
@@ -144,7 +144,7 @@ const App: React.FC = () => {
         <h2>{current.question}</h2>
         <div className="options-grid">
           {current.options.map((option) => (
-            <button key={option} onClick={() => handleAnswer(option)} className="main-page-button">
+            <button key={option} onClick={() => handleAnswer(option)} className="main-page-buttonQuizz">
               {option}
             </button>
           ))}
@@ -164,7 +164,7 @@ const App: React.FC = () => {
             </button>
           )}
           {/* Botón para reiniciar el cuestionario desde la primera pregunta */}
-          <button onClick={restartQuiz} className="main-page-button">
+          <button onClick={restartQuiz} className="main-page-buttonQuizz">
             Restart Quiz
           </button>
         </div>

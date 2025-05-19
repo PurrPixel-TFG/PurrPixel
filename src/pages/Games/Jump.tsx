@@ -1,4 +1,3 @@
-// Jump.tsx
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import './Jump.scss';
@@ -24,7 +23,7 @@ const Jump: React.FC = () => {
             <p className="p_jump">Hold on for up to 10 seconds to win!</p>
 
             {/* Button to go back */}
-            <button className="gameBack-button" onClick={handleBack}>
+            <button className="gameBack-buttonJump" onClick={handleBack}>
             ⬅ Go back
             </button>    
           </div>
