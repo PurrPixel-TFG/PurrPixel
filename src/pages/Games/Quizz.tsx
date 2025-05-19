@@ -28,95 +28,6 @@ El estado se gestiona con useState, que permite actualizar el estado de la aplic
 */
 
 
-/* ... tu función getResultMessage y questions siguen igual ... */
-
-const App: React.FC = () => {
-  const [step, setStep] = useState(0); // 0 = inicio, 1-n = preguntas, n+1 = resultados
-  const [score, setScore] = useState(0);
-
-  const navigate = useNavigate();
-
-  const handleAnswer = (answer: string) => {
-    const currentQuestion = questions[step - 1];
-    if (answer === currentQuestion.correctAnswer) {
-      setScore(score + 1);
-    }
-    setStep(step + 1);
-  };
-
-  const startQuiz = () => {
-    setStep(1);
-    setScore(0);
-  };
-
-  // Botón para regresar a la pantalla principal de juegos
-  const BackToGamesButton = () => (
-    <button onClick={() => navigate("/games")}>
-      ← Go back
-    </button>
-  );
-
-  // Pantalla de inicio
-  if (step === 0) {
-    return (
-      <div className="text-center p-6">
-        <BackToGamesButton />
-        <h1 className="text-2xl font-bold mb-4">¿How much do you know about cats?</h1>
-        <button
-          onClick={startQuiz}
-          className="bg-purple-500 text-white px-4 py-2 rounded"
-        >
-          Start Quiz
-        </button>
-      </div>
-    );
-  }
-
-  // Pantalla de resultados
-  if (step > questions.length) {
-    return (
-      <div className="text-center p-6">
-        <BackToGamesButton />
-        <h2 className="text-xl font-bold mb-2">Resultado</h2>
-        <p>
-          Aciertos: {score} / {questions.length}
-        </p>
-        <p className="mt-2 italic">
-          {getResultMessage(score, questions.length)}
-        </p>
-        <button
-          onClick={startQuiz}
-          className="mt-4 bg-purple-500 text-white px-4 py-2 rounded"
-        >
-          Volver a intentar
-        </button>
-      </div>
-    );
-  }
-
-  // Pantalla de pregunta actual
-  const current = questions[step - 1];
-
-  return (
-    <div className="p-6">
-      <BackToGamesButton />
-      <h2 className="text-lg font-semibold mb-4">{current.question}</h2>
-      <div className="grid gap-2">
-        {current.options.map((option) => (
-          <button
-            key={option}
-            onClick={() => handleAnswer(option)}
-            className="border border-purple-500 rounded px-4 py-2 hover:bg-purple-100"
-          >
-            {option}
-          </button>
-        ))}
-      </div>
-    </div>
-  );
-};
-
-
 /*
 Este archivo contiene un array de objetos que representan preguntas y respuestas para el quizz de gatos.
 Cada objeto tiene un id, una pregunta, un array de opciones y la respuesta correcta.
@@ -204,6 +115,150 @@ export const questions = [
   },
 ];
 
+/* ... tu función getResultMessage y questions siguen igual ... */
 
+const App: React.FC = () => {
+  const [step, setStep] = useState(0); // 0 = inicio, 1-n = preguntas, n+1 = resultados
+  const [score, setScore] = useState(0);
+
+  const navigate = useNavigate();
+
+  const handleAnswer = (answer: string) => {
+    const currentQuestion = questions[step - 1];
+    if (answer === currentQuestion.correctAnswer) {
+      setScore(score + 1);
+    }
+    setStep(step + 1);
+  };
+
+  const startQuiz = () => {
+    setStep(1);
+    setScore(0);
+  };
+
+  // Botón para regresar a la pantalla principal de juegos
+  const BackToGamesButton = () => (
+    <button onClick={() => navigate("/games")}>
+      ← Go back
+    </button>
+  );
+
+//Mostrar progresos de preguntas
+  const ProgressBar = () => {
+    const progress = ((step - 1) / questions.length) * 100;
+    return (
+      <div className="progress-bar">
+        <div
+          className="progress"
+          style={{ width: `${progress}%` }}
+        ></div>
+      </div>
+    );
+  };
+//Botón para retroceder una pregunta.
+const goToPreviousQuestion = () => {
+  if (step > 1) {
+    setStep(step - 1);
+  }
+};
+
+//Botón para saltar a la siguiente pregunta.
+const goToNextQuestion = () => {
+  if (step < questions.length) {
+    setStep(step + 1);
+  }
+};
+// Botón para reiniciar el cuestionario
+const restartQuiz = () => {
+  setStep(1);
+  setScore(0);
+};
+// Pantalla de pregunta actual
+// Pantalla de inicio
+if (step === 0) {
+  return (
+    <div className="text-center p-6">
+      <BackToGamesButton />
+      <h1 className="text-2xl font-bold mb-4">¿How much do you know about cats?</h1>
+      <button
+        onClick={startQuiz}
+        className="bg-purple-500 text-white px-4 py-2 rounded"
+      >
+        Start Quiz
+      </button>
+    </div>
+  );
+}
+
+// Pantalla de resultados
+if (step > questions.length) {
+  return (
+    <div className="text-center p-6">
+      <BackToGamesButton />
+      <h2 className="text-xl font-bold mb-2">Score</h2>
+      <p>
+        Successes : {score} / {questions.length}
+      </p>
+      <p className="mt-2 italic">
+        {getResultMessage(score, questions.length)}
+      </p>
+      <button
+        onClick={startQuiz}
+        className="mt-4 bg-purple-500 text-white px-4 py-2 rounded"
+      >
+        Try again
+      </button>
+    </div>
+  );
+}
+
+// Pantalla de pregunta actual
+const current = questions[step - 1];
+
+return (
+  <div className="p-6">
+    <BackToGamesButton />
+    <h2 className="text-lg font-semibold mb-4">{current.question}</h2>
+    <div className="grid gap-2">
+      {current.options.map((option) => (
+        <button
+          key={option}
+          onClick={() => handleAnswer(option)}
+          className="border border-purple-500 rounded px-4 py-2 hover:bg-purple-100"
+        >
+          {option}
+        </button>
+      ))}
+    </div>
+    {/* Mostrar progresos de preguntas */}
+    <ProgressBar />
+
+    {/* Botón para retroceder */}
+    {step > 1 && (
+      <button
+        onClick={goToPreviousQuestion}
+        className="mt-4 bg-gray-200 text-gray-800 px-4 py-2 rounded hover:bg-gray-300"
+      >
+        ← Previous
+      </button>
+    )}
+    {/* Botón para avanzar */}
+    {step < questions.length && (
+      <button
+        onClick={goToNextQuestion}
+        className="mt-4 bg-gray-200 text-gray-800 px-4 py-2 rounded hover:bg-gray-300"
+      >
+        Next →
+      </button>
+    )}
+    {/* Botón para reiniciar el cuestionario (ahora siempre visible durante el test) */}
+    <button
+      onClick={restartQuiz}
+      className="mt-4 bg-gray-200 text-gray-800 px-4 py-2 rounded hover:bg-gray-300"
+    >
+      Restart Quiz
+    </button>
+  </div>
+);}
 
 export default App;
