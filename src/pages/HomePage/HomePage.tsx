@@ -27,7 +27,7 @@ const HomePage: React.FC = () => {
     const stationSettingsImagePos = { x: 800, y: 70 };
     const stationStoreImagePos = { x: 600, y: 350 };
     const stationProfileImagePos = { x: 1250, y: 320 };
-    const stationPharmacyImagePos = { x: 1100, y: 115 };
+    const stationPharmacyImagePos = { x: 1030, y: 90 };
     const stationGamesImagePos = { x: 300, y: 100 };
 
     const stationSettingsBounds = {

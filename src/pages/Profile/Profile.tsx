@@ -4,7 +4,6 @@ import './Profile.scss';
 // Profile.tsx
 
 import characterUs from '../../assets/assets_dressUp/characterUs.png';
-import wallpaperProfilePage from '../../assets/assets_dressUp/background_dressUp.jpg';
 
 // Moving clouds
 import cloud1 from '../../assets/assets_dressUp/clouds_dressUp/cloud-1.png';
@@ -32,6 +31,10 @@ import iconPantsBlue from '../../assets/assets_dressUp/icon_dressUp/icon-pants-b
 import iconPantsYellow from '../../assets/assets_dressUp/icon_dressUp/icon-pants-yellow.png';
 import iconHatFrog from '../../assets/assets_dressUp/icon_dressUp/icon-hat-frog.png';
 import iconHatStraw from '../../assets/assets_dressUp/icon_dressUp/icon-hat-straw.png';
+
+// Camera and chest
+import camera from '../../assets/assets_dressUp/camera.png'
+import chest from '../../assets/assets_dressUp/chest.png'
 
 const Profile: React.FC = () => {
 
@@ -104,7 +107,7 @@ const Profile: React.FC = () => {
                 <img src={shirtRed} className="layer shirt" alt="Shirt" />
                 <img src={pantsBlue} className="layer pants" alt="Pants" />
 
-                
+
                 {activeHat === 'hat-frog' && (
                   <img src={hatFrog} className="layer hat" alt="Hat" />
                 )}
@@ -127,7 +130,7 @@ const Profile: React.FC = () => {
                 {activePants === 'pants-blue' && (
                   <img src={pantsBlue} className="layer pants" alt="Pants" />
                 )}
-                 {activePants === 'pants-yellow' && (
+                {activePants === 'pants-yellow' && (
                   <img src={pantsYellow} className="layer pants" alt="Pants" />
                 )}
                 {activePants === 'skirt-blue' && (
@@ -175,7 +178,7 @@ const Profile: React.FC = () => {
             />
           </div>
 
-          
+
           <div className="dress-dressUp">
             <img
               src={iconPantsBlue}
@@ -193,12 +196,21 @@ const Profile: React.FC = () => {
               onClick={() => toggleClothing('pants', 'skirt-blue')}
             />
           </div>
-
         </div>
+      </div>
 
+      {/* Camera and chest */}
+      <div className="profile-side-buttons">
+        <div className="profile-button">
+          <img src={camera} alt="Camera" />
+        </div>
+        <div className="profile-button">
+          <img src={chest} alt="Chest" />
+        </div>
       </div>
 
     </>
+
   );
 
 };
