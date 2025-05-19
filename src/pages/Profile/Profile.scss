@@ -32,6 +32,7 @@
   column-gap: 2rem;
   row-gap: 0.5rem;
   align-items: start;
+  color: #a349a4;
 }
 
 .profile-container {
@@ -50,7 +51,6 @@
   z-index: 1000;
 }
 
-
 .profile-header {
   display: flex;
   align-items: center;
@@ -62,7 +62,7 @@
   width: 100px;
   height: 100px;
   border-radius: 50%;
-  background-color: #ccc;
+  background-color: transparent;
 }
 
 .profile-info h2 {
@@ -224,7 +224,7 @@
 //Posición de ropa
 .character-area {
   position: relative;
-  width: 100vw;
+  width: 300px;
   height: 15vh;
   display: flex;
   align-items: center;
@@ -255,6 +255,7 @@
   max-height: 100%; 
   object-fit: contain;
   z-index: 1;
+
 }
 
 .menu-dressUp {

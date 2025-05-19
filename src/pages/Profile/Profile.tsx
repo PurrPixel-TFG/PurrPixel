@@ -1,5 +1,8 @@
-import React, { useState } from "react";
 import './Profile.scss';
+import html2canvas from "html2canvas";
+import { useRef } from "react";
+import React, { useState } from "react";
+
 
 // Profile.tsx
 
@@ -38,13 +41,16 @@ import chest from '../../assets/assets_dressUp/chest.png'
 
 const Profile: React.FC = () => {
 
+  // Componente camara
+  const [avatarUrl, setAvatarUrl] = useState<string>("https://via.placeholder.com/100");
+  const characterRef = useRef<HTMLDivElement | null>(null);
+
   // Container Profile info
   const user = {
     name: "Name",
     username: "Username",
     email: "user@example.com",
     bio: "Information that the user wants to add",
-    avatarUrl: "Picture",
   };
 
   const handleEdit = () => alert("Edit profile");
@@ -63,6 +69,19 @@ const Profile: React.FC = () => {
     }
   };
 
+  const handleCapture = async () => {
+    if (!characterRef.current) return;
+
+    const canvas = await html2canvas(characterRef.current, {
+      backgroundColor: null, // mantiene transparencia
+      useCORS: true,
+      scale: 2, // mejora resolución
+    });
+
+    const dataUrl = canvas.toDataURL("image/png");
+    setAvatarUrl(dataUrl); // actualiza avatar
+  };
+
 
   return (
     <>
@@ -71,7 +90,7 @@ const Profile: React.FC = () => {
       <div className="profile-layout">
         <div className="profile-container">
           <div className="profile-header">
-            <img src={user.avatarUrl} alt={`${user.name}'s avatar`} />
+            <img className="profile-background" src={avatarUrl} alt={`${user.name}'s avatar`} />
             <div className="profile-info">
               <h2>{user.name}</h2>
               <p>@{user.username}</p>
@@ -101,7 +120,7 @@ const Profile: React.FC = () => {
           <div className="dressup-preview">
             <div className="character-navigation">
 
-              <div className="character-area">
+              <div className="character-area" ref={characterRef}>
                 <img src={characterUs} className="layer face" alt="Cat base" />
                 <img src={hatStraw} className="layer hat" alt="Hat" />
                 <img src={shirtRed} className="layer shirt" alt="Shirt" />
@@ -201,7 +220,7 @@ const Profile: React.FC = () => {
 
       {/* Camera and chest */}
       <div className="profile-side-buttons">
-        <div className="profile-button">
+        <div className="profile-button" onClick={handleCapture}>
           <img src={camera} alt="Camera" />
         </div>
         <div className="profile-button">
