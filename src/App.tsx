@@ -245,7 +245,6 @@ const App: React.FC = () => {
             <Route path="catch" element={<Catch />} />
             <Route path="quizz" element={<Quizz />} />
           </Route>
-
         </Routes>
       </Router>
     </ThemeProvider>
