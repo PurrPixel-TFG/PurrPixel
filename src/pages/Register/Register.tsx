@@ -1,9 +1,10 @@
 // Register.tsx
 import React, { useState } from "react";
-import './Register.scss';
-import '../Login/Login.scss';
 import { Link, useNavigate } from "react-router-dom";
 import { supabase } from "../../supabase/SupabaseClient";
+
+import './Register.scss';
+import '../Login/Login.scss';
 
 const Register: React.FC = () => {
   const navigate = useNavigate();

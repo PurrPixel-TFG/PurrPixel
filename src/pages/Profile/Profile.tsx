@@ -1,7 +1,8 @@
-import './Profile.scss';
+import React, { useRef, useEffect, useState } from "react";
 import html2canvas from "html2canvas";
-import { useRef } from "react";
-import React, { useState } from "react";
+import { supabase } from "../../supabase/SupabaseClient";
+import './Profile.scss';
+
 
 
 // Profile.tsx
@@ -63,9 +64,29 @@ const Profile: React.FC = () => {
     setUserData(prev => ({ ...prev, [name]: value }));
   };
 
-  const handleSave = () => {
+  // Guardar información editada en Supabase
+  const handleSave = async () => {
     setShowModal(false);
+    const { data: { user } } = await supabase.auth.getUser();
+    if (!user) return;
+
+    const { error } = await supabase
+      .from("profiles")
+      .update({
+        name: userData.name,
+        username: userData.username,
+        bio: userData.bio,
+        avatar_url: avatarUrl,
+      })
+      .eq("id", user.id);
+
+    if (error) {
+      console.error("Error updating profile:", error.message);
+    } else {
+      console.log("Perfil actualizado");
+    }
   };
+
 
   const [activeShirt, setActiveShirt] = useState<string | null>(null);
   const [activePants, setActivePants] = useState<string | null>(null);
@@ -81,17 +102,64 @@ const Profile: React.FC = () => {
     }
   };
 
+  // Avatar en Supabase Storage
   const handleCapture = async () => {
     if (!characterRef.current) return;
 
     const canvas = await html2canvas(characterRef.current, {
-      backgroundColor: null, // mantiene transparencia
+      backgroundColor: null,
       useCORS: true,
-      scale: 2, // mejora resolución
+      scale: 2,
     });
 
-    const dataUrl = canvas.toDataURL("image/png");
-    setAvatarUrl(dataUrl); // actualiza avatar
+    const blob = await new Promise<Blob | null>((resolve) =>
+      canvas.toBlob((b) => resolve(b), "image/png")
+    );
+    if (!blob) return;
+
+    const { data: { user } } = await supabase.auth.getUser();
+    if (!user) return;
+
+    const fileName = `avatar-${user.id}.png`;
+
+    // Paso 1: crear URL firmada para el usuario autenticado
+    const { data: signedUpload, error: signedError } = await supabase.storage
+      .from("avatars")
+      .createSignedUploadUrl(fileName);
+
+    if (signedError) {
+      console.error("Signed upload error:", signedError.message);
+      return;
+    }
+
+    // Paso 2: subir con la URL firmada
+    const uploadRes = await fetch(signedUpload.signedUrl, {
+      method: "PUT",
+      headers: { "Content-Type": "image/png" },
+      body: blob,
+    });
+
+    if (!uploadRes.ok) {
+      console.error("Upload failed:", await uploadRes.text());
+      return;
+    }
+
+    const publicUrl = supabase
+      .storage
+      .from("avatars")
+      .getPublicUrl(fileName).data.publicUrl;
+
+    setAvatarUrl(publicUrl);
+
+    // Actualiza en la tabla 'profiles'
+    const { error: updateError } = await supabase
+      .from("profiles")
+      .update({ avatar_url: publicUrl })
+      .eq("id", user.id);
+
+    if (updateError) {
+      console.error("Error updating avatar URL:", updateError.message);
+    }
   };
 
 

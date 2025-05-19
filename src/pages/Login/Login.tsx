@@ -1,8 +1,8 @@
 // Login.tsx
 import React, { useState } from "react";
-import './Login.scss';
 import { Link, useNavigate } from "react-router-dom";
 import { supabase } from "../../supabase/SupabaseClient";
+import './Login.scss';
 
 const Login: React.FC = () => {
   const navigate = useNavigate();
