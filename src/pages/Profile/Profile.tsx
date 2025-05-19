@@ -46,14 +46,26 @@ const Profile: React.FC = () => {
   const characterRef = useRef<HTMLDivElement | null>(null);
 
   // Container Profile info
-  const user = {
+  const [userData, setUserData] = useState({
     name: "Name",
-    username: "Username",
-    email: "user@example.com",
-    bio: "Information that the user wants to add",
+    username: "Username", // Este dato será fijo
+    email: "user@example.com", // Este dato será fijo
+    bio: "Say something about you...",
+  });
+  const [showModal, setShowModal] = useState(false);
+
+  const handleEditProfile = () => {
+    setShowModal(true);
   };
 
-  const handleEdit = () => alert("Edit profile");
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const { name, value } = e.target;
+    setUserData(prev => ({ ...prev, [name]: value }));
+  };
+
+  const handleSave = () => {
+    setShowModal(false);
+  };
 
   const [activeShirt, setActiveShirt] = useState<string | null>(null);
   const [activePants, setActivePants] = useState<string | null>(null);
@@ -90,17 +102,17 @@ const Profile: React.FC = () => {
       <div className="profile-layout">
         <div className="profile-container">
           <div className="profile-header">
-            <img className="profile-background" src={avatarUrl} alt={`${user.name}'s avatar`} />
+            <img className="profile-background" src={avatarUrl} alt={`${userData.name}'s avatar`} />
             <div className="profile-info">
-              <h2>{user.name}</h2>
-              <p>@{user.username}</p>
+              <h2>{userData.name}</h2>
+              <p>@{userData.username}</p>
+              <p className="profile-bio">{userData.bio}</p>
+              <p className="profile-email">{userData.email}</p>
             </div>
-          </div>
-          <p className="profile-bio">{user.bio}</p>
-          <p className="profile-email">📧 {user.email}</p>
-          <button className="edit-button" onClick={handleEdit}>
+          </div><button className="edit-button" onClick={handleEditProfile}>
             Edit profile
           </button>
+
         </div>
 
         {/* Clouds */}
@@ -227,6 +239,43 @@ const Profile: React.FC = () => {
           <img src={chest} alt="Chest" />
         </div>
       </div>
+
+      {/* Insertar datos nuevos en el perfil de usuario */}
+      {showModal && (
+        <div className="modal-overlay">
+          <div className="modal-content">
+            <h3>Edit Your Profile</h3>
+            <input
+              name="name"
+              value={userData.name}
+              onChange={handleInputChange}
+              placeholder="Name"
+            />
+            <input
+              name="username"
+              value={userData.username}
+              onChange={handleInputChange}
+              placeholder="Username"
+            />
+            <input
+              name="email"
+              value={userData.email}
+              onChange={handleInputChange}
+              placeholder="Email"
+            />
+            <textarea
+              name="bio"
+              value={userData.bio}
+              onChange={handleInputChange}
+              placeholder="Bio"
+            />
+            <div className="modal-actions">
+              <button onClick={handleSave}>Save</button>
+              <button onClick={() => setShowModal(false)}>Cancel</button>
+            </div>
+          </div>
+        </div>
+      )}
 
     </>
 
