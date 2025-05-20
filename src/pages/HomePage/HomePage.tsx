@@ -2,16 +2,17 @@ import React, { useEffect, useState, useRef } from "react";
 import './HomePage.scss';
 import { useNavigate } from "react-router-dom";
 
-import gemHead from '../../assets/images/gem.png';
-import catWaiting from '../../assets/images/cat-waiting.png';
-import catWalkingRight from '../../assets/images/cat-walking-right.gif';
-import catWalkingLeft from '../../assets/images/cat-walking-left.gif';
+import gemHead from "../../assets/assets_homepage/gem.png";
+import catWaiting from "../../assets/assets_homepage/cat-waiting.png";
+import catWalkingRight from "../../assets/assets_homepage/cat-walking-right.gif";
+import catWalkingLeft from "../../assets/assets_homepage/cat-walking-left.gif";
 
-import stationSettings from '../../assets/images/station_settings.png';
-import stationStore from '../../assets/images/station_store.png';
-import stationProfile from '../../assets/images/station_profile.png';
-import stationPharmacy from '../../assets/images/station_pharmacy.png';
-import stationGames from '../../assets/images/station_game.png';
+
+import stationSettings from "../../assets/assets_homepage/station_settings.png";
+import stationStore from "../../assets/assets_homepage/station_store.png";
+import stationPharmacy from '../../assets/assets_homepage/station_pharmacy.png';
+import stationProfile from "../../assets/assets_homepage/station_profile.png";
+import stationGames from "../../assets/assets_homepage/station_game.png";
 
 const HomePage: React.FC = () => {
     const catRef = useRef<HTMLImageElement | null>(null);

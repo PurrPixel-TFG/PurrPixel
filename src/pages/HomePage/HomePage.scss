@@ -20,7 +20,7 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background-image: url('../../assets/images/HomePage_wallpaper.png');
+  background-image: url('../../assets/assets_homepage/HomePage_wallpaper.png');
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
@@ -39,16 +39,16 @@
   z-index: 2;
 }
 
-.scene {
-  position: relative;
-  width: 100%;
-  height: 100%;
-  background-image: url('../../assets/images/HomePage_way.png');
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-position: center;
-  z-index: 3;
-}
+// .scene {
+//   position: relative;
+//   width: 100%;
+//   height: 100%;
+//   background-image: url('../../assets/images/HomePage_way.png');
+//   background-size: contain;
+//   background-repeat: no-repeat;
+//   background-position: center;
+//   z-index: 3;
+// }
 
 
 .cat {

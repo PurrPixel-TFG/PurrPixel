@@ -1,9 +1,10 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import './CharacterSelection.scss';
-import img1 from '../../assets/images/statusHeart_Food.webp';
-import img2 from '../../assets/images/statusHeart_Happiness.png';
-import img3 from '../../assets/images/statusHeart_water.png';
+import img1 from '../../assets/assets_components/statusHeart_Food.webp';
+import img2 from '../../assets/assets_components/statusHeart_Happiness.png';
+import img3 from '../../assets/assets_components/statusHeart_water.png';
+
 
 const CharacterSelection: React.FC = () => {
 
