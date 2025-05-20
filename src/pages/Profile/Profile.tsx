@@ -11,35 +11,35 @@ import './Profile.scss';
 import characterUs from '../../assets/assets_dressUp/characterUs.png';
 
 // Moving clouds
-import cloud1 from '../../assets/assets_dressUp/clouds_dressUp/cloud-1.png';
-import cloud2 from '../../assets/assets_dressUp/clouds_dressUp/cloud-2.png';
-import cloud3 from '../../assets/assets_dressUp/clouds_dressUp/cloud-3.png';
+import cloud1 from '../../assets/assets_dressUp/clouds_dressup/cloud-1.png';
+import cloud2 from '../../assets/assets_dressUp/clouds_dressup/cloud-2.png';
+import cloud3 from '../../assets/assets_dressUp/clouds_dressup/cloud-3.png';
 
 // Elements
-import shirtBlue from '../../assets/assets_dressUp/dress_dressUp/shirt-blue.png';
-import shirtRed from '../../assets/assets_dressUp/dress_dressUp/shirt-red.png';
-import shirtSailor from '../../assets/assets_dressUp/dress_dressUp/shirt-sailor.png';
-import skirtBlue from '../../assets/assets_dressUp/dress_dressUp/skirt-blue.png';
-import pantsYellow from '../../assets/assets_dressUp/dress_dressUp/pants-yellow.png';
-import pantsBlue from '../../assets/assets_dressUp/dress_dressUp/pants-blue.png';
-import hatFrog from '../../assets/assets_dressUp/dress_dressUp/hat-frog.png';
-import hatStraw from '../../assets/assets_dressUp/dress_dressUp/hat-straw.png';
-import hatPink from '../../assets/assets_dressUp/dress_dressUp/hat-Pink.png';
+import shirtBlue from '../../assets/assets_dressup/dress_dressup/shirt-blue.png';
+import shirtRed from '../../assets/assets_dressup/dress_dressup/shirt-red.png';
+import shirtSailor from '../../assets/assets_dressup/dress_dressup/shirt-sailor.png';
+import skirtBlue from '../../assets/assets_dressup/dress_dressup/skirt-blue.png';
+import pantsYellow from '../../assets/assets_dressup/dress_dressup/pants-yellow.png';
+import pantsBlue from '../../assets/assets_dressup/dress_dressup/pants-blue.png';
+import hatFrog from '../../assets/assets_dressup/dress_dressup/hat-frog.png';
+import hatStraw from '../../assets/assets_dressup/dress_dressup/hat-straw.png';
+import hatPink from '../../assets/assets_dressup/dress_dressup/hat-Pink.png';
 
 // Icon
-import iconHatPink from '../../assets/assets_dressUp/icon_dressUp/icon-hat-Pink.png';
-import iconShirtBlue from '../../assets/assets_dressUp/icon_dressUp/icon-shirt-blue.png';
-import iconShirtRed from '../../assets/assets_dressUp/icon_dressUp/icon-shirt-red.png';
-import iconShirtSailor from '../../assets/assets_dressUp/icon_dressUp/icon-shirt-sailor.png';
-import iconSkirtBlue from '../../assets/assets_dressUp/icon_dressUp/icon-skirt-blue.png';
-import iconPantsBlue from '../../assets/assets_dressUp/icon_dressUp/icon-pants-blue.png';
-import iconPantsYellow from '../../assets/assets_dressUp/icon_dressUp/icon-pants-yellow.png';
-import iconHatFrog from '../../assets/assets_dressUp/icon_dressUp/icon-hat-frog.png';
-import iconHatStraw from '../../assets/assets_dressUp/icon_dressUp/icon-hat-straw.png';
+import iconHatPink from '../../assets/assets_dressup/icon_dressup/icon-hat-Pink.png';
+import iconShirtBlue from '../../assets/assets_dressup/icon_dressup/icon-shirt-blue.png';
+import iconShirtRed from '../../assets/assets_dressup/icon_dressup/icon-shirt-red.png';
+import iconShirtSailor from '../../assets/assets_dressup/icon_dressup/icon-shirt-sailor.png';
+import iconSkirtBlue from '../../assets/assets_dressup/icon_dressup/icon-skirt-blue.png';
+import iconPantsBlue from '../../assets/assets_dressup/icon_dressup/icon-pants-blue.png';
+import iconPantsYellow from '../../assets/assets_dressup/icon_dressup/icon-pants-yellow.png';
+import iconHatFrog from '../../assets/assets_dressup/icon_dressup/icon-hat-frog.png';
+import iconHatStraw from '../../assets/assets_dressup/icon_dressup/icon-hat-straw.png';
 
 // Camera and chest
-import camera from '../../assets/assets_dressUp/camera.png'
-import chest from '../../assets/assets_dressUp/chest.png'
+import camera from '../../assets/assets_dressup/camera.png'
+import chest from '../../assets/assets_dressup/chest.png'
 
 const Profile: React.FC = () => {
 

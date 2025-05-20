@@ -4,21 +4,22 @@ import { supabase } from "../../supabase/SupabaseClient";
 
 // Store.tsx
 
-import fish from "../../assets/images/fish.png";
-import burger from "../../assets/images/burger.png";
-import cake from "../../assets/images/cake.png";
-import chicken from "../../assets/images/chicken.png";
+import fish from "../../assets/assets_store/fish.png";
+import burger from "../../assets/assets_store/burger.png";
+import cake from "../../assets/assets_store/cake.png";
+import chicken from "../../assets/assets_store/chicken.png";
 
-import coffe from "../../assets/images/coffe.png";
-import boba from "../../assets/images/boba.png";
-import milk from "../../assets/images/milk.png";
+import coffe from "../../assets/assets_store/coffe.png";
+import boba from "../../assets/assets_store/boba.png";
+import milk from "../../assets/assets_store/milk.png";
 
-import potion from "../../assets/images/potion.png";
-import sprinkles from "../../assets/images/sprinkles.png";
+import potion from "../../assets/assets_store/potion.png";
+import sprinkles from "../../assets/assets_store/sprinkles.png";
 
-import bowPink from "../../assets/images/bowPink.png";
-import bowBlue from "../../assets/images/bowBlue.png";
-import bowPurple from "../../assets/images/bowPurple.png";
+import bowPink from "../../assets/assets_store/bowPink.png";
+import bowBlue from "../../assets/assets_store/bowBlue.png";
+import bowPurple from "../../assets/assets_store/bowPurple.png";
+
 
 // ======================= COMPONENTE PRINCIPAL ===========================
 const Store: React.FC = () => {

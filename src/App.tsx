@@ -11,16 +11,16 @@ import {
 import { Link } from "react-router-dom";
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 
-// src/ assets/ video
-import MorningMode from './assets/video/MorningMode.mp4';
-import EveningMode from './assets/video/EveningMode.mp4';
-import NightMode from './assets/video/NightMode.mp4';
+// Video
+import MorningMode from './assets/assets_video/MorningMode.mp4';
+import EveningMode from './assets/assets_video/EveningMode.mp4';
+import NightMode from './assets/assets_video/NightMode.mp4';
 
-// src/ assets/ audio
-import musicFile from './assets/audio/music1.mp3';
+// Audio
+import musicFile from './assets/assets_audio/music1.mp3';
 
-// src/ assets/ images
-import titlePurrPixel from './assets/images/PURRPIXEL_title.png'
+// Imagen (título)
+import titlePurrPixel from './assets/assets_components/PURRPIXEL_title.png';
 
 // src/ styles
 import './styles/global.scss';
