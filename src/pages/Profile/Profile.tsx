@@ -1,4 +1,5 @@
 import React, { useRef, useEffect, useState } from "react";
+import { useNavigate } from 'react-router-dom';
 import html2canvas from "html2canvas";
 import { supabase } from "../../supabase/SupabaseClient";
 import './Profile.scss';
@@ -41,6 +42,8 @@ import camera from '../../assets/assets_dressUp/camera.png'
 import chest from '../../assets/assets_dressUp/chest.png'
 
 const Profile: React.FC = () => {
+
+  const navigate = useNavigate();
 
   // Componente camara
   const [avatarUrl, setAvatarUrl] = useState<string>("https://via.placeholder.com/100");
@@ -102,8 +105,13 @@ const Profile: React.FC = () => {
     }
   };
 
+  const goToStock = () => {
+    navigate('/stock');
+  };
+
   // Avatar en Supabase Storage
   const handleCapture = async () => {
+
     if (!characterRef.current) return;
 
     const canvas = await html2canvas(characterRef.current, {
@@ -303,9 +311,10 @@ const Profile: React.FC = () => {
         <div className="profile-button" onClick={handleCapture}>
           <img src={camera} alt="Camera" />
         </div>
-        <div className="profile-button">
+        <div className="profile-button" onClick={goToStock}>
           <img src={chest} alt="Chest" />
         </div>
+
       </div>
 
       {/* Insertar datos nuevos en el perfil de usuario */}

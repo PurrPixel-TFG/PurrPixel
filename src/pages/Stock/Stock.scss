@@ -1,0 +1,85 @@
+// Stock.scss
+
+.stock-background-layer {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url('../../assets/assets_stock/stock-background-open.png');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  z-index: 0;
+  pointer-events: auto;
+  transition: transform 0.7s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.stock-wrapper {
+  position: relative;
+  text-align: center;
+  padding: 2rem;
+  z-index: 10;
+  width: 100%;
+  max-width: 1000px;
+}
+
+.stock-category {
+  margin-bottom: 3rem;
+  
+}
+
+.stock-item {
+  width: 200px;
+  height: 75px;
+  margin-bottom: 1.5rem;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  color: white;
+  text-shadow: 3px 3px 0 #000, -1px -1px 0 #000;
+  font-family: 'Press Start 2P', monospace;
+  font-weight: bold;
+  font-size: 2rem;
+
+  background-color: transparent;
+  border-radius: 1rem;
+  backdrop-filter: blur(4px);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+}
+
+.stock-content {
+  display: flex;
+  justify-content: center;
+}
+
+.stock-table {
+  display: flex;
+  justify-content: center;
+
+  table {
+    border-collapse: collapse;
+  }
+
+  .table-cell {
+    width: 100px;
+    height: 90px;
+    text-align: center;
+    vertical-align: middle;
+    font-size: 2rem;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 0.5rem;
+    backdrop-filter: blur(3px);
+  }
+}
+
+.stock-item.selected {
+  background-color: rgba(82, 17, 186, 0.5); // #5211ba transparente
+}

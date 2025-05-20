@@ -27,7 +27,7 @@ const HomePage: React.FC = () => {
     const stationSettingsImagePos = { x: 800, y: 70 };
     const stationStoreImagePos = { x: 600, y: 350 };
     const stationProfileImagePos = { x: 1250, y: 320 };
-    const stationPharmacyImagePos = { x: 1030, y: 90 };
+    // const stationPharmacyImagePos = { x: 1030, y: 90 };
     const stationGamesImagePos = { x: 300, y: 100 };
 
     const stationSettingsBounds = {
@@ -51,12 +51,12 @@ const HomePage: React.FC = () => {
         height: hitboxSize.height,
     };
 
-    const stationPharmacyBounds = {
-        x: stationPharmacyImagePos.x + 130 / 2 - hitboxSize.width / 2,
-        y: stationPharmacyImagePos.y + 130 / 2 - hitboxSize.height / 2,
-        width: hitboxSize.width,
-        height: hitboxSize.height,
-    };
+    // const stationPharmacyBounds = {
+    //     x: stationPharmacyImagePos.x + 130 / 2 - hitboxSize.width / 2,
+    //     y: stationPharmacyImagePos.y + 130 / 2 - hitboxSize.height / 2,
+    //     width: hitboxSize.width,
+    //     height: hitboxSize.height,
+    // };
 
     const stationGamesBounds = {
         x: stationGamesImagePos.x + 180 / 2 - hitboxSize.width / 2,
@@ -127,8 +127,8 @@ const HomePage: React.FC = () => {
             navigate("/store");
         } else if (doesCatCollideWithArea(catPosition, stationProfileBounds)) {
             navigate("/profile");
-        } else if (doesCatCollideWithArea(catPosition, stationPharmacyBounds)) {
-            navigate("/store");
+        // } else if (doesCatCollideWithArea(catPosition, stationPharmacyBounds)) {
+        //     navigate("/store");
         } else if (doesCatCollideWithArea(catPosition, stationGamesBounds)) {
             navigate("/games");
         }
@@ -166,12 +166,12 @@ const HomePage: React.FC = () => {
                     cursor: 'pointer',
                 }} />
 
-                <img src={stationPharmacy} alt="Pharmacy" className="station_pharmacy" style={{
+                {/* <img src={stationPharmacy} alt="Pharmacy" className="station_pharmacy" style={{
                     position: 'absolute',
                     left: `${stationPharmacyImagePos.x}px`,
                     top: `${stationPharmacyImagePos.y}px`,
                     cursor: 'pointer',
-                }} />
+                }} /> */}
 
                 <img src={stationGames} alt="Games" className="station_games" style={{
                     position: 'absolute',
