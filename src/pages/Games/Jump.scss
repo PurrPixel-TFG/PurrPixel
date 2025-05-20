@@ -5,6 +5,9 @@
 #jumpBody{
     font-family: 'Times New Roman', Times, serif;
     background-image: url(../../assets/assets_games/wallp.jpg);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat; 
     display: flex;
     justify-content: center;
     align-items: center;
@@ -49,8 +52,8 @@
 
 /*CONFIGURACIÓN DEL BORDE ROTATORIO*/
 #main-jumpPage{ /*un primer div grande*/
-    height: 350px;
-    width: 600px;
+    height: 380px;
+    width: 630px;
     background-color: rgb(209, 114, 185);
     border-radius: 10%;
     position: relative;
@@ -59,13 +62,14 @@
     align-items: center;
     justify-content: center;
     flex-direction: column;
+    
 }
 
 #main-jumpPage::before{ /*parte rotatorio*/
     content: "";
     position: absolute;
-    height: 680px;
-    width: 700px;
+    height: 750px;
+    width: 750px;
     background-image: conic-gradient(rgb(6, 6, 6) 20deg, transparent 120deg);
     animation: rotar 4s linear infinite;
 }
@@ -82,8 +86,8 @@
 #main-jumpPage::after{ /*un segundo div más pequeño que está por encima del div grande y la parte móvil*/
     content: "";
     position: absolute;
-    height: 330px;
-    width: 580px;
+    height: 355px;
+    width: 595px;
     background-color: rgb(209, 114, 185);
     border-radius: 10%;
 
@@ -99,7 +103,7 @@
     padding: 13px 27px;
     margin: 10px;
     color: white;
-    font-size: 1.2rem;
+    font-size: 1.1rem;
     text-align: center;
     border-radius: 10px;
     cursor: pointer;
@@ -120,4 +124,41 @@
     transform: scale(1.5);
 }
 
+
+.asteroidJump {
+  position: relative;
+  top: 70px; //posición asteroide
+  right: -100px;
+  width: 40px;
+  height: 40px;
+  animation: moveLeft 2s linear infinite;
+}
+
+@keyframes moveLeft {
+  0% {
+    right: -300px;
+  }
+  100% {
+    right: 400px;
+  }
+}
+
+.catJump {
+  position: absolute;
+  bottom: 100px;
+  left: 30px;
+  width: 70px;
+  height: 70px;
+  z-index: 2;
+}
+
+.scoreJump {
+  position: absolute;
+  top: 40px;
+  right: 40px;
+  font-size: 25px;
+  color: white;
+  font-weight: bold;
+  z-index: 2;
+}
 

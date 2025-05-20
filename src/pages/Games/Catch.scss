@@ -6,7 +6,6 @@
    Aplica fondo, tipografía y centra el contenido */
 #CatchTheMiceBody {
   font-family: 'Times New Roman', Times, serif;
-  background-image: url(../../assets/images/header_wallpaper.gif);
   background-size: cover;
   background-position: center;
   display: flex;
@@ -22,8 +21,8 @@
 .CatchTheMiceContainer {
   position: relative;
   z-index: 10000;
-  background-color: var(--background-color);
   max-width: 100vw;
+  background-image: url(../../assets/assets_games/cesped.webp);
   margin: 2rem auto;
   padding: 3.5rem;
   border-radius: 8px;
@@ -49,28 +48,32 @@
 }
 
 /* Área de juego: cuadro de 500x500 con borde */
-.game-area {
+.game-areaCatch {
   position: relative;
   width: 500px;
   height: 500px;
   border: 2px solid var(--color-text);
   margin: 1rem auto 2rem;
-  background-color: var(--background-color);
+  background-image: url(../../assets/assets_games/cesped.webp);
   border-radius: 8px;
   box-shadow: inset 0 0 10px rgba(0,0,0,0.1);
 }
 
 /* Ratón (el círculo) */
-.mouse {
+.mouseCatch {
   position: absolute;
-  width: 50px;
-  height: 50px;
-  background: gray;
-  border-radius: 50%;
+  width: 70px;
+  height: 60px;
+  border-radius: 30%;
   cursor: pointer;
   transition: top 0.3s ease, left 0.3s ease;
-  box-shadow: 0 0 6px rgba(0,0,0,0.4);
+  box-shadow: 0 0 6px rgba(0, 0, 0, 0.4);
+  z-index: 3;
+  background-size: contain;
+  background-size: cover;
+  background-repeat: no-repeat;
 }
+
 
 /* Botones principales (Start, End, Restart) */
 .main-buttonCatch {

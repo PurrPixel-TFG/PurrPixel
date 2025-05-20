@@ -2,6 +2,8 @@ import React, { useState, useRef, useEffect } from 'react';
 import { useNavigate } from "react-router-dom";
 import './Catch.scss';
 
+import mouseGif from '../../assets/assets_games/mouse.gif';
+
 const getRandomPosition = () => ({
   top: Math.random() * 450,
   left: Math.random() * 450,
@@ -14,17 +16,11 @@ interface MouseProps {
 
 const Mouse: React.FC<MouseProps> = ({ onClick, position }) => (
   <div
-    className="mouse"
+    className="mouseCatch"
     onClick={onClick}
     style={{
-      position: 'absolute',
-      width: '50px',
-      height: '50px',
-      background: 'gray',
-      borderRadius: '50%',
-      cursor: 'pointer',
       top: `${position.top}px`,
-      left: `${position.left}px`
+      left: `${position.left}px`,
     }}
   />
 );
@@ -33,7 +29,7 @@ const Modal: React.FC<{ message: string; onClose: () => void }> = ({ message, on
   <div className="modal-overlay" onClick={onClose}>
     <div className="modal" onClick={e => e.stopPropagation()}>
       <h2>{message}</h2>
-      <button onClick={onClose}>Cerrar</button>
+      <button onClick={onClose}>Close</button>
     </div>
   </div>
 );
@@ -50,40 +46,34 @@ const CatchTheMiceGame: React.FC = () => {
   const intervalRef = useRef<number | null>(null);
   const timeoutRef = useRef<number | null>(null);
 
-  // Solo resetea el timeout de 2.5s sin click
   const resetTimeout = () => {
     if (timeoutRef.current !== null) clearTimeout(timeoutRef.current);
     timeoutRef.current = window.setTimeout(() => {
-      endGame('Se acabó el tiempo');
+      endGame('Timer is Over!');
     }, 2500);
   };
 
-  // spawnea ratón SIN resetear timeout aquí
   const spawnMouse = () => {
     setMousePos(getRandomPosition());
     setShowMouse(true);
-    // NO resetTimeout aquí
   };
 
-  // Inicia el juego
   const startGame = () => {
     setScore(0);
     setEndMessage('');
     setGameState('playing');
     spawnMouse();
-    resetTimeout(); // Empieza el timeout al iniciar el juego
+    resetTimeout();
     intervalRef.current = window.setInterval(() => {
       spawnMouse();
-      // NO resetTimeout aquí, solo cambia el ratón
     }, 2000);
   };
 
-  // Al hacer click: suma, oculta ratón, genera nuevo y RESETEA timeout
   const handleMouseClick = () => {
     setScore(prev => prev + 10);
     setShowMouse(false);
     spawnMouse();
-    resetTimeout();  // ¡Aquí sí reseteamos el timeout!
+    resetTimeout();
   };
 
   const endGame = (message: string = 'Game Over!') => {
@@ -113,12 +103,14 @@ const CatchTheMiceGame: React.FC = () => {
   }, []);
 
   return (
-    <div className="game-page" style={{ position: 'relative', width: '500px', margin: 'auto' }}>
+    <div
+      className={`CatchTheMiceContainer ${gameState === 'playing' ? 'no-background' : ''}`}
+    >
       {gameState === 'start' && (
         <>
           <h1>Catch the Mice</h1>
-          <button onClick={startGame}>Start Game</button>
-          <button className="gameBack-button" onClick={() => navigate('/games')}>
+          <button className="main-buttonCatch" onClick={startGame}>Start Game</button>
+          <button className="gameBack-buttonCatch" onClick={() => navigate('/games')}>
             ⬅ Go back
           </button>
         </>
@@ -127,21 +119,12 @@ const CatchTheMiceGame: React.FC = () => {
       {gameState === 'playing' && (
         <>
           <div className="score-board">
-            <p>Puntuación: {score}</p>
+            <p>Score: {score}</p>
           </div>
-          <div
-            className="game-area"
-            style={{
-              position: 'relative',
-              width: '500px',
-              height: '500px',
-              border: '2px solid black',
-              margin: '1rem 0'
-            }}
-          >
+          <div className="game-areaCatch">
             {showMouse && <Mouse onClick={handleMouseClick} position={mousePos} />}
           </div>
-          <button onClick={() => endGame()}>End Game</button>
+          <button className="main-buttonCatch" onClick={() => endGame()}>End Game</button>
         </>
       )}
 
