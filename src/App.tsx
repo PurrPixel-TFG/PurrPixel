@@ -179,6 +179,20 @@ const LayoutAllPages = () => {
                     ⬅ Character Selection
                   </button>
                 )}
+
+                {
+                ["/store", "/settings", "/profile", "/games", "/stock"].includes(location.pathname) && (
+                  <button className="back-button" onClick={() => navigate('/character-selection')}>
+                    ⬅ Home Page
+                  </button>
+                )}
+
+                {
+                ["/stock"].includes(location.pathname) && (
+                  <button className="back-button" onClick={() => navigate('/profile')}>
+                    ⬅ Profile
+                  </button>
+                )}
             </div>
 
             <div className="right-buttons">
