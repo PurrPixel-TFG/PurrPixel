@@ -27,9 +27,9 @@ título, preguntas, botones y resultados.
   position: relative;
   z-index: 10000;
   background-color: var(--background-color);
-  max-width: 600px;
+  max-width: 100vw;
   margin: 2rem auto;
-  padding: 1.5rem;
+  padding: 3.5rem;
   border-radius: 8px;
   box-shadow: var(--color-shadow);
 }
@@ -42,7 +42,8 @@ Estilo para todos los encabezados dentro de .QuizzContainer
 .QuizzContainer h2 {
   color: var(--color-text);
   text-align: center;
-  margin-bottom: 1rem;
+  margin-bottom: 2.5rem;
+  margin-top: 2rem;
   text-shadow: 2px 2px 4px var(--color-shadow);
 }
 
@@ -53,9 +54,8 @@ en filas y columnas con espacio uniforme.
 .options-grid {
   //border-radius: 8px;
   display: grid;
-  gap: 0.75rem;
-  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
-  margin-bottom: 1rem;
+  gap: 0.5rem;
+  margin-bottom: rem;
 }
 
 /* 
@@ -64,7 +64,7 @@ del cuestionario.
 */
 .progress-bar {
   width: 100%;
-  height: 12px;
+  height: 15px;
   background: #eee;
   border-radius: 6px;
   margin: 1.5rem 0;
@@ -80,11 +80,11 @@ del cuestionario.
 Botones principales (respuestas, Start, Restart).
 Usan variables de color de tu tema.
 */
-.main-page-button {
+.main-page-buttonQuizz {
   display: inline-block;
-  background-color: var(--primary-color);
+  background-color: var(--color-button);
   color: var(--text-color);
-  padding: 0.6rem 1.2rem;
+  padding: 0.9rem 1.3rem;
   font-weight: bold;
   border-radius: 8px;
   border: none;
@@ -92,11 +92,10 @@ Usan variables de color de tu tema.
   margin: 0.5rem;
   transition: background-color 0.3s ease, transform 0.2s ease;
 }
-.main-page-button:hover {
-  background-color: var(--color-hover);
-  transform: translateY(-2px);
+.main-page-buttonQuizz:hover {
+    transform: scale(1.1);
 }
-.main-page-button:active {
+.main-page-buttonQuizz:active {
   transform: translateY(1px) scale(0.98);
 }
 
@@ -104,17 +103,16 @@ Usan variables de color de tu tema.
 Botón de “Go back” que no debe animarse.
 Sólo posición relativa para colocarlo en esquina si se desea.
 */
-.gameBack-button {
+.gameBack-buttonCatch {
   display: inline-block;
-  background-color: var(--background-color);
-  color: var(--color-text);
+  background-color: var(--color-button);
+  color: white;
   padding: 0.6rem 1.2rem;
   font-weight: bold;
   border-radius: 8px;
   border: none;
   cursor: pointer;
-  margin: 0.5rem;
-  
+  margin: 0.5rem; 
 }
 
 /* 

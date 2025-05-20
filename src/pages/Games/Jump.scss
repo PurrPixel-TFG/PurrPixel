@@ -16,6 +16,7 @@
 .h1_jump {
     color: black;
     font-size: 3rem;
+    margin-top: 13px;
     text-shadow: 5px 5px 8px rgb(175, 55, 175);
     animation: fadeIn 2s ease-out, swing 2s ease-in-out infinite;
     z-index: 2;
@@ -27,15 +28,9 @@
     display: flex;
     justify-content: center;
     font-size: 1.1rem;
-    color: #333;
+    color: black;
     margin: 0.5rem 0;
     text-align: center;
-
-    &:last-child {
-        font-weight: bold;
-        font-size: large;
-        color: #ea6506;
-    }
 }
 
 
@@ -98,10 +93,10 @@
     z-index: 2; /*para que se visualice por encima del resto de elementos*/
 }
 
-.buttonJump-jugar, .gameBack-button{
-    background-color: #e69acc;
+.buttonJump-jugar, .gameBack-buttonJump{
+    background-color: var(--color-button);
     border: none;
-    padding: 15px 30px;
+    padding: 13px 27px;
     margin: 10px;
     color: white;
     font-size: 1.2rem;
@@ -124,4 +119,5 @@
 .buttonJump-jugar:active { /*al hacer click se expande*/
     transform: scale(1.5);
 }
+
 
