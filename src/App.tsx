@@ -43,6 +43,7 @@ import Quizz from './pages/Games/Quizz';
 import Settings from './pages/Settings/Settings';
 import HomePage from './pages/HomePage/HomePage';
 import Cat from './pages/Cat/Cat';
+import Stock from './pages/Stock/Stock';
 
 // src/ context
 import { ThemeProvider } from './context/ThemeContext';
@@ -54,11 +55,12 @@ const LayoutAllPages = () => {
   const location = useLocation();
   const navigate = useNavigate();
 
-  const isHomePage = location.pathname === "/home-page";
-  const isProfilePage = location.pathname === "/profile";
+  // const isHomePage = location.pathname === "/home-page";
+  // const isProfilePage = location.pathname === "/profile";
   const isStore = location.pathname === "/store";
+  const isStock = location.pathname === "/stock";
 
-  const noVideoPages = ["/home-page", "/profile"];
+  const noVideoPages = ["/home-page", "/profile", "/stock"];
   const hideVideo = noVideoPages.includes(location.pathname);
 
   {/* Rutes: main-page-buttons-fixed */ }
@@ -114,7 +116,7 @@ const LayoutAllPages = () => {
     return () => {
       document.documentElement.style.overflow = "auto";
     };
-  }, [isStore]);
+  }, [isStore, isStock]);
 
   useEffect(() => {
     const updateTheme = () => {
@@ -159,21 +161,24 @@ const LayoutAllPages = () => {
       <div className="app-layout">
 
         <div className="container_header">
-          <img
-            src={titlePurrPixel}
-            alt="PurrPixel Title"
-            className="title-purrpixel"
-          />
+          {location.pathname !== "/stock" && (
+            <img
+              src={titlePurrPixel}
+              alt="PurrPixel Title"
+              className="title-purrpixel"
+            />
+          )}
+
 
           {/* Botones */}
           <div className="header-buttons">
             <div className="left-buttons">
               {
-              ["/store", "/settings", "/profile", "/games", "/home-page"].includes(location.pathname) && (
-                <button className="back-button" onClick={() => navigate('/character-selection')}>
-                  ⬅ Character Selection
-                </button>
-              )}
+                ["/store", "/settings", "/profile", "/games", "/home-page"].includes(location.pathname) && (
+                  <button className="back-button" onClick={() => navigate('/character-selection')}>
+                    ⬅ Character Selection
+                  </button>
+                )}
             </div>
 
             <div className="right-buttons">
@@ -238,6 +243,7 @@ const App: React.FC = () => {
             <Route path="games" element={<Games />} />
             <Route path="home-page" element={<HomePage />} />
             <Route path="cat" element={<Cat />} />
+            <Route path="stock" element={<Stock />} />
           </Route>
 
           <Route path="games" element={<Games />}>
