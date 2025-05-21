@@ -49,7 +49,7 @@ const CatchTheMiceGame: React.FC = () => {
   const resetTimeout = () => {
     if (timeoutRef.current !== null) clearTimeout(timeoutRef.current);
     timeoutRef.current = window.setTimeout(() => {
-      endGame('Timer is Over!');
+      endGame('⏰ Time is up!');
     }, 2500);
   };
 
@@ -70,7 +70,13 @@ const CatchTheMiceGame: React.FC = () => {
   };
 
   const handleMouseClick = () => {
-    setScore(prev => prev + 10);
+    setScore(prev => {
+      const newScore = prev + 10;
+      if (newScore >= 100) {
+        endGame('🎉 You reached the maximum points! You win 2 PurrPoints.');
+      }
+      return newScore;
+    });
     setShowMouse(false);
     spawnMouse();
     resetTimeout();
@@ -130,10 +136,12 @@ const CatchTheMiceGame: React.FC = () => {
 
       {gameState === 'end' && (
         <Modal
-          message={endMessage || 'Fin del juego'}
+          message={`${endMessage} \n\nYour final score: ${score}`}
           onClose={restartGame}
         />
       )}
+
+      <p>Your last score: {score}</p>
     </div>
   );
 };

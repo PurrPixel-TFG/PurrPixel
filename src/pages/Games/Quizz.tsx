@@ -6,19 +6,45 @@ import { useNavigate } from "react-router-dom";
 Función que devuelve el mensaje de resultado según la puntuación obtenida y el total de preguntas.
 Dependiendo de la puntuación, se devuelve un mensaje diferente.
 */
-function getResultMessage(score: number, total: number): string {
-  if (score === 0) {
-    return "If you're faced with a cat and an elephant, you can't tell them apart. Keep trying!";
-  } else if (score < total / 2) {
-    return "Not bad! But you can improve. Keep learning about cats!";
-  } else if (score === Math.floor(total / 2)) {
-    return "Barely passed! Keep learning about cats!";
-  } else if (score < total) {
-    return "You know quite a bit about cats! Very good!";
-  } else {
-    return "You're a true cat lover! Amazing!";
-  }
-}
+ const getResultMessage = (score: number, totalQuestions: number): React.ReactNode => {
+    const percent = (score / totalQuestions) * 100;
+    if (score === 0) {
+      return (
+        <>
+          <p className="end">If you're faced with a cat and an elephant, you can't tell them apart. Keep trying!</p>
+          <p className="purrpoints lose">You lost 1 PurrPoint.</p>
+        </>
+      );
+    } else if (percent < 50) {
+      return (
+        <>
+          <p className="end">Not bad! But you can improve. Keep learning about cats!</p>
+          <p className="purrpoints">You earned 0 PurrPoints.</p>
+        </>
+      );
+    } else if (percent === 50) {
+      return (
+        <>
+          <p className="end">Barely passed! Keep learning about cats!</p>
+          <p className="purrpoints ok">You earned 2 PurrPoints.</p>
+        </>
+      );
+    } else if (percent < 100) {
+      return (
+        <>
+          <p className="end">You know quite a bit about cats! Very good!</p>
+          <p className="purrpoints good">You earned 3 PurrPoints.</p>
+        </>
+      );
+    } else {
+      return (
+        <>
+          <p className="end">You're a true cat lover! Amazing!</p>
+          <p className="purrpoints excellent">You earned 5 PurrPoints.</p>
+        </>
+      );
+    }
+  };
 
 /*
 Esta constante contiene un array de objetos que representan preguntas y respuestas para el quizz de gatos.
@@ -124,7 +150,7 @@ const App: React.FC = () => {
         <div className="QuizzContainer">
           <BackToGamesButton />
           <h2>Score</h2>
-          <p>Successes: {score} / {questions.length}</p>
+          <p className="total">Successes: {score} / {questions.length}</p>
           <p className="italic">{getResultMessage(score, questions.length)}</p>
           <button onClick={startQuiz} className="main-page-buttonQuizz">
             Try again
