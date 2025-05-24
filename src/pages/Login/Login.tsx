@@ -1,5 +1,5 @@
 // Login.tsx
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { supabase } from "../../supabase/SupabaseClient";
 import './Login.scss';
@@ -9,40 +9,57 @@ const Login: React.FC = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState<string | null>(null);
+  // checkbox status
+  const [remember, setRemember] = useState(false);
+
+  useEffect(() => {
+    const savedEmail = localStorage.getItem('rememberedEmail');
+    if (savedEmail) {
+      setEmail(savedEmail);
+      setRemember(true);
+    }
+  }, []);
 
   const handleLogin = async (e: React.FormEvent) => {
-  e.preventDefault();
-  const { data, error } = await supabase.auth.signInWithPassword({
-    email,
-    password,
-  });
+    e.preventDefault();
+    const { data, error } = await supabase.auth.signInWithPassword({
+      email,
+      password,
+    });
 
-  if (error) {
-    setError(error.message);
-  } else {
-    const { data: { user } } = await supabase.auth.getUser();
+    if (error) {
+      setError(error.message);
+    } else {
+      const { data: { user } } = await supabase.auth.getUser();
 
-    if (user) {
-      const { data: existingProfile } = await supabase
-        .from("profiles")
-        .select("id")
-        .eq("id", user.id)
-        .single();
+      if (user) {
+        const { data: existingProfile } = await supabase
+          .from("profiles")
+          .select("id")
+          .eq("id", user.id)
+          .single();
 
-      if (!existingProfile) {
-        await supabase.from("profiles").insert([
-          {
-            id: user.id,
-            username: "Usuario nuevo",
-          },
-        ]);
+        if (remember) {
+          localStorage.setItem('rememberedEmail', email);
+        } else {
+          localStorage.removeItem('rememberedEmail');
+        }
+
+
+        if (!existingProfile) {
+          await supabase.from("profiles").insert([
+            {
+              id: user.id,
+              username: "Usuario nuevo",
+            },
+          ]);
+        }
       }
-    }
 
-    setError(null);
-    navigate("/character-selection");
-  }
-};
+      setError(null);
+      navigate("/character-selection");
+    }
+  };
 
 
   return (
@@ -75,8 +92,15 @@ const Login: React.FC = () => {
           </div>
 
           <div>
-            <input type="checkbox" className="cbox_login" value="cbox_login" />&nbsp;&nbsp;
-            <label htmlFor="cbox_login"><b> Remember login details</b></label><br />
+            <input
+              type="checkbox"
+              id="cbox_login"
+              className="cbox_login"
+              checked={remember}
+              onChange={() => setRemember(!remember)}
+            />
+            <label htmlFor="cbox_login"><b> Remember login details</b></label>
+
           </div>
 
           <div className="form-button-container">
