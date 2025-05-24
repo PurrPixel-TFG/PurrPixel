@@ -49,7 +49,7 @@ const CatchTheMiceGame: React.FC = () => {
   const resetTimeout = () => {
     if (timeoutRef.current !== null) clearTimeout(timeoutRef.current);
     timeoutRef.current = window.setTimeout(() => {
-      endGame('⏰ Time is up!');
+      endGame('Time is up!');
     }, 2500);
   };
 
@@ -73,7 +73,7 @@ const CatchTheMiceGame: React.FC = () => {
     setScore(prev => {
       const newScore = prev + 10;
       if (newScore >= 100) {
-        endGame('🎉 You reached the maximum points! You win 2 PurrPoints.');
+        endGame('You reached the maximum points! You win 2 PurrPoints.');
       }
       return newScore;
     });
