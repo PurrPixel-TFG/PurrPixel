@@ -2,7 +2,6 @@ import React, { useState, useRef, useEffect } from 'react';
 import { useNavigate } from "react-router-dom";
 import './Catch.scss';
 
-import mouseGif from '../../assets/assets_games/mouse.gif';
 
 const getRandomPosition = () => ({
   top: Math.random() * 450,
