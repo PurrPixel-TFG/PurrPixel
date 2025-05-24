@@ -12,8 +12,18 @@ const CharacterSelection: React.FC = () => {
   const navigate = useNavigate();
 
   const handleCatClick = () => {
-    navigate('/home-page');
-  };
+  navigate('/home-page', {
+    state: {
+      catId: 1, 
+      initialStats: {
+        health: 5,
+        happiness: 5,
+        clean: 5
+      }
+    }
+  });
+};
+
   
   return (
     <>
