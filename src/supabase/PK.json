@@ -1,0 +1,37 @@
+
+/*
+select
+  tc.table_name,
+  kc.column_name
+from
+  information_schema.table_constraints tc
+  join information_schema.key_column_usage kc
+    on kc.constraint_name = tc.constraint_name
+where
+  tc.constraint_type = 'PRIMARY KEY'
+  and tc.table_schema = 'public'
+order by tc.table_name;
+*/
+
+[
+  {
+    "table_name": "cats",
+    "column_name": "id"
+  },
+  {
+    "table_name": "profiles",
+    "column_name": "id"
+  },
+  {
+    "table_name": "store_items",
+    "column_name": "id"
+  },
+  {
+    "table_name": "user_inventory",
+    "column_name": "id"
+  },
+  {
+    "table_name": "user_outfits",
+    "column_name": "id"
+  }
+]
