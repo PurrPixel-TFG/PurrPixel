@@ -10,7 +10,7 @@ import catWalkingLeft from "../../assets/assets_homepage/cat-walking-left.gif";
 
 import stationSettings from "../../assets/assets_homepage/station_settings.png";
 import stationStore from "../../assets/assets_homepage/station_store.png";
-import stationPharmacy from '../../assets/assets_homepage/station_pharmacy.png';
+// import stationPharmacy from '../../assets/assets_homepage/station_pharmacy.png';
 import stationProfile from "../../assets/assets_homepage/station_profile.png";
 import stationGames from "../../assets/assets_homepage/station_game.png";
 
