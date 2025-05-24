@@ -4,14 +4,9 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { useNavigate } from "react-router-dom";
 import './Catch.scss';
-<<<<<<< HEAD
-
-
-=======
 //Imagen del ratón.
 import mouseGif from '../../assets/assets_games/mouse.gif';
 // Función para obtener una posición aleatoria dentro del área de juego.
->>>>>>> de2b400209224f69a9cd6079a5284498e5d77bf9
 const getRandomPosition = () => ({
   top: Math.random() * 450,
   left: Math.random() * 450,
