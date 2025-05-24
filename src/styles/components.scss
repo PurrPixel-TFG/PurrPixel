@@ -88,6 +88,26 @@ nav {
   align-items: center;
 }
 
+//Purr Coins
+.coins-display {
+  position: absolute;
+  right: 20px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: red;
+  font-weight: bold;
+  font-size: 1.2rem;
+  top: 50%;
+  transform: translateY(-70%);
+  z-index: 2;
+}
+
+.coin-icon {
+  width: 3.5vw;
+  height: 6.5vh;
+}
+
 
 /* Shared base style for buttons */
 .back-button,

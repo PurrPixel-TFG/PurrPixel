@@ -4,6 +4,7 @@ import './CharacterSelection.scss';
 import img1 from '../../assets/assets_components/statusHeart_Food.webp';
 import img2 from '../../assets/assets_components/statusHeart_Happiness.png';
 import img3 from '../../assets/assets_components/statusHeart_water.png';
+import catBlack from '../../assets/assets_homepage/catBlack.jpg';
 
 
 const CharacterSelection: React.FC = () => {
@@ -18,7 +19,9 @@ const CharacterSelection: React.FC = () => {
     <>
       <main className="container_HomePage">
         <div className="container_cats">
-          <div className="cat_1" onClick={handleCatClick}>¡Añádeme!</div>
+          <div className="cat_1" onClick={handleCatClick}>
+            <img src={catBlack} alt="tuPurr" />
+          </div>
           <div className="cat_2" onClick={handleCatClick}>Cat 2</div>
           <div className="cat_3" onClick={handleCatClick}>Cat 3</div>
         </div>

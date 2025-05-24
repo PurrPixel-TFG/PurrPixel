@@ -21,6 +21,7 @@ import musicFile from './assets/assets_audio/music1.mp3';
 
 // Imagen (título)
 import titlePurrPixel from './assets/assets_components/PURRPIXEL_title.png';
+import coinPurr from './assets/assets_games/coinPurr.png';
 
 // src/ styles
 import './styles/global.scss';
@@ -48,6 +49,7 @@ import Stock from './pages/Stock/Stock';
 // src/ context
 import { ThemeProvider } from './context/ThemeContext';
 import { useTheme } from './context/ThemeContext';
+
 
 const queryClient = new QueryClient();
 
@@ -161,13 +163,19 @@ const LayoutAllPages = () => {
       <div className="app-layout">
 
         <div className="container_header">
-          {location.pathname !== "/stock" && (
-            <img
-              src={titlePurrPixel}
-              alt="PurrPixel Title"
-              className="title-purrpixel"
-            />
-          )}
+           {location.pathname !== "/stock" && (
+        <>
+          <img
+            src={titlePurrPixel}
+            alt="PurrPixel Title"
+            className="title-purrpixel"
+          />
+          <div className="coins-display">
+          <img src={coinPurr} alt="purr coin" className="coin-icon" />
+        </div>
+
+        </>
+      )}
 
 
           {/* Botones */}
@@ -223,7 +231,6 @@ const LayoutAllPages = () => {
         <div className="container_footer">
           <p>&copy; 2025 PURRPIXEL. All rights reserved.</p>
         </div>
-
 
         {/* LogoutButton only on character-selection */}
         {location.pathname === "/character-selection" && (
