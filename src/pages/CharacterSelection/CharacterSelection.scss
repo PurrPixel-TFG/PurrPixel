@@ -23,6 +23,24 @@
     overflow: hidden;
 }
 
+.cat_1 {
+  width: 150px;
+  height: 150px;
+  overflow: visible;           
+  position: relative;
+  display: flex;               
+  justify-content: center;
+  align-items: center;
+}
+
+.cat_1 img {
+  width: 100px;                
+  height: auto;
+  border-radius: 20px;
+  transform: scale(1.5);     
+  transform-origin: center;
+}
+
 .container_cats>div {
     min-width: 150px;
     flex: 0 0 auto;

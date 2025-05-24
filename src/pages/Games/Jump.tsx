@@ -1,21 +1,31 @@
 import React, { useState, useEffect, useRef } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useOutletContext } from "react-router-dom";
 import './Jump.scss';
 import gatoImg from '../../assets/assets_games/cat.png';       
 import asteroideImg from '../../assets/assets_games/asteroid.png'; 
 
+interface OutletContextType {
+  coins: number;
+  addCoins: (amount: number) => void;
+}
+
 const Jump: React.FC = () => {
   const navigate = useNavigate();
+  const { coins, addCoins } = useOutletContext<OutletContextType>();
+
   const [started, setStarted] = useState(false);
   const [x, setX] = useState(30);
   const [isJumping, setIsJumping] = useState(false);
   const [score, setScore] = useState(0);
+  const [hasWon, setHasWon] = useState(false);
+
   const catRef = useRef<HTMLImageElement>(null);
   const asteroidRef = useRef<HTMLImageElement>(null);
 
   const handleStart = () => {
     setStarted(true);
-    setScore(0); // reiniciar puntuación
+    setScore(0);
+    setHasWon(false);
   };
 
   const handleBack = () => {
@@ -65,6 +75,7 @@ const Jump: React.FC = () => {
           setX(30);
           setIsJumping(false);
           setScore(0);
+          setHasWon(false);
         }
       }
     };
@@ -73,25 +84,28 @@ const Jump: React.FC = () => {
     return () => clearInterval(interval);
   }, [started]);
 
-  // Puntuación
+  // Puntuación y lógica de victoria
   useEffect(() => {
     if (!started) return;
 
     const scoreInterval = setInterval(() => {
       setScore((prev) => {
-        if (prev >= 100) {
-          alert("🎉 Congrats, you have win PurrPoints!");
+        const newScore = prev + 1;
+        if (newScore >= 100 && !hasWon) {
+          alert("🎉 Congrats, you have won 10 PurrPoints!");
+          addCoins(10); // Suma 10 monedas al ganar
           setStarted(false);
           setX(30);
           setIsJumping(false);
+          setHasWon(true);
           return 0;
         }
-        return prev + 1;
+        return newScore;
       });
     }, 100);
 
     return () => clearInterval(scoreInterval);
-  }, [started]);
+  }, [started, addCoins, hasWon]);
 
   return (
     <div id="jumpBody">
@@ -130,6 +144,9 @@ const Jump: React.FC = () => {
                 style={{ left: x, bottom: isJumping ? 150 : 90 }}
               />
               <div className="scoreJump">Score: {score}</div>
+              <div className="scoreJump" style={{position: 'absolute', top: 10, right: 10}}>
+                PurrPoints: {coins}
+              </div>
             </>
           )}
         </div>
