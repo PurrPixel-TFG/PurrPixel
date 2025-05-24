@@ -43,7 +43,6 @@ import Catch from './pages/Games/Catch';
 import Quizz from './pages/Games/Quizz';
 import Settings from './pages/Settings/Settings';
 import HomePage from './pages/HomePage/HomePage';
-import Cat from './pages/Cat/Cat';
 import Stock from './pages/Stock/Stock';
 
 // src/ context
@@ -263,7 +262,6 @@ const App: React.FC = () => {
             <Route path="store" element={<Store />} />
             <Route path="games" element={<Games />} />
             <Route path="home-page" element={<HomePage />} />
-            <Route path="cat" element={<Cat />} />
             <Route path="stock" element={<Stock />} />
           </Route>
 
