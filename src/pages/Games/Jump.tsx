@@ -1,17 +1,13 @@
 import React, { useState, useEffect, useRef } from "react";
-import { useNavigate, useOutletContext } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import { useCoins } from '../../context/CoinsContext';
 import './Jump.scss';
 import gatoImg from '../../assets/assets_games/cat.png';       
 import asteroideImg from '../../assets/assets_games/asteroid.png'; 
 
-interface OutletContextType {
-  coins: number;
-  addCoins: (amount: number) => void;
-}
-
 const Jump: React.FC = () => {
   const navigate = useNavigate();
-  const { coins, addCoins } = useOutletContext<OutletContextType>();
+  const { addCoins } = useCoins();
 
   const [started, setStarted] = useState(false);
   const [x, setX] = useState(30);
@@ -92,8 +88,9 @@ const Jump: React.FC = () => {
       setScore((prev) => {
         const newScore = prev + 1;
         if (newScore >= 100 && !hasWon) {
-          alert("🎉 Congrats, you have won 10 PurrPoints!");
-          addCoins(10); // Suma 10 monedas al ganar
+          const coinsEarned = 5;
+          addCoins(coinsEarned);
+          alert(`🎉 Congratulations! You've earned ${coinsEarned} coins!`);
           setStarted(false);
           setX(30);
           setIsJumping(false);
@@ -120,7 +117,7 @@ const Jump: React.FC = () => {
                 <p className="p_jump">The rules are pretty simple!</p>
                 <p className="p_jump">You can move forward, backward or jump to avoid asteroids.</p>
                 <p className="p_jump">If you collide, you lose!</p>
-                <p className="p_jump">If you reach 100 points you win!</p>
+                <p className="p_jump">If you reach 100 points you win 5 coins!</p>
                 <button className="gameBack-buttonJump" onClick={handleBack}>
                   ⬅ Go back
                 </button>    
@@ -144,9 +141,6 @@ const Jump: React.FC = () => {
                 style={{ left: x, bottom: isJumping ? 150 : 90 }}
               />
               <div className="scoreJump">Score: {score}</div>
-              <div className="scoreJump" style={{position: 'absolute', top: 10, right: 10}}>
-                PurrPoints: {coins}
-              </div>
             </>
           )}
         </div>

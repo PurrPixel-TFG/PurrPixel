@@ -1,50 +1,42 @@
 import React, { useState } from "react";
 import './Quizz.scss';
 import { useNavigate } from "react-router-dom";
+import { useCoins } from '../../context/CoinsContext';
 
 /* 
 Función que devuelve el mensaje de resultado según la puntuación obtenida y el total de preguntas.
-Dependiendo de la puntuación, se devuelve un mensaje diferente.
+Dependiendo de la puntuación, se devuelve un mensaje diferente y otorga diferentes cantidades de monedas.
 */
- const getResultMessage = (score: number, totalQuestions: number): React.ReactNode => {
-    const percent = (score / totalQuestions) * 100;
-    if (score === 0) {
-      return (
-        <>
-          <p className="end">If you're faced with a cat and an elephant, you can't tell them apart. Keep trying!</p>
-          <p className="purrpoints lose">You lost 1 PurrPoint.</p>
-        </>
-      );
-    } else if (percent < 50) {
-      return (
-        <>
-          <p className="end">Not bad! But you can improve. Keep learning about cats!</p>
-          <p className="purrpoints">You earned 0 PurrPoints.</p>
-        </>
-      );
-    } else if (percent === 50) {
-      return (
-        <>
-          <p className="end">Barely passed! Keep learning about cats!</p>
-          <p className="purrpoints ok">You earned 2 PurrPoints.</p>
-        </>
-      );
-    } else if (percent < 100) {
-      return (
-        <>
-          <p className="end">You know quite a bit about cats! Very good!</p>
-          <p className="purrpoints good">You earned 3 PurrPoints.</p>
-        </>
-      );
-    } else {
-      return (
-        <>
-          <p className="end">You're a true cat lover! Amazing!</p>
-          <p className="purrpoints excellent">You earned 5 PurrPoints.</p>
-        </>
-      );
-    }
-  };
+const getResultMessage = (score: number, totalQuestions: number): { message: string, coins: number } => {
+  const percent = (score / totalQuestions) * 100;
+  
+  if (score === 0) {
+    return {
+      message: "If you're faced with a cat and an elephant, you can't tell them apart. Keep trying!",
+      coins: -1 // Resta 1 moneda por fallar todas
+    };
+  } else if (percent < 50) {
+    return {
+      message: "Not bad! But you can improve. Keep learning about cats!",
+      coins: 0 // No gana monedas
+    };
+  } else if (percent === 50) {
+    return {
+      message: "Barely passed! Keep learning about cats!",
+      coins: 2 // Gana 2 monedas
+    };
+  } else if (percent < 100) {
+    return {
+      message: "You know quite a bit about cats! Very good!",
+      coins: 3 // Gana 3 monedas
+    };
+  } else {
+    return {
+      message: "You're a true cat lover! Amazing!",
+      coins: 5 // Gana 5 monedas por perfecto
+    };
+  }
+};
 
 /*
 Esta constante contiene un array de objetos que representan preguntas y respuestas para el quizz de gatos.
@@ -70,14 +62,12 @@ export const questions = [
 ];
 
 const App: React.FC = () => {
-
-//Estado que representa el paso actual del cuestionario
-  const [step, setStep] = useState(0); // 0 = inicio, 1-n = preguntas, n+1 = resultados
-  //// Estado para llevar el control de puntuación
+  const [step, setStep] = useState(0);
   const [score, setScore] = useState(0);
-  // Hook para navegar entre rutas
   const navigate = useNavigate();
-  // Maneja la selección de una respuesta
+  const { addCoins } = useCoins();
+  const [hasAwardedCoins, setHasAwardedCoins] = useState(false);
+
   const handleAnswer = (answer: string) => {
     const currentQuestion = questions[step - 1];
     if (answer === currentQuestion.correctAnswer) {
@@ -85,55 +75,61 @@ const App: React.FC = () => {
     }
     setStep(step + 1);
   };
-// Inicia el  quizz desde el paso 1, con puntuación 0.
+
   const startQuiz = () => {
     setStep(1);
     setScore(0);
+    setHasAwardedCoins(false);
   };
-// Permite retroceder a la pregunta anterior restando 1 al step
+
   const goToPreviousQuestion = () => {
     if (step > 1) {
       setStep(step - 1);
     }
   };
-// Permite avanzar (saltar) a la siguiente pregunta
+
   const goToNextQuestion = () => {
     if (step < questions.length) {
       setStep(step + 1);
     }
   };
-// Reinicia el quiz desde la primera pregunta.
+
   const restartQuiz = () => {
     setStep(1);
     setScore(0);
+    setHasAwardedCoins(false);
   };
-// Botón para volver a la página de selección de juego (games)
+
   const BackToGamesButton = () => (
     <button onClick={() => navigate("/games")} className="gameBack-buttonCatch">
       ← Go back
     </button>
   );
-// Barra de progreso visual del cuestionario (comentario extenso en el scss)
-// Calcula el progreso en base al número de preguntas respondidas
-// step - 1 porque step=1 es la primera pregunta, entonces 0% de progreso
+
   const ProgressBar = () => {
     const progress = ((step - 1) / questions.length) * 100;
     return (
       <div className="progress-bar">
-        {/* Esta barra representa el porcentaje completado */}
         <div className="progress" style={{ width: `${progress}%` }}></div>
       </div>
     );
   };
 
   // Pantalla de inicio
-  // Se muestra antes de comenzar el cuestionario
   if (step === 0) {
     return (
       <div id="Quizzbody">
         <div className="QuizzContainer">
           <BackToGamesButton />
           <h1>How much do you know about cats?</h1>
+          <p>Test your knowledge and earn coins!</p>
+          <ul className="rewards-list">
+            <li>Perfect score: 5 coins</li>
+            <li>More than 50%: 3 coins</li>
+            <li>Exactly 50%: 2 coins</li>
+            <li>Less than 50%: 0 coins</li>
+            <li>All wrong: -1 coin</li>
+          </ul>
           <button onClick={startQuiz} className="main-page-buttonQuizz">
             Start Quiz
           </button>
@@ -143,15 +139,25 @@ const App: React.FC = () => {
   }
 
   // Pantalla de resultados
-  // Se muestra cuando se han respondido todas las preguntas
   if (step > questions.length) {
+    const result = getResultMessage(score, questions.length);
+    
+    // Award coins only once when reaching results screen
+    if (!hasAwardedCoins) {
+      addCoins(result.coins);
+      setHasAwardedCoins(true);
+    }
+
     return (
       <div id="Quizzbody">
         <div className="QuizzContainer">
           <BackToGamesButton />
           <h2>Score</h2>
           <p className="total">Successes: {score} / {questions.length}</p>
-          <p className="italic">{getResultMessage(score, questions.length)}</p>
+          <p className="italic">{result.message}</p>
+          <p className={`coins-result ${result.coins >= 0 ? 'positive' : 'negative'}`}>
+            {result.coins > 0 ? `+${result.coins}` : result.coins} coins
+          </p>
           <button onClick={startQuiz} className="main-page-buttonQuizz">
             Try again
           </button>
@@ -161,7 +167,6 @@ const App: React.FC = () => {
   }
 
   // Pantalla de preguntas
-  // Incluye la pregunta, opciones de respuesta, barra de progreso y navegación
   const current = questions[step - 1];
   return (
     <div id="Quizzbody">
@@ -177,19 +182,16 @@ const App: React.FC = () => {
         </div>
         <ProgressBar />
         <div className="main-page-buttons-fixed">
-          {/* Botón para retroceder a la pregunta anterior */}
           {step > 1 && (
             <button onClick={goToPreviousQuestion} className="prev-btn">
               ← Previous
             </button>
           )}
-          {/* Botón para avanzar a la siguiente pregunta */}
           {step < questions.length && (
             <button onClick={goToNextQuestion} className="nxt-btn">
               Next →
             </button>
           )}
-          {/* Botón para reiniciar el cuestionario desde la primera pregunta */}
           <button onClick={restartQuiz} className="main-page-buttonQuizz">
             Restart Quiz
           </button>

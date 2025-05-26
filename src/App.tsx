@@ -48,9 +48,31 @@ import Stock from './pages/Stock/Stock';
 // src/ context
 import { ThemeProvider } from './context/ThemeContext';
 import { useTheme } from './context/ThemeContext';
+import { CoinsProvider, useCoins } from './context/CoinsContext';
 
 
 const queryClient = new QueryClient();
+
+const Header = () => {
+  const location = useLocation();
+  const { coins, loading } = useCoins();
+
+  if (location.pathname === "/stock") return null;
+
+  return (
+    <>
+      <img
+        src={titlePurrPixel}
+        alt="PurrPixel Title"
+        className="title-purrpixel"
+      />
+      <div className="coins-display">
+        <img src={coinPurr} alt="purr coin" className="coin-icon" />
+        <span className="coins-amount">{loading ? "..." : coins}</span>
+      </div>
+    </>
+  );
+};
 
 const LayoutAllPages = () => {
   const location = useLocation();
@@ -162,20 +184,7 @@ const LayoutAllPages = () => {
       <div className="app-layout">
 
         <div className="container_header">
-           {location.pathname !== "/stock" && (
-        <>
-          <img
-            src={titlePurrPixel}
-            alt="PurrPixel Title"
-            className="title-purrpixel"
-          />
-          <div className="coins-display">
-          <img src={coinPurr} alt="purr coin" className="coin-icon" />
-        </div>
-
-        </>
-      )}
-
+          <Header />
 
           {/* Botones */}
           <div className="header-buttons">
@@ -247,31 +256,33 @@ const LayoutAllPages = () => {
 const App: React.FC = () => {
   return (
     <ThemeProvider>
-      <Router>
-        <Routes>
-          <Route path="/" element={<LayoutAllPages />}>
-            <Route index element={<Index />} />
-            <Route path="index" element={<Index />} />
-            <Route path="instructions" element={<Instructions />} />
-            <Route path="login" element={<Login />} />
-            <Route path="register" element={<Register />} />
-            <Route path="terms-and-conditions" element={<Terms />} />
-            <Route path="character-selection" element={<CharacterSelection />} />
-            <Route path="settings" element={<Settings />} />
-            <Route path="profile" element={<Profile />} />
-            <Route path="store" element={<Store />} />
-            <Route path="games" element={<Games />} />
-            <Route path="home-page" element={<HomePage />} />
-            <Route path="stock" element={<Stock />} />
-          </Route>
+      <CoinsProvider>
+        <Router>
+          <Routes>
+            <Route path="/" element={<LayoutAllPages />}>
+              <Route index element={<Index />} />
+              <Route path="index" element={<Index />} />
+              <Route path="instructions" element={<Instructions />} />
+              <Route path="login" element={<Login />} />
+              <Route path="register" element={<Register />} />
+              <Route path="terms-and-conditions" element={<Terms />} />
+              <Route path="character-selection" element={<CharacterSelection />} />
+              <Route path="settings" element={<Settings />} />
+              <Route path="profile" element={<Profile />} />
+              <Route path="store" element={<Store />} />
+              <Route path="games" element={<Games />} />
+              <Route path="home-page" element={<HomePage />} />
+              <Route path="stock" element={<Stock />} />
+            </Route>
 
-          <Route path="games" element={<Games />}>
-            <Route path="jump" element={<Jump />} />
-            <Route path="catch" element={<Catch />} />
-            <Route path="quizz" element={<Quizz />} />
-          </Route>
-        </Routes>
-      </Router>
+            <Route path="games" element={<Games />}>
+              <Route path="jump" element={<Jump />} />
+              <Route path="catch" element={<Catch />} />
+              <Route path="quizz" element={<Quizz />} />
+            </Route>
+          </Routes>
+        </Router>
+      </CoinsProvider>
     </ThemeProvider>
   );
 };

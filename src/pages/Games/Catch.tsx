@@ -1,6 +1,8 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { useNavigate } from "react-router-dom";
+import { useCoins } from '../../context/CoinsContext';
 import './Catch.scss';
+
 const getRandomPosition = () => ({
   top: Math.random() * 450,
   left: Math.random() * 450,
@@ -33,6 +35,7 @@ const Modal: React.FC<{ message: string; onClose: () => void }> = ({ message, on
 
 const CatchTheMiceGame: React.FC = () => {
   const navigate = useNavigate();
+  const { addCoins } = useCoins();
 
   const [score, setScore] = useState(0);
   const [mousePos, setMousePos] = useState(getRandomPosition());
@@ -66,14 +69,17 @@ const CatchTheMiceGame: React.FC = () => {
     }, 2000);
   };
 
-  const handleMouseClick = () => {
-    setScore(prev => prev + 10);
+  const handleMouseClick = async () => {
+    const points = 10;
+    const coins = 1;
+    setScore(prev => prev + points);
+    await addCoins(coins);
     setShowMouse(false);
     spawnMouse();
     resetTimeout();
   };
 
-  const endGame = (message: string = 'Game Over!') => {
+  const endGame = async (message: string = 'Game Over!') => {
     if (intervalRef.current !== null) {
       clearInterval(intervalRef.current);
       intervalRef.current = null;
@@ -83,7 +89,16 @@ const CatchTheMiceGame: React.FC = () => {
       timeoutRef.current = null;
     }
     setShowMouse(false);
-    setEndMessage(message);
+    
+    // Award bonus coins based on final score
+    const bonusCoins = Math.floor(score / 50); // 1 bonus coin for every 50 points
+    if (bonusCoins > 0) {
+      await addCoins(bonusCoins);
+      setEndMessage(`${message}\nScore: ${score}\nBonus Coins: +${bonusCoins}`);
+    } else {
+      setEndMessage(`${message}\nScore: ${score}`);
+    }
+    
     setGameState('end');
   };
 
@@ -106,6 +121,10 @@ const CatchTheMiceGame: React.FC = () => {
       {gameState === 'start' && (
         <>
           <h1>Catch the Mice</h1>
+          <p className="game-instructions">
+            Catch mice to earn coins! Each mouse is worth 1 coin.
+            Get bonus coins for high scores!
+          </p>
           <button className="main-buttonCatch" onClick={startGame}>Start Game</button>
           <button className="gameBack-buttonCatch" onClick={() => navigate('/games')}>
             ⬅ Go back
@@ -127,7 +146,7 @@ const CatchTheMiceGame: React.FC = () => {
 
       {gameState === 'end' && (
         <Modal
-          message={endMessage || 'Fin del juego'}
+          message={endMessage}
           onClose={restartGame}
         />
       )}

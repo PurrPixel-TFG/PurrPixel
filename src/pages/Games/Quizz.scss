@@ -100,7 +100,7 @@ Usan variables de color de tu tema.
 }
 
 /*
-Botón de “Go back” que no debe animarse.
+Botón de "Go back" que no debe animarse.
 Sólo posición relativa para colocarlo en esquina si se desea.
 */
 .gameBack-buttonCatch {
@@ -161,4 +161,40 @@ Párrafos dentro del quiz: resultados y mensajes.
   font-size: 1.5rem;
   text-align: center;
   margin-top: 2rem;
+}
+
+.coins-result {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin: 1rem 0;
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  
+  &.positive {
+    color: #4CAF50;
+    background: rgba(76, 175, 80, 0.1);
+  }
+  
+  &.negative {
+    color: #f44336;
+    background: rgba(244, 67, 54, 0.1);
+  }
+}
+
+.rewards-list {
+  list-style: none;
+  padding: 1rem;
+  margin: 1rem 0;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  
+  li {
+    margin: 0.5rem 0;
+    font-size: 1.1rem;
+    
+    &:before {
+      content: "🪙";
+      margin-right: 0.5rem;
+    }
+  }
 }
