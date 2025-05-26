@@ -141,7 +141,7 @@ const Products: React.FC<ProductProps> = ({ img, title, points, onBuy }) => (
     <img className="store_img" src={img} alt={title} />
     <h2 className="store_h2">{title}</h2>
     <p className="store_p">{points} PurrPoints</p>
-    <button className="store_button-buy" onClick={onBuy}>Add to cart</button>
+    <button className="store_button-buy" onClick={onBuy}>Buy</button>
   </div>
 );
 
