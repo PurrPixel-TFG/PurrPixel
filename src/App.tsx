@@ -57,7 +57,8 @@ const Header = () => {
   const location = useLocation();
   const { coins, loading } = useCoins();
 
-  if (location.pathname === "/stock") return null;
+  const hideCoinsDisplayRoutes = ["/", "/index", "/instructions", "/register", "/login", "/stock"];
+  const showCoins = !hideCoinsDisplayRoutes.includes(location.pathname);
 
   return (
     <>
@@ -66,10 +67,13 @@ const Header = () => {
         alt="PurrPixel Title"
         className="title-purrpixel"
       />
-      <div className="coins-display">
-        <img src={coinPurr} alt="purr coin" className="coin-icon" />
-        <span className="coins-amount">{loading ? "..." : coins}</span>
-      </div>
+
+      {showCoins && (
+        <div className="coins-display">
+          <img src={coinPurr} alt="purr coin" className="coin-icon" />
+          <span className="coins-amount">{loading ? "..." : coins}</span>
+        </div>
+      )}
     </>
   );
 };
