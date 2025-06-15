@@ -60,13 +60,18 @@ const Header = () => {
   const hideCoinsDisplayRoutes = ["/", "/index", "/instructions", "/register", "/login", "/stock"];
   const showCoins = !hideCoinsDisplayRoutes.includes(location.pathname);
 
+  const hideTitleDisplayRoutes = ["/stock"];
+  const showTitle= !hideTitleDisplayRoutes.includes(location.pathname);
+
   return (
     <>
+    {showTitle && (
       <img
         src={titlePurrPixel}
         alt="PurrPixel Title"
         className="title-purrpixel"
       />
+      )}
 
       {showCoins && (
         <div className="coins-display">
@@ -86,6 +91,7 @@ const LayoutAllPages = () => {
   // const isProfilePage = location.pathname === "/profile";
   const isStore = location.pathname === "/store";
   const isStock = location.pathname === "/stock";
+  const isTerms = location.pathname === "/terms-and-conditions";
 
   const noVideoPages = ["/home-page", "/profile", "/stock"];
   const hideVideo = noVideoPages.includes(location.pathname);
@@ -138,12 +144,13 @@ const LayoutAllPages = () => {
   }
 
   useEffect(() => {
-    document.body.style.overflow = "visible";
-    document.documentElement.style.overflow = isStore ? "auto" : "hidden";
-    return () => {
-      document.documentElement.style.overflow = "auto";
-    };
-  }, [isStore, isStock]);
+  document.body.style.overflow = "visible";
+  document.documentElement.style.overflow = isStore || isStock || isTerms ? "auto" : "hidden";
+  return () => {
+    document.documentElement.style.overflow = "auto";
+  };
+}, [isStore, isStock, isTerms]);
+
 
   useEffect(() => {
     const updateTheme = () => {
@@ -202,7 +209,7 @@ const LayoutAllPages = () => {
 
                 {
                 ["/store", "/settings", "/profile", "/games", "/stock"].includes(location.pathname) && (
-                  <button className="back-button" onClick={() => navigate('/character-selection')}>
+                  <button className="back-button" onClick={() => navigate('/home-page')}>
                     ⬅ Home Page
                   </button>
                 )}
@@ -211,6 +218,13 @@ const LayoutAllPages = () => {
                 ["/stock"].includes(location.pathname) && (
                   <button className="back-button" onClick={() => navigate('/profile')}>
                     ⬅ Profile
+                  </button>
+                )}
+
+                {
+                ["/login"].includes(location.pathname) && (
+                  <button className="back-button-login" onClick={() => navigate('/index')}>
+                    ⬅ Back
                   </button>
                 )}
             </div>

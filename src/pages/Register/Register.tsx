@@ -141,6 +141,14 @@ const Register: React.FC = () => {
 
           <div className="form-button-container">
             <button type="submit" className="button_new_register">Create account</button>
+            <button
+              type="button"
+              className="button_have_an_account"
+              onClick={() => navigate("/login")}
+            >
+              I already have an account
+            </button>
+
           </div>
 
           {error && <p style={{ color: 'red' }}>{error}</p>}

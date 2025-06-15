@@ -9,30 +9,44 @@ export interface CatStats {
   clean: number;
 }
 
-export const useSupabaseCat = () => {
+export const useSupabaseCat = (catId?: string) => {
   const [catStats, setCatStats] = useState<CatStats | null>(null);
 
   const refetchCatStats = async () => {
-    const { data: { user } } = await supabase.auth.getUser();
-    if (!user) return;
+    const { data: { user }, error: userError } = await supabase.auth.getUser();
+    if (!user || userError) return null;
 
-    const { data, error } = await supabase
+    const query = supabase
       .from("cats")
       .select("id, health, happiness, clean")
-      .eq("user_id", user.id)
-      .order("created_at", { ascending: false })
-      .limit(1); 
+      .eq("user_id", user.id);
+
+    if (catId) {
+      query.eq("id", catId);
+    } else {
+      query.order("created_at", { ascending: true }).limit(1);
+    }
+
+    const { data, error } = await query;
 
     if (error) {
       console.error("Error fetching cat stats:", error.message);
-    } else if (data && data.length > 0) {
+      return null;
+    }
+
+    if (data && data.length > 0) {
       setCatStats(data[0]);
+      return data[0];
+    } else {
+      setCatStats(null);
+      return null;
     }
   };
 
   useEffect(() => {
     refetchCatStats();
-  }, []);
+  }, [catId]);
 
   return { catStats, setCatStats, refetchCatStats };
 };
+

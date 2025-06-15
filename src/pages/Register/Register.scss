@@ -27,7 +27,7 @@
     line-height: normal !important;
 }
 
-.button_new_register{
+.button_new_register, .button_have_an_account{
     padding: 0.5rem 1rem;
     text-align: center;
     text-decoration: none;
@@ -37,4 +37,5 @@
     border-radius: 5px;
     display: inline-block;
     box-shadow: 0 0 15px rgba(0, 0, 0, 5);
+    margin: 5px;
 }

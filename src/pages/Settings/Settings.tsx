@@ -7,7 +7,7 @@ const Settings: React.FC = () => {
     <main>
       <div className="container_settings">
         <ThemeMode /> {/* Ya no necesita props */}
-        <div className="send_ticket">Send ticket</div>
+        <div className="send_ticket">Cambiar fondo</div>
       </div>
     </main>
   );

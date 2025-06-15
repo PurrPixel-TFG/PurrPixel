@@ -1,4 +1,6 @@
 import { useEffect, useState } from "react";
+import { supabase } from "../supabase/SupabaseClient"; //Cannot find module '../supabase/SupabaseClient' or its corresponding type declarations.ts(2307)
+import { useNavigate } from "react-router-dom";
 
 export interface CatStats {
   health: number;
@@ -14,13 +16,37 @@ interface UseCatProps {
 export const useCatStats = ({ initialStats = { health: 5, clean: 5, happiness: 5 } }: UseCatProps) => {
   const [stats, setStats] = useState<CatStats>(initialStats);
 
-  // Disminuir health
+  const [loading, setLoading] = useState(true); // 'loading' is declared but its value is never read.ts(6133)
+  const navigate = useNavigate();
+
   useEffect(() => {
+    const checkAuth = async () => {
+      const { data: { user } } = await supabase.auth.getUser();
+      if (!user) {
+        navigate("/login");
+      } else {
+        setLoading(false);
+      }
+    };
+
+    checkAuth();
+  }, []);
+
+  // Disminuir health
+  // useEffect(() => {
+  //   const interval = setInterval(() => {
+  //     setStats((prev) => ({ ...prev, health: Math.max(0, prev.health - 1) }));
+  //   }, 60 * 60 * 1000); // 1 hora
+  //   return () => clearInterval(interval);
+  // }, []);
+useEffect(() => {
+  
     const interval = setInterval(() => {
       setStats((prev) => ({ ...prev, health: Math.max(0, prev.health - 1) }));
-    }, 60 * 60 * 1000); // 1 hora
+    }, 3000); // cada 3 segundos
     return () => clearInterval(interval);
   }, []);
+
 
   // Disminuir clean
   useEffect(() => {

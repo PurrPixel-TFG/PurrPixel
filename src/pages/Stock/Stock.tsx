@@ -63,12 +63,23 @@ const Stock: React.FC = () => {
     refetchCatStats();
   }, []);
 
+  useEffect(() => {
+    console.log("catStats actualizado:", catStats);
+  }, [catStats]);
+
   const handleItemClick = async (item: InventoryItem) => {
-    console.log("Click item:", item);
-    await refetchCatStats();
-    setSelectedItem(item);
-    setShowModal(true);
+    console.log("Item clickeado:", item);
+
+    const result = await refetchCatStats();
+    console.log("Resultado de refetch:", result);
+
+    setTimeout(() => {
+      setSelectedItem(item);
+      setShowModal(true);
+    }, 100);
   };
+
+
 
   const applyItem = async () => {
     if (!selectedItem || !selectedItem.store_items || !catStats) return;
@@ -136,6 +147,13 @@ const Stock: React.FC = () => {
 
   return (
     <div className="stock-background-layer">
+      {catStats && (
+        <div className="cat-stats-display">
+          <p>❤️ Salud: {catStats.health}</p>
+          <p>😊 Felicidad: {catStats.happiness}</p>
+          <p>✨ Limpieza: {catStats.clean}</p>
+        </div>
+      )}
       <div className="stock-wrapper">
         {["Food", "Drink", "Booster", "Happiness"].map(category => (
           <Categoria
@@ -186,11 +204,11 @@ const Stock: React.FC = () => {
                 <p>Health: {catStats.health} ❤️</p>
                 <p>Happiness: {catStats.happiness} 😊</p>
                 <p>Clean: {catStats.clean} ✨</p>
-                <button onClick={applyItem}>Usar</button>
               </>
             ) : (
-              <p>Cargando estado del gato...</p>
+              <p>Estado del gato no disponible.</p>
             )}
+            <button onClick={applyItem}>Usar</button>
             <button onClick={() => {
               setShowModal(false);
               setSelectedItem(null);
@@ -198,6 +216,8 @@ const Stock: React.FC = () => {
           </div>
         </div>
       )}
+
+
     </div>
   );
 };

@@ -13,13 +13,16 @@ const CharacterSelection: React.FC = () => {
   const { catStats } = useSupabaseCat();
 
   const handleCatClick = () => {
-    navigate("/home-page", {
-      state: {
-        catId: 1,
-        initialStats: catStats,
-      },
-    });
-  };
+  if (!catStats) return;
+
+  navigate("/home-page", {
+    state: {
+      catId: catStats.id,  
+      initialStats: catStats,
+    },
+  });
+};
+
 
   const renderIcons = (icon: string, value: number = 0, max = 5) => {
     return [...Array(max)].map((_, i) => (
@@ -62,8 +65,8 @@ const CharacterSelection: React.FC = () => {
         <div className="cat_1" onClick={handleCatClick}>
           <img src={catBlack} alt="tuPurr" />
         </div>
-        <div className="cat_2">Cat 2</div>
-        <div className="cat_3">Cat 3</div>
+        <div className="cat_2">¡Añádeme!</div>
+        <div className="cat_3">¡Añádeme!</div>
       </div>
 
       <div className="container_cats_status">
