@@ -11,9 +11,10 @@ import './Profile.scss';
 import characterUs from '../../assets/assets_dressUp/characterUs.png';
 
 // Moving clouds
-import cloud1 from "../../assets/assets_temp/clouds_temp/cloud-1.png";
-import cloud2 from "../../assets/assets_temp/clouds_temp/cloud-2.png";
-import cloud3 from "../../assets/assets_temp/clouds_temp/cloud-3.png";
+import cloud1 from "../../assets/assets_dressUp/clouds_dressUp/cloud-1.png";
+import cloud2 from "../../assets/assets_dressUp/clouds_dressUp/cloud-2.png";
+import cloud3 from "../../assets/assets_dressUp/clouds_dressUp/cloud-3.png";
+
 
 // Elements
 import shirtBlue from '../../assets/assets_dressup/dress_dressup/shirt-blue.png';
