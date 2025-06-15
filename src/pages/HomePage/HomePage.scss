@@ -53,11 +53,17 @@
 
 .cat {
   position: absolute;
-  width: 40px;
+  width: 100px;
   height: auto;
   z-index: 2;
   transition: left 0.1s, top 0.1s;
 }
+
+.cat-waiting {
+  width: 50px;
+  height: auto;
+}
+
 
 .station_settings {
   position: absolute;

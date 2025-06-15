@@ -128,8 +128,8 @@ const HomePage: React.FC = () => {
             navigate("/store");
         } else if (doesCatCollideWithArea(catPosition, stationProfileBounds)) {
             navigate("/profile");
-        // } else if (doesCatCollideWithArea(catPosition, stationPharmacyBounds)) {
-        //     navigate("/store");
+            // } else if (doesCatCollideWithArea(catPosition, stationPharmacyBounds)) {
+            //     navigate("/store");
         } else if (doesCatCollideWithArea(catPosition, stationGamesBounds)) {
             navigate("/games");
         }
@@ -191,7 +191,7 @@ const HomePage: React.FC = () => {
                             : catWaiting
                     }
                     alt="Cat"
-                    className="cat"
+                    className={`cat ${!isMoving ? 'cat-waiting' : ''}`}
                     style={{
                         left: `${catPosition.x}px`,
                         top: `${catPosition.y}px`,
