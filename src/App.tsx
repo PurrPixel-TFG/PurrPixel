@@ -1,4 +1,5 @@
 // App.tsx
+import { supabase } from "./supabase/SupabaseClient";
 import { useRef, useState, useEffect } from 'react'
 import {
   BrowserRouter as Router,
@@ -10,6 +11,8 @@ import {
 } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+
+import ProtectedRoute from "./components/ProtectedRoute";
 
 // Video
 import MorningMode from './assets/assets_video/MorningMode.mp4';
@@ -273,11 +276,17 @@ const LayoutAllPages = () => {
         {/* LogoutButton only on character-selection */}
         {location.pathname === "/character-selection" && (
           <div className="logout-button-wrapper">
-          <button className="button" onClick={() => navigate('/index')}>
-            <div className="button-top">Logout</div>
-            <div className="button-bottom"></div>
-            <div className="button-base"></div>
-          </button>
+            <button
+              className="button"
+              onClick={async () => {
+                await supabase.auth.signOut();
+                navigate("/index");
+              }}
+            >
+              <div className="button-top">Logout</div>
+              <div className="button-bottom"></div>
+              <div className="button-base"></div>
+            </button>
           </div>
         )}
 
@@ -300,19 +309,20 @@ const App: React.FC = () => {
               <Route path="login" element={<Login />} />
               <Route path="register" element={<Register />} />
               <Route path="terms-and-conditions" element={<Terms />} />
-              <Route path="character-selection" element={<CharacterSelection />} />
-              <Route path="settings" element={<Settings />} />
-              <Route path="profile" element={<Profile />} />
-              <Route path="store" element={<Store />} />
-              <Route path="games" element={<Games />} />
-              <Route path="home-page" element={<HomePage />} />
-              <Route path="stock" element={<Stock />} />
-            </Route>
 
-            <Route path="games" element={<Games />}>
-              <Route path="jump" element={<Jump />} />
-              <Route path="catch" element={<Catch />} />
-              <Route path="quizz" element={<Quizz />} />
+              <Route element={<ProtectedRoute />}>
+                <Route path="character-selection" element={<CharacterSelection />} />
+                <Route path="home-page" element={<HomePage />} />
+                <Route path="store" element={<Store />} />
+                <Route path="profile" element={<Profile />} />
+                <Route path="stock" element={<Stock />} />
+                <Route path="settings" element={<Settings />} />
+                <Route path="games" element={<Games />}>
+                  <Route path="jump" element={<Jump />} />
+                  <Route path="catch" element={<Catch />} />
+                  <Route path="quizz" element={<Quizz />} />
+                </Route>
+              </Route>
             </Route>
           </Routes>
         </Router>
