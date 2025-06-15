@@ -229,9 +229,9 @@ const LayoutAllPages = () => {
                 )}
 
               {
-                ["/login"].includes(location.pathname) && (
+                ["/login", "/instructions"].includes(location.pathname) && (
                   <button className="button" onClick={() => navigate('/index')}>
-                    <div className="button-top">⬅ Back</div>
+                    <div className="button-top">⬅ Principal Page</div>
                     <div className="button-bottom"></div>
                     <div className="button-base"></div>
                   </button>
