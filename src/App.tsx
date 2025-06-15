@@ -61,16 +61,16 @@ const Header = () => {
   const showCoins = !hideCoinsDisplayRoutes.includes(location.pathname);
 
   const hideTitleDisplayRoutes = ["/stock"];
-  const showTitle= !hideTitleDisplayRoutes.includes(location.pathname);
+  const showTitle = !hideTitleDisplayRoutes.includes(location.pathname);
 
   return (
     <>
-    {showTitle && (
-      <img
-        src={titlePurrPixel}
-        alt="PurrPixel Title"
-        className="title-purrpixel"
-      />
+      {showTitle && (
+        <img
+          src={titlePurrPixel}
+          alt="PurrPixel Title"
+          className="title-purrpixel"
+        />
       )}
 
       {showCoins && (
@@ -96,7 +96,7 @@ const LayoutAllPages = () => {
   const noVideoPages = ["/home-page", "/profile", "/stock"];
   const hideVideo = noVideoPages.includes(location.pathname);
 
-  {/* Rutes: main-page-buttons-fixed */ }
+  {/* Routes: main-page-buttons-fixed */ }
   const navButtonsMap: Record<string, { to: string; label: string }[]> = {
     "/character-selection": [
       { to: "/settings", label: "Settings" },
@@ -144,12 +144,12 @@ const LayoutAllPages = () => {
   }
 
   useEffect(() => {
-  document.body.style.overflow = "visible";
-  document.documentElement.style.overflow = isStore || isStock || isTerms ? "auto" : "hidden";
-  return () => {
-    document.documentElement.style.overflow = "auto";
-  };
-}, [isStore, isStock, isTerms]);
+    document.body.style.overflow = "visible";
+    document.documentElement.style.overflow = isStore || isStock || isTerms ? "auto" : "hidden";
+    return () => {
+      document.documentElement.style.overflow = "auto";
+    };
+  }, [isStore, isStock, isTerms]);
 
 
   useEffect(() => {
@@ -202,39 +202,51 @@ const LayoutAllPages = () => {
             <div className="left-buttons">
               {
                 ["/store", "/settings", "/profile", "/games", "/home-page"].includes(location.pathname) && (
-                  <button className="back-button" onClick={() => navigate('/character-selection')}>
-                    ⬅ Character Selection
+                  <button className="button" onClick={() => navigate('/character-selection')}>
+                    <div className="button-top">⬅ Character Selection</div>
+                    <div className="button-bottom"></div>
+                    <div className="button-base"></div>
                   </button>
+
                 )}
 
-                {
+              {
                 ["/store", "/settings", "/profile", "/games", "/stock"].includes(location.pathname) && (
-                  <button className="back-button" onClick={() => navigate('/home-page')}>
-                    ⬅ Home Page
+                  <button className="button" onClick={() => navigate('/home-page')}>
+                    <div className="button-top">⬅ Home Page</div>
+                    <div className="button-bottom"></div>
+                    <div className="button-base"></div>
                   </button>
                 )}
 
-                {
+              {
                 ["/stock"].includes(location.pathname) && (
-                  <button className="back-button" onClick={() => navigate('/profile')}>
-                    ⬅ Profile
+                  <button className="button" onClick={() => navigate('/profile')}>
+                    <div className="button-top">⬅ Profile</div>
+                    <div className="button-bottom"></div>
+                    <div className="button-base"></div>
                   </button>
                 )}
 
-                {
+              {
                 ["/login"].includes(location.pathname) && (
-                  <button className="back-button-login" onClick={() => navigate('/index')}>
-                    ⬅ Back
+                  <button className="button" onClick={() => navigate('/index')}>
+                    <div className="button-top">⬅ Back</div>
+                    <div className="button-bottom"></div>
+                    <div className="button-base"></div>
                   </button>
                 )}
             </div>
 
-            <div className="right-buttons">
-              <div className="button_music" onClick={toggleMusic}>
+            <button className="button" onClick={toggleMusic}>
+              <div className="button-top">
                 {isPlaying ? '🔊 Music ON' : '🔇 Music OFF'}
-                <audio ref={audioRef} src={musicFile} loop />
               </div>
-            </div>
+              <div className="button-bottom"></div>
+              <div className="button-base"></div>
+              <audio ref={audioRef} src={musicFile} loop />
+            </button>
+
           </div>
         </div>
 
@@ -260,9 +272,13 @@ const LayoutAllPages = () => {
 
         {/* LogoutButton only on character-selection */}
         {location.pathname === "/character-selection" && (
-          <button className="logout-button" onClick={() => navigate('/index')}>
-            Logout
+          <div className="logout-button-wrapper">
+          <button className="button" onClick={() => navigate('/index')}>
+            <div className="button-top">Logout</div>
+            <div className="button-bottom"></div>
+            <div className="button-base"></div>
           </button>
+          </div>
         )}
 
       </div>
