@@ -147,13 +147,13 @@ const Stock: React.FC = () => {
 
   return (
     <div className="stock-background-layer">
-      {catStats && (
+      {/* {catStats && (
         <div className="cat-stats-display">
           <p>❤️ Salud: {catStats.health}</p>
           <p>😊 Felicidad: {catStats.happiness}</p>
           <p>✨ Limpieza: {catStats.clean}</p>
         </div>
-      )}
+      )} */}
       <div className="stock-wrapper">
         {["Food", "Drink", "Booster", "Happiness"].map(category => (
           <Categoria
